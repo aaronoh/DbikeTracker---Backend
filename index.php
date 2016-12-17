@@ -12,7 +12,7 @@
         $server = $url["us-cdbr-iron-east-04.cleardb.net"];
         $username = $url["b4c04b4b0847ac"];
         $password = $url["bdfbd3f7"];
-        $db = substr($url["b4c04b4b0847ac"], 1);
+        $db = substr($url["b4c04b4b0847ac:bdfbd3f7"], 1);
         //create the conneciton
         $conn = new mysqli($server, $username, $password, $db);
 
