@@ -12,7 +12,7 @@
         $server = $url["us-cdbr-iron-east-04.cleardb.net"];
         $username = $url["b4c04b4b0847ac"];
         $password = $url["bdfbd3f7"];
-        $db = substr($url["heroku_1aebd2cf6f33fe1"], 1);
+        $db = $url["heroku_1aebd2cf6f33fe1"];
         //create the conneciton
         try {
             $conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);
