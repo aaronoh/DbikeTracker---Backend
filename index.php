@@ -15,7 +15,7 @@
         $db = substr($url["heroku_1aebd2cf6f33fe1"], 1);
         //create the conneciton
         try {
-            $conn = new PDO("mysql:host=$servername;dbname=myDB", $username, $password);
+            $conn = new PDO("mysql:host=$servername;dbname=heroku_1aebd2cf6f33fe1", $username, $password);
             // set the PDO error mode to exception
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             echo "Connected successfully";
