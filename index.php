@@ -14,7 +14,7 @@
         $password = $url["pass"];
         $db = substr($url["path"], 1);
         //create the conneciton
-        $conn = new mysqli($servername, $username, $password);
+        $conn = new mysqli($servername, $username, $password, $db);
 
 // Check connection
         if ($conn->connect_error) {
