@@ -34,7 +34,7 @@
 //        print_r($dbikeinfo);
 
         for ($i = 0; $i < count($contents); $i++) {
-            print_r($contents['name']);
+            print_r($contents);
         }
         ?>
     </head>
