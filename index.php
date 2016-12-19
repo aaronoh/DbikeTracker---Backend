@@ -33,8 +33,8 @@
         $dbikeinfo = json_decode($contents, true);
 //        print_r($dbikeinfo);
 
-        for ($i = 0; $i < count($dbikeinfo); $i++) {
-            print_r($dbikeinfo['name']);
+        for ($i = 0; $i < count($contents); $i++) {
+            print_r($contents['name']);
         }
         ?>
     </head>
