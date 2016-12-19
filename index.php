@@ -44,12 +44,12 @@
             $address = $row['address'];
             $number = $row['number'];
 
-//            echo '<pre>';
-//            print_r($number);
-//            print_r($name);
-//            print_r($lat);
-//            print_r($lng);
-//            echo '</pre>';
+            echo '<pre>';
+            print_r($number);
+            print_r($name);
+            print_r($address);
+            echo '</pre>';
+
             // execute insert query
             mysqli_stmt_execute($st);
         }
