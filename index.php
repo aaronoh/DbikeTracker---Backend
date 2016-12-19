@@ -35,7 +35,7 @@
 
         $st = mysqli_prepare($conn, 'INSERT INTO stations(name, address, number) VALUES (?, ?, ?)');
         //bind the varibales
-        mysqli_stmt_bind_param($st, 'ssi', $number, $name, $number);
+        mysqli_stmt_bind_param($st, 'ssi', $name, $address, $number);
 
         // loop through the array
         foreach ($dbikeinfo as $row) {
