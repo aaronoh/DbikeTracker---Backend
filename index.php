@@ -49,13 +49,6 @@ VALUES ('?, ? , ? , ?')";
             print_r($dbikeinfo['name']);
         }
 
-
-        if (mysqli_query($conn, $query)) {
-            echo "New record created successfully";
-        } else {
-            echo "Error: " . $query . "<br>" . mysqli_error($conn);
-        }
-
         mysqli_close($conn);
         ?>
     </head>
