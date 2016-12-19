@@ -34,7 +34,7 @@
         $dbikeinfo = json_decode($contents, true);
 
         //insert into availability table
-        $st = mysqli_prepare($conn, 'INSERT INTO availability(number, timeslot, avail_bikes, avail_slot, status) VALUES (?, ?, ?, ?, ?)');
+        $st = mysqli_prepare($conn, 'INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status) VALUES (?, ?, ?, ?, ?)');
         //bind the varibales
         mysqli_stmt_bind_param($st, 'isiis', $name, $timeslot, $avail_bikes, $avail_slot, $status);
 
