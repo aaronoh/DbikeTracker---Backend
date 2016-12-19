@@ -6,6 +6,7 @@
     <head>
         <?php
         //connect to ClearDB
+        //cleardb url mysql://b4c04b4b0847ac:bdfbd3f7@us-cdbr-iron-east-04.cleardb.net/heroku_1aebd2cf6f33fe1?reconnect=true
         //gets the variables from the url and parses them to the variables
         $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
@@ -31,11 +32,28 @@
         //convert the json to a php assoc array for query
         $dbikeinfo = json_decode($contents, true);
 //        print_r($dbikeinfo);
-        
-        $query_create = $mysqli->prepare("CREATE TABLE locations(number int, name varchar (30), "
-                . "lat decimal , lng decimal, PRIMARY KEY(number)");
-        $query_create->execute();
-        
+        //insertion query for the locations
+        foreach ($allData as $key => $value) {
+            // Set the query.
+            $query = "INSERT INTO locations (NUMBER, NAME, LAT, LNG)
+VALUES ('?, ? , ? , ?')";
+
+            // Bind the params.
+            // mysqli_stmt_bind_param($query, 'ss', $value['data_id'], $value['name']);
+            mysqli_stmt_bind_param($query, 'ssss', $dbikeinfo['number'], $dbikeinfo['name'], $dbikeinfo['lat'], $dbikeinfo['lng']);
+
+            // Run the query.
+            $result = mysqli_query($mysqli, $query) or die(mysqli_error());
+        }
+
+
+        if (mysqli_query($conn, $sql)) {
+            echo "New record created successfully";
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+
+        mysqli_close($conn);
         ?>
     </head>
 </html>
