@@ -15,7 +15,8 @@
         $password = $url["pass"];
         $db = substr($url["path"], 1);
         //create the conneciton
-        $conn = new mysqli($server, $username, $password, $db);
+//        $conn = new mysqli($server, $username, $password, $db);
+        $conn = mysqli_connect($server, $username, $password, $db) or die('Error in Connecting: ' . mysqli_error($conn));
 
         // Check connection
         if ($conn->connect_error) {
@@ -60,14 +61,13 @@
             $lat = $row['lat'];
             $lng = $row['lng'];
             
-            print_r($number);
 
             // execute insert query
             mysqli_stmt_execute($st);
         }
 
         //close connection
-        mysqli_close($con);
+        mysqli_close($conn);
         ?>
     </head>
 </html>
