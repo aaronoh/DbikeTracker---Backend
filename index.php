@@ -32,24 +32,24 @@
         $contents = file_get_contents($api_url);
         //convert the json to a php assoc array for query
         $dbikeinfo = json_decode($contents, true);
+//
+//        //insert into availability table
+//        $st = mysqli_prepare($conn, 'INSERT INTO availability(number, timeslot, avail_bikes, avail_slot, status) VALUES (?, ?, ?, ?, ?)');
+//        //bind the varibales
+//        mysqli_stmt_bind_param($st, 'isiis', $name, $timeslot, $avail_bikes, $avail_slot, $status);
+//
+//        // loop through the array
+//        foreach ($dbikeinfo as $row) {
+//            // get the locations details
+//            $name = $row['name'];
+//            $timeslot = ;
+//            $number = $row['number'];
 
-        $st = mysqli_prepare($conn, 'INSERT INTO stations(name, address, number) VALUES (?, ?, ?)');
-        //bind the varibales
-        mysqli_stmt_bind_param($st, 'ssi', $name, $address, $number);
-
-        // loop through the array
-        foreach ($dbikeinfo as $row) {
-            // get the locations details
-            $name = $row['name'];
-            $address = $row['address'];
-            $number = $row['number'];
-
-            echo '<pre>';
-            print_r($number);
-            print_r($name);
-            print_r($address);
-            echo '</pre>';
-
+//            echo '<pre>';
+//            print_r($number);
+//            print_r($name);
+//            print_r($address);
+//            echo '</pre>';
             // execute insert query
             mysqli_stmt_execute($st);
         }
@@ -59,6 +59,11 @@
 
         //close connection
         mysqli_close($conn);
+
+
+        //insert new time stamp every 10 minutes
+        //
+        
         ?>
     </head>
 </html>
