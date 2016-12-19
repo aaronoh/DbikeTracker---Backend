@@ -30,7 +30,11 @@
         $contents = file_get_contents($api_url);
         //convert the json to a php assoc array for query
         $dbikeinfo = json_decode($contents, true);
-        print_r($dbikeinfo);
+//        print_r($dbikeinfo);
+        
+        $query_create = $mysqli->prepare("CREATE TABLE locations(number int, name varchar (30), "
+                . "lat decimal , lng decimal, PRIMARY KEY(number)");
+        $query_create->execute();
         
         ?>
     </head>
