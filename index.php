@@ -59,6 +59,8 @@
             $name = $row['name'];
             $lat = $row['lat'];
             $lng = $row['lng'];
+            
+            print_r($number);
 
             // execute insert query
             mysqli_stmt_execute($st);
