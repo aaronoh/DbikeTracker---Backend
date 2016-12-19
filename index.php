@@ -45,14 +45,27 @@
         $avil_bikes = $dbikeinfo['available_bikes'];
         $timestamp = $dbikeinfo['last_update'];
 
-      
-        print_r ($dbikeinfo['number']);
-        //insert into mysql table
-        $sql = "INSERT INTO locations(number, name, lat, lng)
-    VALUES('$number', '$name', '$lat', '$lng')";
-        if (!mysql_query($sql, $conn)) {
-            die('Error : ' . mysql_error());
+
+
+        // use prepare statement for insert query
+        $st = mysqli_prepare($conn, 'INSERT INTO locations(number, name, lat, lng) VALUES (?, ?, ?, ?)');
+        //bind the varibales
+        mysqli_stmt_bind_param($st, 'isdd', $number, $name, $lat, $lng);
+
+        // loop through the array
+        foreach ($dbikeinfo as $row) {
+            // get the locations details
+            $number = $row['number'];
+            $name = $row['name'];
+            $lat = $row['lat'];
+            $lng = $row['lng'];
+
+            // execute insert query
+            mysqli_stmt_execute($st);
         }
+
+        //close connection
+        mysqli_close($con);
         ?>
     </head>
 </html>
