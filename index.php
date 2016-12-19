@@ -33,38 +33,28 @@
         $dbikeinfo = json_decode($contents, true);
 //        print_r($dbikeinfo);
 //insertion query for the locations
+
+
         foreach ($dbikeinfo as $locations => $value) {
             // Set the query.
-            $query = "INSERT INTO locations (number, name, lat, lng ) VALUES (?, ?, ?, ?)";
+            $query = "INSERT INTO locations (NUMBER, NAME, LAT, LNG)
+VALUES ('?, ? , ? , ?')";
 
             // Bind the params.
             // mysqli_stmt_bind_param($query, 'ss', $value['data_id'], $value['name']);
-            mysqli_stmt_bind_param($query, 'isss', $dbikeinfo['number'], $dbikeinfo['name'], $dbikeinfo['lat'], $dbikeinfo['lng'] );
+            mysqli_stmt_bind_param($query, 'isdd', $dbikeinfo['number'], $dbikeinfo['name'], $dbikeinfo['lat'], $dbikeinfo['lng']);
 
             // Run the query.
             $result = mysqli_query($mysqli, $query) or die(mysqli_error());
+            print_r($dbikeinfo['name']);
         }
 
 
-//        foreach ($dbikeinfo as $locations => $value) {
-//            // Set the query.
-//            $query = "INSERT INTO locations (NUMBER, NAME, LAT, LNG)
-//VALUES ('?, ? , ? , ?')";
-//
-//            // Bind the params.
-//            // mysqli_stmt_bind_param($query, 'ss', $value['data_id'], $value['name']);
-//            mysqli_stmt_bind_param($query, 'isss', $dbikeinfo['number'], $dbikeinfo['name'], $dbikeinfo['lat'], $dbikeinfo['lng']);
-//
-//            // Run the query.
-//            $result = mysqli_query($mysqli, $query) or die(mysqli_error());
-//        }
-//
-//
-//        if (mysqli_query($conn, $query)) {
-//            echo "New record created successfully";
-//        } else {
-//            echo "Error: " . $query . "<br>" . mysqli_error($conn);
-//        }
+        if (mysqli_query($conn, $query)) {
+            echo "New record created successfully";
+        } else {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn);
+        }
 
         mysqli_close($conn);
         ?>
