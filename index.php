@@ -58,7 +58,7 @@
             // get the locations details
             $number = $row['number'];
             $name = $row['name'];
-            $lat = $row['postion']['lat'];
+            $lat = $row['position']['lat'];
             $lng = $row['position']['lng'];
             
             echo '<pre>';
