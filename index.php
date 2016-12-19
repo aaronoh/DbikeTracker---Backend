@@ -16,19 +16,23 @@
         //create the conneciton
         $conn = new mysqli($server, $username, $password, $db);
 
-// Check connection
+        // Check connection
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
         echo "Connected successfully";
-//        try {
-//            $conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);
-//            // set the PDO error mode to exception
-//            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-//            echo "Connected successfully";
-//        } catch (PDOException $e) {
-//            echo "Connection failed: " . $e->getMessage();
-//        }
+
+        //information for the bikes api
+        $api_key = "ec447add626cfb0869dd4747a7e50e21d39d1850";
+        $contract_name = "Dublin";
+        //phpinfo();
+        $api_url = "https://api.jcdecaux.com/vls/v1/stations?contract=Dublin&apiKey=ec447add626cfb0869dd4747a7e50e21d39d1850";
+        $contents = file_get_contents($api_url);
+        //convert the json to a php assoc array for query
+        $json_array = utf8_encode($content);
+        $dbikeinfo = json_decode($json_array, true);
+        print_r($dbikeinfo);
+        
         ?>
     </head>
 </html>
