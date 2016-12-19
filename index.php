@@ -42,7 +42,7 @@
         foreach ($dbikeinfo as $row) {
             // get the locations details
             $name = $row['name'];
-            $timeslot = $row[new date()];
+            $timeslot = new DateTime();
             $avail_bikes = $row['available_bikes'];
             $avail_slot = $row['available_bike_stands'];
             $status = $row['status'];
