@@ -32,12 +32,11 @@
         //convert the json to a php assoc array for query
         $dbikeinfo = json_decode($contents, true);
 //        print_r($dbikeinfo);
-
-        for ($i = 0; $i < count($contents); $i++) {
-            $query = "INSERT INTO locations (number, name, lat, lng) VALUES (?, ?, ?, ?)";
-            mysqli_stmt_bind_param($query, 'isdd', $contents['number'], $contents['name'], $contents['lat'], $contents['lng']);
-            // Run the query.
-            $result = mysqli_query($conn, $query) or die(mysqli_error());
+        //insert query
+        $p1 = $dbikeinfo['p1'];
+        foreach ($p1 as $val) {
+            $sql = "INSERT INTO locations (number, name, lat, lng) VALUES('" . $val['number'] . "', '" . $val['name'] . "', '" . $val['lat'] . "', '" . $val['lng'] . "')";
+            $result = $mysqli->query($sql);
         }
         ?>
     </head>
