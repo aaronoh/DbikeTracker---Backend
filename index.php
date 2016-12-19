@@ -42,10 +42,11 @@
         foreach ($dbikeinfo as $row) {
             // get the locations details
             $name = $row['name'];
-            $timeslot = $row['last_update'];
+            $timeslot = gmdate("Y-m-d\TH:i:s\Z", $timestamp);
             $avail_bikes = $row['available_bikes'];
             $avail_slot = $row['available_bike_stands'];
             $status = $row['status'];
+            $timestamp = $row['last_update'];
 
             echo '<pre>';
             print_r($number);
