@@ -32,10 +32,24 @@
         //convert the json to a php assoc array for query
         $dbikeinfo = json_decode($contents, true);
 //        print_r($dbikeinfo);
-        //insert query
-        foreach ($dbikeinfo as $val) {
-            $sql = "INSERT INTO locations (number, name, lat, lng) VALUES('" . $val['number'] . "', '" . $val['name'] . "', '" . $val['lat'] . "', '" . $val['lng'] . "')";
-            $result = $mysqli->query($sql);
+        //add each json object field to a php variable
+        $number = $dbikeinfo['number'];
+        $name = $dbikeinfo['name'];
+        $address = $dbikeinfo['address'];
+        $lat = $dbikeinfo['position']['lat'];
+        $lng = $dbikeinfo['position']['lng'];
+        $banking = $dbikeinfo['banking'];
+        $status = $dbikeinfo['status'];
+        $bikestands = $dbikeinfo['bike_stands'];
+        $avail_bikestands = $dbikeinfo['available_bike_stands'];
+        $avil_bikes = $dbikeinfo['available_bikes'];
+        $timestamp = $dbikeinfo['last_update'];
+
+        //insert into mysql table
+        $sql = "INSERT INTO locations(number, name, lat, lng)
+    VALUES('$number', '$name', '$lat', '$lng')";
+        if (!mysql_query($sql, $conn)) {
+            die('Error : ' . mysql_error());
         }
         ?>
     </head>
