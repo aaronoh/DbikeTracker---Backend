@@ -34,7 +34,10 @@
 //        print_r($dbikeinfo);
 
         for ($i = 0; $i < count($contents); $i++) {
-            print_r($contents);
+            $query = "INSERT INTO locations (number, name, lat, lng) VALUES (?, ?, ?, ?)";
+            mysqli_stmt_bind_param($query, 'isdd', $contents['number'], $contents['name'], $contents['lat'], $contents['lng']);
+            // Run the query.
+            $result = mysqli_query($conn, $query) or die(mysqli_error());
         }
         ?>
     </head>
