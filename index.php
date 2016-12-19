@@ -33,10 +33,11 @@
         $dbikeinfo = json_decode($contents, true);
 //        print_r($dbikeinfo);
 //insertion query for the locations
-        foreach ($allData as $key => $value) {
+        foreach ($dbikeinfo as $locations => $value) {
             $query = "INSERT INTO locations (number, name, lat, lng ) VALUES ('" . $dbikeinfo['number'] . "', '" . $dbikeinfo['name'] 
                     . "', '" . $dbikeinfo['lat'] . "', '" . $dbikeinfo['lng'] . "')";
             $result = mysqli_query($mysqli, $query) or die(mysqli_error());
+            echo $value . PHP_EOL; 
         }
 
 
