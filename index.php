@@ -45,6 +45,11 @@
         $avil_bikes = $dbikeinfo['available_bikes'];
         $timestamp = $dbikeinfo['last_update'];
 
+        echo $dbikeinfo['number'];
+        echo $dbikeinfo['name'];
+        echo $dbikeinfo['address'];
+        echo $dbikeinfo['bike_stands'];
+        echo $dbikeinfo['number'];
         //insert into mysql table
         $sql = "INSERT INTO locations(number, name, lat, lng)
     VALUES('$number', '$name', '$lat', '$lng')";
