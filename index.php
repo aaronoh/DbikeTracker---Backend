@@ -32,45 +32,30 @@
         $contents = file_get_contents($api_url);
         //convert the json to a php assoc array for query
         $dbikeinfo = json_decode($contents, true);
-//        print_r($dbikeinfo);
-        //add each json object field to a php variable
-//        $number = $dbikeinfo['number'];
-//        $name = $dbikeinfo['name'];
-//        $address = $dbikeinfo['address'];
-//        $lat = $dbikeinfo['position']['lat'];
-//        $lng = $dbikeinfo['position']['lng'];
-//        $banking = $dbikeinfo['banking'];
-//        $status = $dbikeinfo['status'];
-//        $bikestands = $dbikeinfo['bike_stands'];
-//        $avail_bikestands = $dbikeinfo['available_bike_stands'];
-//        $avil_bikes = $dbikeinfo['available_bikes'];
-//        $timestamp = $dbikeinfo['last_update'];
 
-
-
-        // use prepare statement for insert query
-        $st = mysqli_prepare($conn, 'INSERT INTO locations(number, name, lat, lng) VALUES (?, ?, ?, ?)');
+        $st = mysqli_prepare($conn, 'INSERT INTO stations(name, address, number) VALUES (?, ?, ?)');
         //bind the varibales
-        mysqli_stmt_bind_param($st, 'isdd', $number, $name, $lat, $lng);
+        mysqli_stmt_bind_param($st, 'ssi', $number, $name, $number);
 
         // loop through the array
         foreach ($dbikeinfo as $row) {
             // get the locations details
-            $number = $row['number'];
             $name = $row['name'];
-            $lat = $row['position']['lat'];
-            $lng = $row['position']['lng'];
-            
-            echo '<pre>';
-            print_r($number);
-            print_r($name);
-            print_r($lat);
-            print_r($lng);
-            echo '</pre>';
-            
+            $address = $row['address'];
+            $number = $row['number'];
+
+//            echo '<pre>';
+//            print_r($number);
+//            print_r($name);
+//            print_r($lat);
+//            print_r($lng);
+//            echo '</pre>';
             // execute insert query
             mysqli_stmt_execute($st);
         }
+
+
+
 
         //close connection
         mysqli_close($conn);
