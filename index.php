@@ -34,10 +34,15 @@
 //        print_r($dbikeinfo);
 //insertion query for the locations
         foreach ($dbikeinfo as $locations => $value) {
-            $query = "INSERT INTO locations (number, name, lat, lng ) VALUES ('" . $dbikeinfo['number'] . "', '" . $dbikeinfo['name'] 
-                    . "', '" . $dbikeinfo['lat'] . "', '" . $dbikeinfo['lng'] . "')";
+            // Set the query.
+            $query = "INSERT INTO locations (number, name, lat, lng ) VALUES (?, ?, ?, ?)";
+
+            // Bind the params.
+            // mysqli_stmt_bind_param($query, 'ss', $value['data_id'], $value['name']);
+            mysqli_stmt_bind_param($query, 'isss', $dbikeinfo['number'], $dbikeinfo['name'], $dbikeinfo['lat'], $dbikeinfo['lng'] );
+
+            // Run the query.
             $result = mysqli_query($mysqli, $query) or die(mysqli_error());
-            echo $value . PHP_EOL; 
         }
 
 
