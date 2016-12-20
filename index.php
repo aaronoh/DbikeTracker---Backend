@@ -48,13 +48,13 @@
             $status = $row['status'];
             $timestamp = $row['last_update'];
 
-            echo '<pre>';
-            print_r($number);
-            print_r($timeslot);
-            print_r($avail_bikes);
-            print_r($avail_slot);
-            print_r($status);
-            echo '</pre>';
+//            echo '<pre>';
+//            print_r($number);
+//            print_r($timeslot);
+//            print_r($avail_bikes);
+//            print_r($avail_slot);
+//            print_r($status);
+//            echo '</pre>';
             // execute insert query
             mysqli_stmt_execute($st);
         }
