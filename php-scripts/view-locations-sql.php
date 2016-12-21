@@ -28,23 +28,31 @@
 
         // use prepare statement for insert query
         $st = mysqli_prepare($conn, 'SELECT * From locations');
-
+		$result = mysqli_stmt_execute($st);
+		
+		$loactions = array();
+		
+		while($row = mysqli_fetch_assoc($result)){
+		$locations[] = $row
+		}
+		mysqli_close($conn)
+		
 
         // loop through the array
-        foreach ($dbikeinfo as $row) {
+        // foreach ($dbikeinfo as $row) {
             // get the locations details
-             $row['number'] = $number;
-             $row['name'] = $name;
-             $row['position']['lat'] = $lat;
-             $row['position']['lng'] $lng = ;
+             // $row['number'] = $number;
+             // $row['name'] = $name;
+             // $row['position']['lat'] = $lat;
+             // $row['position']['lng'] $lng = ;
             
-            echo '<pre>';
-            print_r($number);
-            print_r($name);
-            print_r($lat);
-            print_r($lng);
-            echo '</pre>';
+            // echo '<pre>';
+            // print_r($number);
+            // print_r($name);
+            // print_r($lat);
+            // print_r($lng);
+            // echo '</pre>';
             
-            // execute insert query
-            mysqli_stmt_execute($st);
-        }
+            //execute insert query
+            // mysqli_stmt_execute($st);
+        // }
