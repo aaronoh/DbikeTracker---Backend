@@ -38,7 +38,7 @@
 		mysqli_close($conn);
 		
                 echo "<pre>";
-                $loactions[];
+                $locations[];
                 echo "</pre>";
 
         // loop through the array
