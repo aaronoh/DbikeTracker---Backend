@@ -69,6 +69,11 @@ $st = mysqli_prepare($conn, 'INSERT INTO times(time, dayofwk) VALUES (?, ?)');
 //bind the varibales
 mysqli_stmt_bind_param($st, 'si', $time, $day);
 
+
+echo gettype($time), "\n";
+echo gettype($day), "\n";
+
+
 if ($conn->query($st) === TRUE) {
     echo "New record created successfully";
 } else {
