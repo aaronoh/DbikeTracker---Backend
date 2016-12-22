@@ -63,6 +63,12 @@
         $time = date('H:i', strtotime());
         $dayofwk = date();
         
+        echo "<pre>";
+        $time;
+        $dayofwk;
+        
+        echo "</pre>";
+        
         
         // execute insert query
         mysqli_stmt_execute($st);
