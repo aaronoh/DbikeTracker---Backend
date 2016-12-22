@@ -65,27 +65,27 @@ echo $dt->format('Y-m-d'); // output = 2017-01-01
 $day = date('w', $dt->format('Y-m-d'));
 echo "day as int is " . $day;
 
-//$st = mysqli_prepare($conn, 'INSERT INTO times(time, dayofwk) VALUES (?, ?)');
-////bind the varibales
-//mysqli_stmt_bind_param($st, 'si', $time, $day);
+$st = mysqli_prepare($conn, 'INSERT INTO times(time, dayofwk) VALUES (?, ?)');
+//bind the varibales
+mysqli_stmt_bind_param($st, 'si', $time, $day);
 
 
 echo gettype($time), "\n";
 echo gettype($day), "\n";
 
 
-//if ($conn->query($st) === TRUE) {
-//    echo "New record created successfully";
-//} else {
-//    echo "Error: " . $st . "<br>" . $conn->error;
-//}
+if ($conn->query($st) === TRUE) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $st . "<br>" . $conn->error;
+}
 
-//mysqli_stmt_execute($st);
-//
-//
-//
-////close connection
-//mysqli_close($conn);
+mysqli_stmt_execute($st);
+
+
+
+//close connection
+mysqli_close($conn);
 
 
 
