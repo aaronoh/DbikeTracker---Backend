@@ -33,42 +33,45 @@
         //convert the json to a php assoc array for query
         $dbikeinfo = json_decode($contents, true);
 
-        //insert into availability table
-        $st = mysqli_prepare($conn, 'INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status) VALUES (?, ?, ?, ?, ?)');
-        //bind the varibales
-        mysqli_stmt_bind_param($st, 'isiis', $number, $timeslot, $avail_bikes, $avail_slot, $status);
-
-        // loop through the array
-        foreach ($dbikeinfo as $row) {
-            // get the locations details
-            $number = $row['number'];
-            $timeslot = strftime("%Y-%m-%d, %H:%M:%S", time());
-            $avail_bikes = $row['available_bikes'];
-            $avail_slot = $row['available_bike_stands'];
-            $status = $row['status'];
-            $timestamp = $row['last_update'];
-
-//            echo '<pre>';
-//            print_r($number);
-//            print_r($timeslot);
-//            print_r($avail_bikes);
-//            print_r($avail_slot);
-//            print_r($status);
-//            echo '</pre>';
-            // execute insert query
-            mysqli_stmt_execute($st);
-        }
-
-
-
-
+//        //insert into availability table
+//        $st = mysqli_prepare($conn, 'INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status) VALUES (?, ?, ?, ?, ?)');
+//        //bind the varibales
+//        mysqli_stmt_bind_param($st, 'isiis', $number, $timeslot, $avail_bikes, $avail_slot, $status);
+//
+//        // loop through the array
+//        foreach ($dbikeinfo as $row) {
+//            // get the locations details
+//            $number = $row['number'];
+//            $timeslot = strftime("%Y-%m-%d, %H:%M:%S", time());
+//            $avail_bikes = $row['available_bikes'];
+//            $avail_slot = $row['available_bike_stands'];
+//            $status = $row['status'];
+//            $timestamp = $row['last_update'];
+//
+////            echo '<pre>';
+////            print_r($number);
+////            print_r($timeslot);
+////            print_r($avail_bikes);
+////            print_r($avail_slot);
+////            print_r($status);
+////            echo '</pre>';
+//            // execute insert query
+//            mysqli_stmt_execute($st);
+//        }
         //close connection
         mysqli_close($conn);
 
 
         //insert new time stamp every 10 minutes
-        //
+        $st = mysqli_prepare($conn, 'INSERT INTO times(time, dayofwk) VALUES ($time, $dayofwk)');
+//        //bind the varibales
+        mysqli_stmt_bind_param($st, 'ss', $time, $dayofwk);
+        $time = date('H:i', strtotime());
+        $dayofwk = date();
         
+        
+        // execute insert query
+        mysqli_stmt_execute($st);
         ?>
     </head>
 </html>
