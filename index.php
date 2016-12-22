@@ -69,7 +69,7 @@ if ($conn->query($st) === TRUE) {
 
 mysqli_stmt_execute($st);
 
-$conn->close();
+
 
 //close connection
 mysqli_close($conn);
