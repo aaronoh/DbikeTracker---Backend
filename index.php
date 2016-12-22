@@ -33,9 +33,9 @@
 		$loactions = array();
 		
 		while($row = mysqli_fetch_assoc($result)){
-		$locations[] = $row
+		$locations[] = $row;
 		}
-		mysqli_close($conn)
+		mysqli_close($conn);
 		
 
         // loop through the array
