@@ -62,8 +62,8 @@ $dbikeinfo = json_decode($contents, true);
         mysqli_stmt_bind_param($st, 'si', $time, $day);
 
         // loop through the array
-        $time = $time;
-        $day = $day;
+        $time = date('H:m:s');
+        $day = date('w', $dt->format('Y-m-d'));
         
             mysqli_stmt_execute($st);
         
@@ -81,9 +81,9 @@ $dbikeinfo = json_decode($contents, true);
         $dt = new DateTime("@$epoch");  // convert UNIX timestamp to PHP DateTime
         $tt = new DateTime("@$epoch"); //convert the epoch to UNIX time
         echo $tt->format('H:i:s'); // output = 21:06:43
-        $time = date('H:m:s');
+        
         echo $dt->format('Y-m-d'); // output = 2017-01-01
-        $day = date('w', $dt->format('Y-m-d'));
+        
         echo "day as int is " . $day;
 
 ?>
