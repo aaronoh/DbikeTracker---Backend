@@ -57,12 +57,14 @@
 
 
         //insert new time stamp every 10 minutes
-//                $st = mysqli_prepare($conn, 'INSERT INTO times(time, dayofwk) VALUES (?, ?)');
-//        //bind the varibales
-//        mysqli_stmt_bind_param($st, 'ss', $time, $day);
-//
-//        //close connection
-//        mysqli_close($conn);
+        $st = mysqli_prepare($conn, 'INSERT INTO times(time, dayofwk) VALUES (?, ?)');
+        //bind the varibales
+        mysqli_stmt_bind_param($st, 'ss', $time, $day);
+
+        //close connection
+        mysqli_close($conn);
+        
+        echo strtotime("now", "\n");
         $currdate = date('m/d/Y h:i:s a', time());
         $datetime = new DateTime($currdate);
         $date = $datetime->format('Y-m-d');
