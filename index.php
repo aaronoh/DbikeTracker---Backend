@@ -31,20 +31,16 @@ $st = mysqli_prepare($conn, 'SELECT * From locations');
 //$result = mysqli_stmt_execute($st);
 
 $loactions = array();
+mysql_select_db("heroku_1aebd2cf6f33fe1");
 
-$result = $conn->query($sql);
+$result = mysql_query("SELECT * FROM locations");
 
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        echo "id: " . $row["id"]. " -  number: " . $row["number"]. " -lng " . $row["lng"]. " -lat " . $row["lat"]. "<br>";
-    }
-} else {
-    echo "0 results";
+while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+    printf("ID: %s  number: %i lat: %d lng: %d", $row["id"], $row["number"], $row["lat"], $row["lng"]);
 }
 
-$conn->close();
-        // loop through the array
+mysql_free_result($result);
+// loop through the array
         // foreach ($dbikeinfo as $row) {
             // get the locations details
              // $row['number'] = $number;
