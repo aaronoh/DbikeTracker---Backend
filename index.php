@@ -89,7 +89,5 @@ if (mysqli_query($conn, $st)) {
 }
 
 echo gettype($time), "\n";
-vardump($time);
-vardump($day);
 echo gettype($day), "\n";
 ?>
