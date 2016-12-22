@@ -64,7 +64,12 @@
         //close connection
         mysqli_close($conn);
         
-        echo strtotime('today');
+        echo "today is " . $day;
+        $timestamp = strtotime('today');
+        $day = date('w', $timestamp);
+        
+        
+        
         $currdate = date('m/d/Y h:i:s a', time());
         $datetime = new DateTime($currdate);
         $date = $datetime->format('Y-m-d');
