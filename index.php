@@ -37,6 +37,9 @@
 		}
 		mysqli_close($conn);
 		
+                echo "<pre>";
+                $loactions[];
+                echo "</pre>";
 
         // loop through the array
         // foreach ($dbikeinfo as $row) {
