@@ -66,8 +66,8 @@ mysqli_close($conn);
 
 $epoch = strtotime('now');
 $dt = new DateTime("@$epoch");  // convert UNIX timestamp to PHP DateTime
-echo $dt->format('Y-m-d H:i:s'); // output = 2017-01-01
-$day = date('w', $dt, substr($epoch, 0, 10));
+echo $dt->format('Y-m-d'); // output = 2017-01-01
+$day = date('w', $dt->format('Y-m-d'));
 echo "day as int is " . $day;
 
 
