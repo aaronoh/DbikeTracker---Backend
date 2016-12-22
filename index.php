@@ -35,7 +35,6 @@ $loactions = array();
 if ($result->num_rows > 0) {
     // output data of each row
     while ($row = mysqli_fetch_assoc($result)) {
-        $locations[] = $row;
         echo "id: " . $row["ID"] . " - number: " . $row["NUMBER"] . " -lat " . $row["LAT"]  . " -lng " . $row["LNG"] . "<br>";
     }
 } else {
