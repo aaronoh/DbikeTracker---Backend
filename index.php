@@ -18,27 +18,17 @@
 //        $conn = new mysqli($server, $username, $password, $db);
         $conn = mysqli_connect($server, $username, $password, $db) or die('Error in Connecting: ' . mysqli_error($conn));
 
-        $st = mysqli_prepare($conn, 'SELECT * FROM times(time, dayofwk) VALUES (?, ?)');
-        //bind the varibales
-        mysqli_stmt_bind_param($st, 'si', $time, $dayofwk);
-
-        // loop through the array
-        foreach ($dbikeinfo as $row) {
-            // get the locations details
-            $time = $row["time"];
-            $dayofwk = $row['dayofwk'];
- 
-
-//            echo '<pre>';
-//            print_r($number);
-//            print_r($name);
-//            print_r($address);
-//            echo '</pre>';
-
-            // execute insert query
-            mysqli_stmt_execute($st);
-        }
-
+        //insert new time stamp every 10 minutes
+        $st = mysqli_prepare($conn, 'INSERT INTO times(time, dayofwk) VALUES ($time, $dayofwk)');
+//        //bind the varibales
+        mysqli_stmt_bind_param($st, 'ss', $time, $dayofwk);
+        $time = date('H:i', strtotime());
+        $dayofwk = date();
+        
+        
+        // execute insert query
+        mysqli_stmt_execute($st);
+        
 
 
 
