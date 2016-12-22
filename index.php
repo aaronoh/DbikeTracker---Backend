@@ -56,6 +56,14 @@ $dbikeinfo = json_decode($contents, true);
 //close connection
 //        mysqli_close($conn);
 //insert new time stamp every 10 minutes
+//$epoch = strtotime('now');
+$dt = new DateTime("@$epoch");  // convert UNIX timestamp to PHP DateTime
+$tt = new DateTime("@$epoch"); //convert the epoch to UNIX time
+echo $tt->format('H:i:s'); // output = 21:06:43
+$time = date('H:m:s');
+echo $dt->format('Y-m-d'); // output = 2017-01-01
+$day = date('w', $dt->format('Y-m-d'));
+echo "day as int is " . $day;
 
 $st = mysqli_prepare($conn, 'INSERT INTO times(time, dayofwk) VALUES (?, ?)');
 //bind the varibales
@@ -78,12 +86,5 @@ mysqli_close($conn);
 
 
 
-//$epoch = strtotime('now');
-$dt = new DateTime("@$epoch");  // convert UNIX timestamp to PHP DateTime
-$tt = new DateTime("@$epoch"); //convert the epoch to UNIX time
-echo $tt->format('H:i:s'); // output = 21:06:43
-$time = date('H:m:s');
-echo $dt->format('Y-m-d'); // output = 2017-01-01
-$day = date('w', $dt->format('Y-m-d'));
-echo "day as int is " . $day;
+
 ?>
