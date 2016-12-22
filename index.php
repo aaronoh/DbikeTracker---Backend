@@ -57,21 +57,27 @@ $dbikeinfo = json_decode($contents, true);
 //        mysqli_close($conn);
 //insert new time stamp every 10 minutes
 
-$sql = "INSERT INTO times (time, dayofwk)
-VALUES ($time, $day)";
+        $st = mysqli_prepare($conn, 'INSERT INTO times(time, dayofwk) VALUES (?, ?)');
+        //bind the varibales
+        mysqli_stmt_bind_param($st, 'si', $time, $day);
 
-if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
-
-$conn->close();
-
-
+        // loop through the array
+        $time = $time;
+        $day = $day;
+        
+            mysqli_stmt_execute($st);
+        
 
 
-        //$epoch = strtotime('now');
+
+
+        //close connection
+        mysqli_close($conn);
+
+
+
+
+        $epoch = strtotime('now');
         $dt = new DateTime("@$epoch");  // convert UNIX timestamp to PHP DateTime
         $tt = new DateTime("@$epoch"); //convert the epoch to UNIX time
         echo $tt->format('H:i:s'); // output = 21:06:43
