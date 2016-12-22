@@ -59,7 +59,7 @@
 //            mysqli_stmt_execute($st);
 //        }
         //close connection
-        mysqli_close($conn);
+//        mysqli_close($conn);
 
 
         //insert new time stamp every 10 minutes
@@ -72,6 +72,7 @@
         
         // execute insert query
         mysqli_stmt_execute($st);
+        mysqli_close($conn);
         ?>
     </head>
 </html>
