@@ -28,19 +28,22 @@ echo "Connected successfully";
 
 // use prepare statement for insert query
 $st = mysqli_prepare($conn, 'SELECT * From locations');
-$result = mysqli_stmt_execute($st);
+//$result = mysqli_stmt_execute($st);
 
 $loactions = array();
 
+$result = $conn->query($sql);
+
 if ($result->num_rows > 0) {
     // output data of each row
-    while ($row = mysqli_fetch_assoc($result)) {
-        echo "id: " . $row["ID"] . " - number: " . $row["NUMBER"] . " -lat " . $row["LAT"]  . " -lng " . $row["LNG"] . "<br>";
+    while($row = $result->fetch_assoc()) {
+        echo "id: " . $row["id"]. " -  number: " . $row["number"]. " -lng " . $row["lng"]. " -lat " . $row["lat"]. "<br>";
     }
 } else {
     echo "0 results";
 }
-mysqli_close($conn);
+
+$conn->close();
         // loop through the array
         // foreach ($dbikeinfo as $row) {
             // get the locations details
@@ -58,4 +61,4 @@ mysqli_close($conn);
 //            
             //execute insert query
             // mysqli_stmt_execute($st);
-        // }
+       
