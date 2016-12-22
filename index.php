@@ -56,12 +56,9 @@ $dbikeinfo = json_decode($contents, true);
 //close connection
 //        mysqli_close($conn);
 //insert new time stamp every 10 minutes
-$time_escape = $time;
-$time_escape = mysql_real_escape_string($time_escape);
-$date_escape = $time;
-$date_escape = mysql_real_escape_string($date_escape);
+
 $sql = "INSERT INTO times (time, dayofwk, )
-VALUES ('$time_escape', '$date_escape')";
+VALUES ($time, $day)";
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
