@@ -59,7 +59,7 @@ $dbikeinfo = json_decode($contents, true);
 
         $st = mysqli_prepare($conn, 'INSERT INTO times(time, dayofwk) VALUES (?, ?)');
         //bind the varibales
-        mysqli_stmt_bind_param($st, 'si', $time, $day);
+        mysqli_stmt_bind_param($st, 'bi', $time, $day);
 
         // loop through the array
         $time = date('H:m:s');
