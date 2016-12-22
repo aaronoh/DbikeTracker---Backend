@@ -65,7 +65,7 @@
         mysqli_close($conn);
         
         echo "today is " . $day;
-        $timestamp = strtotime('today');
+        $timestamp = strtotime('now');
         $day = date('w', $timestamp);
         
         
