@@ -67,7 +67,7 @@
         $time = date("h:i:sa");
         echo "the time is " . $time;
         $day = date("D");
-        echo "the day is " . $date;
+        echo "the day is " . $day;
         
 //   
 //        
