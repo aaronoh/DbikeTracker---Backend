@@ -74,18 +74,18 @@ echo gettype($time), "\n";
 echo gettype($day), "\n";
 
 
-if ($conn->query($st) === TRUE) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $st . "<br>" . $conn->error;
-}
+//if ($conn->query($st) === TRUE) {
+//    echo "New record created successfully";
+//} else {
+//    echo "Error: " . $st . "<br>" . $conn->error;
+//}
 
-mysqli_stmt_execute($st);
-
-
-
-//close connection
-mysqli_close($conn);
+//mysqli_stmt_execute($st);
+//
+//
+//
+////close connection
+//mysqli_close($conn);
 
 
 
