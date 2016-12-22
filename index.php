@@ -57,28 +57,11 @@
 
 
         //insert new time stamp every 10 minutes
-$query = "INSERT INTO times (time, dayofwk) VALUES(?, ?)";
-$statement = $mysqli->prepare($query);
-        $time = date('H:i', strtotime());
-        $dayofwk = date();
-
-//bind parameters for markers, where (s = string, i = integer, d = double,  b = blob)
-$statement->bind_param('ss', $time, $dayofwk);
-
-if($statement->execute()){
-    print 'Success! ID of last inserted record is : ' .$statement->insert_id .'<br />'; 
-}else{
-    die('Error : ('. $mysqli->errno .') '. $mysqli->error);
-}
-$statement->close();
-
-        
-        echo "<pre>";
-        $time;
-        $dayofwk;
-        
-        echo "</pre>";
-//        
+        $time = date("h:i:sa");
+        echo "the time is " . $time;
+        $date = date("D");
+        echo "the day is " . $date;
+//   
 //        
 //        // execute insert query
 //        mysqli_stmt_execute($st);
