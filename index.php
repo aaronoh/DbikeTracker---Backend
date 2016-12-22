@@ -63,8 +63,14 @@
 //
 //        //close connection
 //        mysqli_close($conn);
-        $date = date('m/d/Y h:i:s a', time());
-        echo "Todays date and time is " . $date;
+        $currdate = date('m/d/Y h:i:s a', time());
+        $datetime = new DateTime($currdate);
+        $date = $datetime->format('Y-m-d');
+        $time = $datetime->format('H:i:s');
+        
+        
+        echo "Todays date is " . $date;
+        echo "The time is " . $time;
         
 //   
 //        
