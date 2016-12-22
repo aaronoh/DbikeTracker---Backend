@@ -65,9 +65,9 @@ echo $dt->format('Y-m-d'); // output = 2017-01-01
 $day = date('w', $dt->format('Y-m-d'));
 echo "day as int is " . $day;
 
-$st = mysqli_prepare($conn, 'INSERT INTO times(time, dayofwk) VALUES (?, ?)');
-//bind the varibales
-mysqli_stmt_bind_param($st, 'si', $time, $day);
+//$st = mysqli_prepare($conn, 'INSERT INTO times(time, dayofwk) VALUES (?, ?)');
+////bind the varibales
+//mysqli_stmt_bind_param($st, 'si', $time, $day);
 
 
 echo gettype($time), "\n";
