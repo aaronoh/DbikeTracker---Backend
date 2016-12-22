@@ -73,10 +73,10 @@ echo gettype($day), "\n";
 $epoch = strtotime('now');
 $dt = new DateTime("@$epoch");  // convert UNIX timestamp to PHP DateTime
 $tt = new DateTime("@$epoch"); //convert the epoch to UNIX time
-echo $tt->format('H:i:s'); // output = 21:06:43
 $time = date('H:i:s');
+echo date_format($time, 'H:i:s'); // output = 21:06:43
 $day = date('w', $dt->format('Y-m-d'));
-echo $dt->format('Y-m-d'); // output = 2017-01-01
+echo date_format($day, 'Y-m-d'); // output = 2017-01-01
 
 echo "day as int is " . $day;
 ?>
