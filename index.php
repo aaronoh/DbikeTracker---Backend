@@ -48,14 +48,14 @@
              // $row['name'] = $name;
              // $row['position']['lat'] = $lat;
              // $row['position']['lng'] $lng = ;
-            
-             echo '<pre>';
-             print_r($number);
-             print_r($name);
-             print_r($lat);
-             print_r($lng);
-             echo '</pre>';
-            
+//            
+//             echo '<pre>';
+//             print_r($number);
+//             print_r($name);
+//             print_r($lat);
+//             print_r($lng);
+//             echo '</pre>';
+//            
             //execute insert query
             // mysqli_stmt_execute($st);
         // }
