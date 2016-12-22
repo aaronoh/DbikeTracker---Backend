@@ -56,37 +56,28 @@ $dbikeinfo = json_decode($contents, true);
 //close connection
 //        mysqli_close($conn);
 //insert new time stamp every 10 minutes
-//
-//$st = mysqli_prepare($conn, 'INSERT INTO times(time, dayofwk) VALUES (?, ?)');
-////bind the varibales
-//mysqli_stmt_bind_param($st, 'si', $time, $day);
-//
-//
-//if ($conn->query($st) === TRUE) {
-//    echo "New record created successfully";
-//} else {
-//    echo "Error: " . $st . "<br>" . $conn->error;
-//}
-//
-//
-//
-//echo mysqli_;
-//echo gettype($time), "\n";
-//
-//
-////close connection
-//mysqli_close($conn);
+
+$sql = "INSERT INTO times (time, dayofwk)
+VALUES ($time, $day)";
+
+if ($conn->query($sql) === TRUE) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
 
 
 
 
+        //$epoch = strtotime('now');
+        $dt = new DateTime("@$epoch");  // convert UNIX timestamp to PHP DateTime
+        $tt = new DateTime("@$epoch"); //convert the epoch to UNIX time
+        echo $tt->format('H:i:s'); // output = 21:06:43
+        $time = date('H:m:s');
+        echo $dt->format('Y-m-d'); // output = 2017-01-01
+        $day = date('w', $dt->format('Y-m-d'));
+        echo "day as int is " . $day;
 
-//$epoch = strtotime('now');
-//$dt = new DateTime("@$epoch");  // convert UNIX timestamp to PHP DateTime
-$tt = new DateTime("@$epoch"); //convert the epoch to UNIX time
-echo $tt->format('H:i:s'); // output = 21:06:43
-$time = date('H:m:s');
-echo $dt->format('Y-m-d'); // output = 2017-01-01
-//$day = date('w', $dt->format('Y-m-d'));
-//echo "day as int is " . $day;
 ?>
