@@ -63,16 +63,16 @@
 
 
         //insert new time stamp every 10 minutes
-        $st = mysqli_prepare($conn, 'INSERT INTO times(time, dayofwk) VALUES ($time, $dayofwk)');
-//        //bind the varibales
-        mysqli_stmt_bind_param($st, 'ss', $time, $dayofwk);
-        $time = date('H:i', strtotime());
-        $dayofwk = date();
-        
-        
-        // execute insert query
-        mysqli_stmt_execute($st);
-        mysqli_close($conn);
+//        $st = mysqli_prepare($conn, 'INSERT INTO times(time, dayofwk) VALUES ($time, $dayofwk)');
+////        //bind the varibales
+//        mysqli_stmt_bind_param($st, 'ss', $time, $dayofwk);
+//        $time = date('H:i', strtotime());
+//        $dayofwk = date();
+//        
+//        
+//        // execute insert query
+//        mysqli_stmt_execute($st);
+//        mysqli_close($conn);
         ?>
     </head>
 </html>
