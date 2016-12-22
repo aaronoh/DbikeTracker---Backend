@@ -64,6 +64,8 @@ mysqli_stmt_execute($st);
 //close connection
 mysqli_close($conn);
 
+echo gettype($time), "\n";
+echo gettype($day), "\n";
 
 
 
