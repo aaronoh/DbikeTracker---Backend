@@ -69,6 +69,12 @@ $dbikeinfo = json_decode($contents, true);
         
 
 
+if (mysqli_query($conn, $st)) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $st . "<br>" . mysqli_error($conn);
+}
+
 
 
         //close connection
