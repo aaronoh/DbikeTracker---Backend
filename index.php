@@ -41,7 +41,7 @@
         // loop through the array
         foreach ($dbikeinfo as $row) {
             // get the locations details
-            $name = $row['name'];
+            $number = $row['number'];
             $timeslot = strftime("%Y-%m-%d, %H:%M:%S", time());
             $avail_bikes = $row['available_bikes'];
             $avail_slot = $row['available_bike_stands'];
