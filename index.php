@@ -64,7 +64,7 @@
         //close connection
         mysqli_close($conn);
         
-        echo strtotime("now");
+        echo strtotime();
         $currdate = date('m/d/Y h:i:s a', time());
         $datetime = new DateTime($currdate);
         $date = $datetime->format('Y-m-d');
