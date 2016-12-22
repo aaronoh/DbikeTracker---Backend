@@ -57,7 +57,7 @@ $dbikeinfo = json_decode($contents, true);
 //        mysqli_close($conn);
 //insert new time stamp every 10 minutes
 
-mysqli_prepare($conn, 'INSERT INTO times (time, dayofwk) VALUES (?,?)');
+mysqli_prepare($conn, 'INSERT INTO times (timeofdy, dayofwk) VALUES (?,?)');
 mysqli_stmt_bind_param($st, 'ss', $time, $day);
 // execute insert query
 mysqli_stmt_execute($st);
