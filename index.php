@@ -82,11 +82,11 @@ $dbikeinfo = json_decode($contents, true);
 
 
 //$epoch = strtotime('now');
-$dt = new DateTime("@$epoch");  // convert UNIX timestamp to PHP DateTime
+//$dt = new DateTime("@$epoch");  // convert UNIX timestamp to PHP DateTime
 $tt = new DateTime("@$epoch"); //convert the epoch to UNIX time
 echo $tt->format('H:i:s'); // output = 21:06:43
 $time = date('H:m:s');
 echo $dt->format('Y-m-d'); // output = 2017-01-01
-$day = date('w', $dt->format('Y-m-d'));
-echo "day as int is " . $day;
+//$day = date('w', $dt->format('Y-m-d'));
+//echo "day as int is " . $day;
 ?>
