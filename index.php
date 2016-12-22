@@ -65,7 +65,7 @@ mysqli_close($conn);
 
 
 $epoch = strtotime('now');
-$dt = new DateTime("$epoch");  // convert UNIX timestamp to PHP DateTime
+$dt = new DateTime("@$epoch");  // convert UNIX timestamp to PHP DateTime
 echo $dt->format('Y-m-d'); // output = 2017-01-01 00:00:00
 $day = date('w', $dt);
 
