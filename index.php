@@ -61,13 +61,24 @@ $st = mysqli_prepare($conn, 'INSERT INTO times(time, dayofwk) VALUES (?, ?)');
 //bind the varibales
 mysqli_stmt_bind_param($st, 'si', $time, $day);
 
+foreach ($item as $row) {
+            // get the locations details
+            $time = $time;
+            $day = $day;
+            
+
+            
+            // execute insert query
+            mysqli_stmt_execute($st);
+        }
+
 if ($conn->query($st) === TRUE) {
     echo "New record created successfully";
 } else {
     echo "Error: " . $st . "<br>" . $conn->error;
 }
 
-mysqli_stmt_execute($st);
+
 
 echo mysqli_;
 echo gettype($time), "\n";
