@@ -34,7 +34,7 @@
 
 		while($row = mysqli_fetch_assoc($result)){
 		$locations[] = $row;
-    echo $row;
+    echo "test";
 		}
 		mysqli_close($conn)
 
