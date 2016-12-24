@@ -33,8 +33,8 @@
 		$loactions = array();
 
 		while($row = mysqli_fetch_assoc($result)){
-		$locations[] = $row
-    echo"$row"
+		$locations[] = $row;
+    echo $row;
 		}
 		mysqli_close($conn)
 
@@ -57,3 +57,4 @@
             //execute insert query
             // mysqli_stmt_execute($st);
         // }
+?>
