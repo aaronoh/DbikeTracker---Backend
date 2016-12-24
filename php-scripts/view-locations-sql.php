@@ -31,6 +31,7 @@
 		$result = mysqli_stmt_execute($st);
 
 		$loactions = array();
+                echo $locations;
 //
 //		while($row = mysqli_fetch_assoc($result)){
 //		$locations[] = $row;
