@@ -27,10 +27,10 @@
 
 
         // use prepare statement for insert query
-//        $st = mysqli_prepare($conn, 'SELECT * From locations');
-//		$result = mysqli_stmt_execute($st);
-//
-//		$loactions = array();
+        $st = mysqli_prepare($conn, 'SELECT * From locations');
+		$result = mysqli_stmt_execute($st);
+
+		$loactions = array();
 //
 //		while($row = mysqli_fetch_assoc($result)){
 //		$locations[] = $row;
