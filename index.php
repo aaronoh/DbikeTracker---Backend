@@ -71,10 +71,10 @@ $time = date('H:i:s');
 $day = date('w', $dt->format('Y-m-d'));
 echo $dt->format('Y-m-d'); // output = 2017-01-01
 
-echo " day as int is " . $day;
+echo " day as int is " . $day . " ";
 
 
-mysqli_prepare($conn, 'INSERT INTO times (timeofdy, dayofwk) VALUES (?,?)');
+$st = mysqli_prepare($conn, 'INSERT INTO times (timeofdy, dayofwk) VALUES (?,?)');
 mysqli_stmt_bind_param($st, 'ss', $time, $day);
 // execute insert query
 mysqli_stmt_execute($st);
