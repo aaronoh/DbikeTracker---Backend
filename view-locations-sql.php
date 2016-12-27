@@ -23,17 +23,20 @@
         }
         echo "Connected successfully";
 
-
-
-        // use prepare statement for insert query
-        $st = mysqli_prepare($conn, 'SELECT * From locations');
-        $result = mysqli_stmt_execute($st);
-		$loactions = array();
-		while($row = mysqli_fetch_assoc($result)){
-		$locations[] = $row;
-		}
-                mysqli_close($conn);
+// use prepare statement for insert query
+//        $st = mysqli_prepare($conn, 'SELECT * FROM locations');
+//        $result = mysqli_stmt_execute($st) or die ("Query error: " . mysqli_error());
+//		$loactions = array();
+//		while($row = mysqli_fetch_assoc($result)){
+//		$locations[] = $row;
+//		}
+//                mysqli_close($conn);
                 
-                echo $_GET['jsoncallback'] . '(' . json_encode($result) . ');';
+//                echo $_GET['jsoncallback'] . '(' . json_encode($result) . ');';
+                
+        
+        $st = mysqli_prepare($conn, 'SELECT * FROM locations');
+        $result = mysqli_fetch_row($st);
+        echo json_encode($result);
 
 ?>
