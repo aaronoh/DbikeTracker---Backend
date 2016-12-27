@@ -69,7 +69,7 @@ $tt = new DateTime("@$epoch"); //convert the epoch to UNIX time
 echo $tt->format('H:i:s'); // output = 21:06:43
 $time = date('H:i:s');
 echo $tt->format('Y-m-d'); // output = 2017-01-01
-$day = date('w', $tt->format('d/m/y'));
+$day = date('w');
 
 
 echo " day as int is " . $day . " ";
