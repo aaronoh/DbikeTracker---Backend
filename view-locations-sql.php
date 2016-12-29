@@ -10,9 +10,6 @@ $conn = mysqli_connect($server, $username, $password, $db) or die('Error in Conn
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-echo "Connected successfully";
-
-
 
 //if ($result = $conn->query("SELECT * FROM locations")) {
 //    $data_array = array();
