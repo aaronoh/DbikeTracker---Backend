@@ -36,9 +36,10 @@ echo "Connected successfully";
 
 
 $st = mysqli_prepare($conn, 'SELECT * FROM locations');
-$result = mysqli_fetch_assoc($st) or die("Query error: " . mysqli_error());
+$result = mysqli_stmt_execute($st) or die ("Query error: " . mysqli_error());
+$results = mysqli_fetch_assoc($st) or die("Queryyy error: " . mysqli_error());
 var_dump($result);
-
+var_dump($results);
 
 
 //        $result = mysqli_fetch_row($st);
