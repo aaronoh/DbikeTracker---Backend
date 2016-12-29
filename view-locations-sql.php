@@ -36,7 +36,8 @@
                 
         
         $st = mysqli_prepare($conn, 'SELECT * FROM locations');
-        $result = mysqli_fetch_row($st);
-        echo json_encode($result);
+        echo $st;
+//        $result = mysqli_fetch_row($st);
+//        echo json_encode($result);
 
 ?>
