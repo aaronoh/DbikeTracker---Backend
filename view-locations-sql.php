@@ -33,7 +33,12 @@ echo "Connected successfully";
 
 if ($result = $conn->query("SELECT * FROM locations")) {
     $data = mysqli_fetch_assoc($result); 
-    var_dump($data);
+    foreach($data as $row){
+        var_dump($data);
+    }
+    
+    
+    
     $data->close();
 }
 //
