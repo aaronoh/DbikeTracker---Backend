@@ -17,11 +17,7 @@ if ($result = $conn->query("SELECT * FROM locations")) {
     while($data = mysqli_fetch_assoc($result)){ 
 //        $data_array[] = $data;
           echo $_GET['jsoncallback'] . '(' . json_encode($data) . ');';
-    
     }    
-    
-
-  
     $data->close();
     }
 ?>
