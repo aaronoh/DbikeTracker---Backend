@@ -22,32 +22,23 @@ if ($conn->connect_error) {
 }
 echo "Connected successfully";
 
-/* check connection */
-if (mysqli_connect_errno()) {
-    printf("Connect failed: %s\n", mysqli_connect_error());
-    exit();
-}
-
 /* return name of current default database */
-if ($result = mysqli_query($conn, "SELECT DATABASE()")) {
-    $row = mysqli_fetch_row($result);
-    printf("Default database is %s.\n", $row[0]);
-    mysqli_free_result($result);
-}
+//if ($result = mysqli_query($conn, "SELECT DATABASE()")) {
+//    $row = mysqli_fetch_row($result);
+//    printf("Default database is %s.\n", $row[0]);
+//    mysqli_free_result($result);
+//}
 
-//$st = mysqli_prepare($conn, 'SELECT * FROM locations');
-//$result = mysqli_query($st);
-////mysqli_stmt_execute($st) or die ("Query error: " . mysqli_error());
-//var_dump($results);
-//
-//mysqli_close($conn);
 
 
 if ($result = $conn->query("SELECT * FROM locations")) {
-    var_dump($result);
-    $result->close();
+    $data = mysqli_fetch_assoc($result); 
+    var_dump($data);
+    $data->close();
 }
-// use prepare statement for insert query
+//
+// 
+//   use prepare statement for insert query
 //        $st = mysqli_prepare($conn, 'SELECT * FROM locations');
 //$result = mysqli_stmt_execute($st) or die ("Query error: " . mysqli_error());
 //		$loactions = array();
