@@ -35,7 +35,7 @@ echo "Connected successfully";
 
 
 
-$st = mysqli_prepare($conn, 'SELECT * FROM locations');
+$st = mysqli_prepare($conn, 'SELECT (NUMBER,NAME) FROM locations');
 $result = mysqli_stmt_execute($st) or die("Query error: " . mysqli_error());
 if (!$result) {
     echo "Cannot do query" . "<br/>";
