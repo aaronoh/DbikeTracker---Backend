@@ -33,13 +33,11 @@ echo "Connected successfully";
 //                echo $_GET['jsoncallback'] . '(' . json_encode($result) . ');';
 
 
-
-
 $st = mysqli_prepare($conn, 'SELECT * FROM locations');
 $result = mysqli_stmt_execute($st) or die ("Query error: " . mysqli_error());
-$results = mysqli_fetch_assoc($st) or die("Queryyy error: " . mysqli_error());
-var_dump($result);
-var_dump($results);
+  while ($row = $result->fetch_assoc()) {
+        printf ("%s (%s)\n", $row["number"], $row["name"]);
+    }
 
 
 //        $result = mysqli_fetch_row($st);
