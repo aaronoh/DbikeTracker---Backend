@@ -25,7 +25,7 @@
 
 // use prepare statement for insert query
 //        $st = mysqli_prepare($conn, 'SELECT * FROM locations');
-//        $result = mysqli_stmt_execute($st) or die ("Query error: " . mysqli_error());
+        //$result = mysqli_stmt_execute($st) or die ("Query error: " . mysqli_error());
 //		$loactions = array();
 //		while($row = mysqli_fetch_assoc($result)){
 //		$locations[] = $row;
@@ -36,7 +36,8 @@
                 
         
         $st = mysqli_prepare($conn, 'SELECT * FROM locations');
-        echo $st;
+        $result = mysqli_stmt_execute($st) or die ("Query error: " . mysqli_error());        
+        echo $result;
 //        $result = mysqli_fetch_row($st);
 //        echo json_encode($result);
 
