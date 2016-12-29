@@ -35,7 +35,7 @@ echo "Connected successfully";
 
 
 
-$st = mysqli_prepare($conn, 'SELECT NUMBER,NAME FROM locations');
+$st = mysqli_prepare($conn, 'SELECT * FROM locations');
 $result = mysqli_fetch_assoc($st) or die("Query error: " . mysqli_error());
 var_dump($result);
 
