@@ -34,18 +34,12 @@ if ($result = mysqli_query($conn, "SELECT DATABASE()")) {
     printf("Default database is %s.\n", $row[0]);
     mysqli_free_result($result);
 }
+$st = mysqli_prepare($conn, 'SELECT * FROM locations');
+$result = mysqli_query($st);
+        //mysqli_stmt_execute($st) or die ("Query error: " . mysqli_error());
+var_dump($results);
 
-/* change db to world db */
-//mysqli_select_db($conn, "world");
-
-/* return name of current default database */
-if ($result = mysqli_query($link, "SELECT DATABASE()")) {
-    $row = mysqli_fetch_row($result);
-    printf("Default database is %s.\n", $row[0]);
-    mysqli_free_result($result);
-}
-
-mysqli_close($link);
+mysqli_close($conn);
 
 
 // use prepare statement for insert query
