@@ -12,12 +12,21 @@ if ($conn->connect_error) {
 }
 echo "Connected successfully";
 
-if ($result = $conn->query("SELECT * FROM locations")) {
-    $data_array = array();
-    while($data = mysqli_fetch_assoc($result)){ 
-//        $data_array[] = $data;
-          echo $_GET['jsoncallback'] . '(' . json_encode($data) . ');';
-    }    
-    $data->close();
-    }
+
+
+//if ($result = $conn->query("SELECT * FROM locations")) {
+//    $data_array = array();
+//    while($data = mysqli_fetch_assoc($result)){ 
+////        $data_array[] = $data;
+//          echo $_GET['jsoncallback'] . '(' . json_encode($data) . ');';
+//    }    
+//    $data->close();
+//    }
+
+$data=array();
+$q=mysqli_query($conn,"select * from `locations`");
+while ($row=mysqli_fetch_object($q)){
+ $data[]=$row;
+}
+echo json_encode($data);
 ?>
