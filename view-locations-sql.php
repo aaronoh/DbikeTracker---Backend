@@ -37,7 +37,11 @@
         
         $st = mysqli_prepare($conn, 'SELECT * FROM locations');
         $result = mysqli_stmt_execute($st) or die ("Query error: " . mysqli_error());        
-        echo $result;
+        //echo $result;
+        //$result = mysql_query($sql);
+while($row = mysql_fetch_array($result)) {
+echo $row['NUMBER'];
+}
 //        $result = mysqli_fetch_row($st);
 //        echo json_encode($result);
 
