@@ -13,10 +13,12 @@ if ($conn->connect_error) {
 echo "Connected successfully";
 
 if ($result = $conn->query("SELECT * FROM locations")) {
-    
+    $data_array = array();
     while($data = mysqli_fetch_assoc($result)){ 
-        echo $_GET['jsoncallback'] . '(' . json_encode($data) . ');'; 
+        $data_array[] = $data;
     }    
     $data->close();
-}
+
+    echo $_GET['jsoncallback'] . '(' . json_encode($data) . ');'; 
+    }
 ?>
