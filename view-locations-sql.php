@@ -34,7 +34,7 @@ echo "Connected successfully";
 if ($result = $conn->query("SELECT * FROM locations")) {
     
     while($data = mysqli_fetch_assoc($result)){
-       echo json_encode($data);    
+       echo jsonp_encode($data);    
     }
     
     
