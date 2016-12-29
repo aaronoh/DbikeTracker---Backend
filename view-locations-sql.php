@@ -34,11 +34,12 @@ echo "Connected successfully";
 if ($result = $conn->query("SELECT * FROM locations")) {
     
     while($data = mysqli_fetch_assoc($result)){
-       echo jsonp_encode($data);    
+       echo json_encode($data);    
     }
     
     
     $data->close();
+      echo $_GET['jsoncallback'] . '(' . json_encode($result) . ');'; 
 }
 //
 // 
