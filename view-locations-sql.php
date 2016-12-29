@@ -39,7 +39,7 @@ if ($result = $conn->query("SELECT * FROM locations")) {
     
     
     $data->close();
-      echo $_GET['jsoncallback'] . '(' . json_encode($result) . ');'; 
+      echo $_GET['jsoncallback'] . '(' . json_encode($data) . ');'; 
 }
 //
 // 
