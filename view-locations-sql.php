@@ -36,28 +36,9 @@ echo "Connected successfully";
 
 
 $st = mysqli_prepare($conn, 'SELECT NUMBER,NAME FROM locations');
-$result = mysqli_stmt_execute($st) or die("Query error: " . mysqli_error());
-if (!$result) {
-    echo "Cannot do query" . "<br/>";
-    exit;
-}
-$row = mysqli_fetch_row($result);
-$count = $row[0];
+$result = mysqli_fetch_assoc($st) or die("Query error: " . mysqli_error());
+var_dump($result);
 
-if ($count > 0) {
-    echo "Query works";
-} else {
-    echo "Query doesn't work" . "<br/>";
-}
-
-$num_results = mysqli_num_rows($result);
-
-for ($i = 0; $i < $num_results; $i++) {
-    $row = mysqli_fetch_assoc($result);
-    print_r($row);
-    //echo '<img src="' . $row['Image'] . '>';
-    //echo "<br/>" . "Price: " . stripslashes($row['Price']);
-}
 
 
 //        $result = mysqli_fetch_row($st);
