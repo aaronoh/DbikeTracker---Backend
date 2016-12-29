@@ -34,10 +34,19 @@ if ($result = mysqli_query($conn, "SELECT DATABASE()")) {
     printf("Default database is %s.\n", $row[0]);
     mysqli_free_result($result);
 }
+if (!$mysqli->query("SET @a:='this will not work'")) {
+  printf("Error0: %s\n", $mysqli->error);
+  die();
+}
+
 $st = mysqli_prepare($conn, 'SELECT * FROM locations');
 $result = mysqli_query($st);
         //mysqli_stmt_execute($st) or die ("Query error: " . mysqli_error());
 var_dump($results);
+if (!$mysqli->query("SET @a:='this will not work'")) {
+  printf("Error1: %s\n", $mysqli->error);
+  die();
+}
 
 mysqli_close($conn);
 
