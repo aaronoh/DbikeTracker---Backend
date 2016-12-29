@@ -39,7 +39,7 @@
         $result = mysqli_stmt_execute($st) or die ("Query error: " . mysqli_error());        
         //echo $result;
         //$result = mysql_query($sql);
-while($row = mysql_fetch_array($result)) {
+while($row = mysqli_fetch_array($result)) {
 echo $row['NUMBER'];
 }
 //        $result = mysqli_fetch_row($st);
