@@ -75,13 +75,13 @@ $day = date('w');
 echo " day as int is " . $day . " ";
 
 //select * from times so that we can make sure the times match then add to the avail table
-$time_st = mysqli_query($conn, 'SELECT * FROM TIMES');
+$time_st = mysqli_query($conn, "SELECT * FROM 'TIMES'");
 
         
 while ($row = mysqli_fetch_object($time_st)) {
     $data[] = $row;
 }
-echo $data;
+echo json_encode($data);
 
 
 
