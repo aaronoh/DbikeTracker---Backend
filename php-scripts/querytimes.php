@@ -63,7 +63,7 @@ $dbikeinfo = json_decode($contents, true);
 
 
 
-$epoch = strtotime('now');
+$epoch = strtotime('now'); //current time
 $dt = new DateTime("@$epoch");  // convert UNIX timestamp to PHP DateTime
 $tt = new DateTime("@$epoch"); //convert the epoch to UNIX time
 echo $tt->format('H:i:s'); // output = 21:06:43
@@ -75,10 +75,13 @@ $day = date('w');
 echo " day as int is " . $day . " ";
 
 //select * from times so that we can make sure the times match then add to the avail table
-$sat = my_sqli_prepare($conn, 'SELECT CURTIME() FROM TIMES');
-mysqli_execute($sat);
-printf($sat);
+$time_st = mysqli_query($conn, 'SELECT * FROM TIMES');
 
+        
+while ($row = mysqli_fetch_object($time_st)) {
+    $data[] = $row;
+}
+echo $data;
 
 
 
@@ -102,5 +105,4 @@ printf($sat);
 //} else {
 //    echo "Error: " . $st . "<br>" . mysqli_error($conn);
 //}
-
 ?>
