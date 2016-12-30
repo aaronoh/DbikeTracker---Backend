@@ -83,6 +83,7 @@ $sat->execute();
 //fetxh variables
 $sat->fetch();
 $sat->close();
+var_dump($sat);
 
 
 
