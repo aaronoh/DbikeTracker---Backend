@@ -74,6 +74,7 @@ $day = date('w');
 
 echo " day as int is " . $day . " ";
 
+$data=array();
 //select * from times so that we can make sure the times match then add to the avail table
 $time_st = mysqli_query($conn, "SELECT * FROM 'TIMES'");
 
