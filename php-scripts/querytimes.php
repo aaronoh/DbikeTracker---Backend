@@ -17,7 +17,7 @@ $conn = mysqli_connect($server, $username, $password, $db) or die('Error in Conn
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-echo "Connected successfully";
+echo "Connected successfully \n";
 
 //information for the bikes api
 $api_key = "ec447add626cfb0869dd4747a7e50e21d39d1850";
@@ -77,14 +77,14 @@ echo " day as int is " . $day . " ";
 //select * from times so that we can make sure the times match then add to the avail table
 $sat = my_sqli_prepare($conn, 'SELECT * FROM TIMES WHERE DAYOFWK =?');
 //bind the variables
-my_sqli_stmt_bind_param($sat, 's', $day);
-if (mysqli_query($conn, $sat)) {
-    echo "Day selected is, " . $day;
-} else {
-    echo "Error: " . $sat . "<br>" . mysqli_error($conn);
-}
+$sat->bind_param("s", $day);
+//execute query
+$sat->execute();
+//fetxh variables
+$sat->fetch();
+printf("%s as an int is \n", $day);
 
-var_dump($sat);
+
 
 //insert into availability table
 //        $st = mysqli_prepare($conn, 'INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status) VALUES (?, (SELECT TIMES_ID FROM TIMES WHERE , ?, ?, ?)');
