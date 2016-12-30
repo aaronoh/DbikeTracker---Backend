@@ -74,15 +74,15 @@ $day = date('w');
 
 echo " day as int is " . $day . " ";
 
-$data=array();
-//select * from times so that we can make sure the times match then add to the avail table
-$time_st = mysqli_query($conn, "SELECT * FROM 'TIMES'");
-
-        
-while ($row = mysqli_fetch_object($time_st)) {
-    $data[] = $row;
+$result = mysql_query("SELECT * FROM TIMES WHERE TIMEOFDY = CURTIME() ");
+if (!$result) {
+    echo 'Could not run query: ' . mysql_error();
+    exit;
 }
-echo json_encode($data);
+$row = mysql_fetch_row($result);
+
+echo $row[0]; // 42
+echo $row[1]; // the email value
 
 
 
