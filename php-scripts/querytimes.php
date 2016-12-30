@@ -76,6 +76,7 @@ echo " day as int is " . $day . " ";
 
 //select * from times so that we can make sure the times match then add to the avail table
 $sat = my_sqli_prepare($conn, 'SELECT CURTIME() FROM TIMES');
+mysqli_execute($sat);
 printf($sat);
 
 
