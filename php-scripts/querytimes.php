@@ -79,6 +79,9 @@ if ($result = mysqli_query($conn, 'SELECT * FROM TIMES')) {
 
     /* free result set */
     mysqli_free_result($result);
+    while ($row = mysql_fetch_array($result)) {
+        printf($row);
+    }
 }
 
 
