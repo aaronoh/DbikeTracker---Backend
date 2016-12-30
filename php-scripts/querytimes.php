@@ -82,6 +82,7 @@ $sat->bind_param("s", $day);
 $sat->execute();
 //fetxh variables
 $sat->fetch();
+$sat->close();
 printf("%s as an int is \n", $day);
 
 
