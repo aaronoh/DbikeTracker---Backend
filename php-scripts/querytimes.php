@@ -74,12 +74,12 @@ $day = date('w');
 
 echo " day as int is " . $day . " ";
 
-$result = mysql_query("SELECT * FROM TIMES WHERE TIMEOFDY = CURTIME() ");
+$result = mysqli_query("SELECT * FROM TIMES WHERE TIMEOFDY = CURTIME() ");
 if (!$result) {
     echo 'Could not run query: ' . mysql_error();
     exit;
 }
-$row = mysql_fetch_row($result);
+$row = mysqli_fetch_row($result);
 
 echo $row[0]; // 42
 echo $row[1]; // the email value
