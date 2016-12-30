@@ -75,7 +75,7 @@ $day = date('w');
 echo " day as int is " . $day . " ";
 
 //select * from times so that we can make sure the times match then add to the avail table
-$sat = my_sqli_prepare($conn, 'SELECT * FROM TIMES WHERE DAYOFWK = $day');
+$sat = my_sqli_prepare($conn, 'SELECT * FROM TIMES WHERE DAYOFWK = ? LIMIT 1');
 //bind the variables
 my_sqli_stmt_bind_param($sat, 's', $day);
 if (mysqli_query($conn, $sat)) {
@@ -83,6 +83,8 @@ if (mysqli_query($conn, $sat)) {
 } else {
     echo "Error: " . $sat . "<br>" . mysqli_error($conn);
 }
+
+var_dump($sat);
 
 //insert into availability table
 //        $st = mysqli_prepare($conn, 'INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status) VALUES (?, (SELECT TIMES_ID FROM TIMES WHERE , ?, ?, ?)');
