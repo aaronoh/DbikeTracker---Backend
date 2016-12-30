@@ -77,11 +77,15 @@ echo " day as int is " . $day . " ";
 if ($result = mysqli_query($conn, 'SELECT * FROM TIMES')) {
     printf("Select returned %d rows.\n", mysqli_num_rows($result));
 
+    
+    $data=array();
     /* free result set */
     mysqli_free_result($result);
-    while ($row = mysql_fetch_array($result)) {
-        printf($row);
+    while ($row = mysql_fetch_object($result)) {
+        $data[] = $row;
+        
     }
+    printf($row);
 }
 
 
