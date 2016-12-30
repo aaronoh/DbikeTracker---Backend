@@ -75,7 +75,7 @@ $day = date('w');
 echo " day as int is " . $day . " ";
 
 //select * from times so that we can make sure the times match then add to the avail table
-$sat = my_sqli_prepare($conn, "SELECT * FROM TIMES WHERE DAYOFWK ='$day'");
+$sat = my_sqli_prepare($conn, 'SELECT * FROM TIMES WHERE DAYOFWK =?');
 //bind the variables
 my_sqli_stmt_bind_param($sat, 's', $day);
 if (mysqli_query($conn, $sat)) {
