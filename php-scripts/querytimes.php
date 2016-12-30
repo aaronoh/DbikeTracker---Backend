@@ -75,15 +75,14 @@ $day = date('w');
 echo " day as int is " . $day . " ";
 
 //select * from times so that we can make sure the times match then add to the avail table
-$sat = my_sqli_prepare($conn, 'SELECT * FROM TIMES WHERE DAYOFWK =?');
+$sat = my_sqli_prepare($conn, 'SELECT * FROM TIMES WHERE DAYOFWK = NOW()');
 //bind the variables
-$sat->bind_param("s", $day);
+//$sat->bind_param("s", $day);
 //execute query
 $sat->execute();
 //fetxh variables
 $sat->fetch();
 $sat->close();
-printf("%s as an int is \n", $day);
 
 
 
