@@ -30,7 +30,7 @@ $dbikeinfo = json_decode($contents, true);
 //get the times_id from the times table
 $gettime = my_sqli_prepare($conn, 'SELECT TIMEOFDY FROM TIMES');
 //execute the query
-$result = mysqli_stmt_execute($gettime) or die('Failed to get all times: ' . mysqli_error());
+$result = mysqli_stmt_execute($gettime);
 print_r($result);
 
 $epoch = strtotime('now');
