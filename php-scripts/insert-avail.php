@@ -31,7 +31,7 @@ $dbikeinfo = json_decode($contents, true);
 $gettime = mysqli_prepare($conn, 'SELECT * FROM TIMES');
 //execute the query
 $result = mysqli_stmt_execute($gettime);
-foreach ($resul as $key) {
+foreach ($result as $key) {
     $key['TIMES_ID'];
     $key['TIMEOFDY'];
     $key['DAYOFWK'];
