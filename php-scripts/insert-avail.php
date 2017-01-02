@@ -74,8 +74,8 @@ $day = date('w');
         
         
         //check times
-        
-        $timestamp = strtotime($row['last_update']);
+//        
+//        $timestamp = strtotime($row['last_update']);
 
         // loop through the array
         foreach ($dbikeinfo as $row) {
@@ -93,10 +93,11 @@ $day = date('w');
             print_r($avail_bikes);
             print_r($avail_slot);
             print_r($status);
+            print_r($last_update);
             echo '</pre>';
              //execute insert query
             mysqli_stmt_execute($st);
         }
-        mysqli_stmt_execute($gettime);
+//        mysqli_stmt_execute($gettime);
 //close connection
         mysqli_close($conn);
