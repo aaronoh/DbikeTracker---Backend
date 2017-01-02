@@ -29,26 +29,26 @@ $dbikeinfo = json_decode($contents, true);
 
 //get the times_id from the times table
 //array to store the times in 
-$timearray[] = $time_row;
-$gettime = "SELECT * FROM TIMES";
-//execute the query
-if ($result=mysqli_query($conn,$gettime))
-  {
-  // Fetch one and one row
-  while ($row=mysqli_fetch_row($result))
-    {
-    $timearray[] = $row;
-//    print_r($timearray);
-    }
-  }
-  // Free result set
-  mysqli_free_result($result);
-  //print out the array of the times table
-  print_r($timearray);
-  
-  
-//now to start checking the current time and our time slots
-$sqlday = $timearray[2][i]; //access the date part of the array
+//$timearray[] = $time_row;
+//$gettime = "SELECT * FROM TIMES";
+////execute the query
+//if ($result=mysqli_query($conn,$gettime))
+//  {
+//  // Fetch one and one row
+//  while ($row=mysqli_fetch_row($result))
+//    {
+//    $timearray[] = $row;
+////    print_r($timearray);
+//    }
+//  }
+//  // Free result set
+//  mysqli_free_result($result);
+//  //print out the array of the times table
+//  print_r($timearray);
+//  
+//  
+////now to start checking the current time and our time slots
+//$sqlday = $timearray[2][i]; //access the date part of the array
 
 
   
