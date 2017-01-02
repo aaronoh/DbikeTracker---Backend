@@ -28,6 +28,8 @@ $contents = file_get_contents($api_url);
 $dbikeinfo = json_decode($contents, true);
 
 //get the times_id from the times table
+//array to store the times in 
+$timearray[] = $time_row;
 $gettime = "SELECT * FROM TIMES";
 //execute the query
 if ($result=mysqli_query($conn,$gettime))
@@ -35,7 +37,8 @@ if ($result=mysqli_query($conn,$gettime))
   // Fetch one and one row
   while ($row=mysqli_fetch_row($result))
     {
-    printf ("%s (%s) (%s) \n",$row[0],$row[1],$row[2]);
+    $timearray[] = $row;
+    print_r($timearray);
     }
   // Free result set
   mysqli_free_result($result);
