@@ -31,7 +31,11 @@ $dbikeinfo = json_decode($contents, true);
 $gettime = mysqli_prepare($conn, 'SELECT * FROM TIMES');
 //execute the query
 $result = mysqli_stmt_execute($gettime);
-print_r($result);
+foreach ($resul as $key) {
+    $key['TIMES_ID'];
+    $key['TIMEOFDY'];
+    $key['DAYOFWK'];
+}   
 
 $epoch = strtotime('now');
 $tt = new DateTime("@$epoch"); //convert the epoch to UNIX time
