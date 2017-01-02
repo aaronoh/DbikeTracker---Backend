@@ -28,40 +28,45 @@ $contents = file_get_contents($api_url);
 $dbikeinfo = json_decode($contents, true);
 
 //get the times_id from the times table
-$gettime = my_sqli_prepare($conn, 'SELECT TIMES_ID FROM TIMES WHERE TIMEOFDY = NOW()');
-echo '<pre>';
-print_r($gettime);
-echo '</pre>';
+//$gettime = my_sqli_prepare($conn, "SELECT TIMES_ID FROM TIMES WHERE TIMEOFDY = $time");
+//echo '<pre>';
+//print_r($gettime);
+//echo '</pre>';
+//
+//$epoch = strtotime('now');
+//$tt = new DateTime("@$epoch"); //convert the epoch to UNIX time
+//echo $tt->format('H:i:s'); // output = 21:06:43
+//$time = date('H:i:s');
 
 //compare the time we just got to a time variable like NOW()/timeofdy;
 
 
-//        //insert into availability table
-//        $st = mysqli_prepare($conn, 'INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status, last_update) VALUES (?, ?, ?, ?, ?, ?)');
-//        //bind the varibales
-//        mysqli_stmt_bind_param($st, 'isiisi', $number, $timeslot, $avail_bikes, $avail_slot, $status, $last_update);
-//
-//        // loop through the array
-//        foreach ($dbikeinfo as $row) {
-//            // get the locations details
-//            $number = $row['number'];
-//            $timeslot = ;
-//            $avail_bikes = $row['available_bikes'];
-//            $avail_slot = $row['available_bike_stands'];
-//            $status = $row['status'];
-//            $last_update = $row['last_update'];
-//
-////            echo '<pre>';
-////            print_r($number);
-////            print_r($timeslot);
-////            print_r($avail_bikes);
-////            print_r($avail_slot);
-////            print_r($status);
-////            echo '</pre>';
-//            // execute insert query
-//            mysqli_stmt_execute($st);
-//        }
-        mysqli_stmt_execute($gettime);
+        //insert into availability table
+        $st = mysqli_prepare($conn, 'INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status, last_update) VALUES (?, ?, ?, ?, ?, ?)');
+        //bind the varibales
+        mysqli_stmt_bind_param($st, 'isiisi', $number, $timeslot, $avail_bikes, $avail_slot, $status, $last_update);
+
+        // loop through the array
+        foreach ($dbikeinfo as $row) {
+            // get the locations details
+            $number = $row['number'];
+            $timeslot = 1222;
+            $avail_bikes = $row['available_bikes'];
+            $avail_slot = $row['available_bike_stands'];
+            $status = $row['status'];
+            $last_update = $row['last_update'];
+
+//            echo '<pre>';
+//            print_r($number);
+//            print_r($timeslot);
+//            print_r($avail_bikes);
+//            print_r($avail_slot);
+//            print_r($status);
+//            echo '</pre>';
+            // execute insert query
+            mysqli_stmt_execute($st);
+        }
+//        mysqli_stmt_execute($gettime);
 //close connection
         mysqli_close($conn);
 
