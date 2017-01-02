@@ -32,14 +32,14 @@ $gettime = mysqli_prepare($conn, 'SELECT TIMEOFDY FROM TIMES');
 //execute the query
 $result = mysqli_stmt_execute($gettime);
 
-while ($row = mysqli_fetch_array($result)){
-    echo '<tr>';
-    foreach ($row as $field){
-        echo '<td>' . "TIMEOFDY".($field) . '</td>';
-
-    }
-    echo '</tr>';
-}
+        foreach ($result as $row) {
+            echo '<pre>';
+            print_r(TIMEOFDY);
+            echo '</pre>';
+            // execute insert query
+            mysqli_stmt_execute($gettime);
+        }
+        
 
 
 
