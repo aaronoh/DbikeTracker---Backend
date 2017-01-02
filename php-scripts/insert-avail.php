@@ -75,7 +75,8 @@ $day = date('w');
         
         //check times
 //        
-//        $timestamp = strtotime($row['last_update']);
+        $timestamp = strtotime($row['last_update']);
+        $update_time = new DateTime($timestamp);
 
         // loop through the array
         foreach ($dbikeinfo as $row) {
@@ -85,7 +86,7 @@ $day = date('w');
             $avail_bikes = $row['available_bikes'];
             $avail_slot = $row['available_bike_stands'];
             $status = $row['status'];
-            $last_update = $row['last_update'];
+            $last_update = $update_time;
 
             echo '<pre>';
             print_r($number);
