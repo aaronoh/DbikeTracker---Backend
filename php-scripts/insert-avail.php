@@ -28,7 +28,7 @@ $contents = file_get_contents($api_url);
 $dbikeinfo = json_decode($contents, true);
 
 //get the times_id from the times table
-$gettime = my_sqli_prepare($conn, 'SELECT TIMEOFDY FROM TIMES');
+$gettime = mysqli_prepare($conn, 'SELECT * FROM TIMES');
 //execute the query
 $result = mysqli_stmt_execute($gettime);
 print_r($result);
