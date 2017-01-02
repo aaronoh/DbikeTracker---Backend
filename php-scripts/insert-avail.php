@@ -30,12 +30,18 @@ $dbikeinfo = json_decode($contents, true);
 //get the times_id from the times table
 $gettime = mysqli_prepare($conn, 'SELECT TIMEOFDY FROM TIMES');
 //execute the query
+if ($result=mysqli_query($conn,$gettime))
+  {
+  // Fetch one and one row
+  while ($row=mysqli_fetch_row($result))
+    {
+    printf ("%s (%s)\n",$row[0],$row[1]);
+    }
+  // Free result set
+  mysqli_free_result($result);
+}
 
-        foreach ($gettime as $row) {
-            $row['TIMEOFDY'];
-            // execute insert query
-            mysqli_stmt_execute($gettime);
-        }
+
         
 
 
