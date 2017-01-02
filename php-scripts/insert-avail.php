@@ -27,15 +27,25 @@ $contents = file_get_contents($api_url);
 //convert the json to a php assoc array for query
 $dbikeinfo = json_decode($contents, true);
 
+//get the times_id from the times table
+$gettime = my_sqli_prepare($conn, 'SELECT TIMES_ID FROM TIMES WHERE TIMEOFDY = 13:03:29');
+echo '<pre>';
+print_r($gettime);
+echo '</pre>';
+
+//compare the time we just got to a time variable like NOW()/timeofdy;
+
+
         //insert into availability table
         $st = mysqli_prepare($conn, 'INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status, last_update) VALUES (?, ?, ?, ?, ?, ?)');
         //bind the varibales
-        mysqli_stmt_bind_param($st, 'isiisi', $number, 1222, $avail_bikes, $avail_slot, $status, $last_update);
+        mysqli_stmt_bind_param($st, 'isiisi', $number, $timeslot, $avail_bikes, $avail_slot, $status, $last_update);
 
         // loop through the array
         foreach ($dbikeinfo as $row) {
             // get the locations details
             $number = $row['number'];
+            $timeslot = 
             $avail_bikes = $row['available_bikes'];
             $avail_slot = $row['available_bike_stands'];
             $status = $row['status'];
