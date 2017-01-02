@@ -27,61 +27,29 @@ $contents = file_get_contents($api_url);
 //convert the json to a php assoc array for query
 $dbikeinfo = json_decode($contents, true);
 
-//get the times_id from the times table
-//array to store the times in 
-$timearray[] = $time_row;
-$gettime = "SELECT * FROM TIMES";
-//execute the query
-if ($result=mysqli_query($conn,$gettime))
-  {
-  // Fetch one and one row
-  while ($row=mysqli_fetch_row($result))
-    {
-    $timearray[] = $row;
-//    print_r($timearray);
-    }
-  }
-  // Free result set
-  mysqli_free_result($result);
-  //print out the array of the times table
-  print_r($timearray);
-  
-  
-//now to start checking the current time and our time slots
-$sqlday = $timearray[2][i]; //access the date part of the array
-
-
-  
-
-
-$epoch = strtotime('now');
-$dt = new DateTime("@$epoch");  // convert UNIX timestamp to PHP DateTime
-$tt = new DateTime("@$epoch"); //convert the epoch to UNIX time
-echo $tt->format('H:i:s'); // output = 21:06:43
-$time = date('H:i:s');
-echo $tt->format('Y-m-d'); // output = 2017-01-01
-$day = date('w');
 
 
 
 //compare the time we just got to a time variable like NOW()/timeofdy;
 
-
-        //insert into availability table
+//
+//        //insert into availability table
         $st = mysqli_prepare($conn, 'INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status, last_update) VALUES (?, ?, ?, ?, ?, ?)');
         //bind the varibales
         mysqli_stmt_bind_param($st, 'isiisi', $number, $timeslot, $avail_bikes, $avail_slot, $status, $last_update);
         
+        $dateInt = new DateTime($last_update);
+        $timeSQL = new DateTime($last_update);
+        $dayint = date('w');
+        $forcheck = date('H:i:s');
         
-        //check times
         
-        $timestamp = strtotime($row['last_update']);
 
         // loop through the array
         foreach ($dbikeinfo as $row) {
             // get the locations details
             $number = $row['number'];
-//            $timeslot = ;
+            $timeslot = ;
             $avail_bikes = $row['available_bikes'];
             $avail_slot = $row['available_bike_stands'];
             $status = $row['status'];
@@ -100,3 +68,4 @@ $day = date('w');
         mysqli_stmt_execute($gettime);
 //close connection
         mysqli_close($conn);
+
