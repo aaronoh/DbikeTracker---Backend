@@ -76,7 +76,7 @@ $day = date('w');
         //check times
 //        
         $timestamp = strtotime($row['last_update']);
-        $update_time = DateTime::createFromFormat('d/m/Y H:i:s', $timestamp);
+        $update_time = new DateTime($timestamp);
         $update_time->format('Y-m-d H:i:s');
 
         // loop through the array
