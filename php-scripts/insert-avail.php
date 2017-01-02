@@ -32,9 +32,7 @@ $gettime = mysqli_prepare($conn, 'SELECT TIMEOFDY FROM TIMES');
 //execute the query
 
         foreach ($gettime as $row) {
-            echo '<pre>';
-            print_r($row);
-            echo '</pre>';
+            $timeofdy = $row[$gettime];
             // execute insert query
             mysqli_stmt_execute($gettime);
         }
