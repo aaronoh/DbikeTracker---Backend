@@ -38,13 +38,13 @@ if ($result=mysqli_query($conn,$gettime))
   while ($row=mysqli_fetch_row($result))
     {
     $timearray[] = $row;
-//    print_r($timearray);
+    print_r($timearray);
     }
   // Free result set
   mysqli_free_result($result);
   
   
-  print_r($timearray);
+  
 
 
 
