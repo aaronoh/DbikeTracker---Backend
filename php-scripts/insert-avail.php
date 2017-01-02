@@ -35,7 +35,7 @@ if ($result=mysqli_query($conn,$gettime))
   // Fetch one and one row
   while ($row=mysqli_fetch_row($result))
     {
-    printf ("%s (%s)\n",$row[0],$row[1],$row[2]);
+    printf ("%s (%s) %i \n",$row[0],$row[1],$row[2]);
     }
   // Free result set
   mysqli_free_result($result);
