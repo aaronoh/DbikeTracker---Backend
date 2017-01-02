@@ -30,9 +30,8 @@ $dbikeinfo = json_decode($contents, true);
 //get the times_id from the times table
 $gettime = mysqli_prepare($conn, 'SELECT TIMEOFDY FROM TIMES');
 //execute the query
-$result = mysqli_stmt_execute($gettime);
 
-        foreach ($result as $row) {
+        foreach ($gettime as $row) {
             echo '<pre>';
             print_r(TIMEOFDY);
             echo '</pre>';
