@@ -16,7 +16,7 @@ $conn = mysqli_connect($server, $username, $password, $db) or die('Error in Conn
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-echo "Connected successfully";
+echo "Connected successfully \n";
 
 //information for the bikes api
 $api_key = "ec447add626cfb0869dd4747a7e50e21d39d1850";
