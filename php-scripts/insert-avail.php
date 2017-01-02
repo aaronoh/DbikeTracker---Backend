@@ -76,8 +76,9 @@ $day = date('w');
         //check times
 //        
         $timestamp = strtotime($row['last_update']);
-        $update_time = new DateTime($timestamp);
-        $update_time->format('Y-m-d H:i:s');
+//        $update_time = new DateTime($timestamp);
+//        $update_time->format('Y-m-d H:i:s');
+        $insertdate = date("Y-m-d H:i:s",$timestamp);
 
         // loop through the array
         foreach ($dbikeinfo as $row) {
