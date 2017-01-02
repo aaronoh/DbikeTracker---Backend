@@ -30,13 +30,12 @@ $dbikeinfo = json_decode($contents, true);
         //insert into availability table
         $st = mysqli_prepare($conn, 'INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status, last_update) VALUES (?, ?, ?, ?, ?, ?)');
         //bind the varibales
-        mysqli_stmt_bind_param($st, 'isiis', $number, $timeslot, $avail_bikes, $avail_slot, $status, $last_update);
+        mysqli_stmt_bind_param($st, 'isiisi', $number, 1222, $avail_bikes, $avail_slot, $status, $last_update);
 
         // loop through the array
         foreach ($dbikeinfo as $row) {
             // get the locations details
             $number = $row['number'];
-            $timeslot = strftime("%Y-%m-%d, %H:%M:%S", time());
             $avail_bikes = $row['available_bikes'];
             $avail_slot = $row['available_bike_stands'];
             $status = $row['status'];
