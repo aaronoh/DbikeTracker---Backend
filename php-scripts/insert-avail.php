@@ -36,31 +36,32 @@ echo '</pre>';
 //compare the time we just got to a time variable like NOW()/timeofdy;
 
 
-        //insert into availability table
-        $st = mysqli_prepare($conn, 'INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status, last_update) VALUES (?, ?, ?, ?, ?, ?)');
-        //bind the varibales
-        mysqli_stmt_bind_param($st, 'isiisi', $number, $timeslot, $avail_bikes, $avail_slot, $status, $last_update);
-
-        // loop through the array
-        foreach ($dbikeinfo as $row) {
-            // get the locations details
-            $number = $row['number'];
-            $timeslot = 
-            $avail_bikes = $row['available_bikes'];
-            $avail_slot = $row['available_bike_stands'];
-            $status = $row['status'];
-            $last_update = $row['last_update'];
-
-//            echo '<pre>';
-//            print_r($number);
-//            print_r($timeslot);
-//            print_r($avail_bikes);
-//            print_r($avail_slot);
-//            print_r($status);
-//            echo '</pre>';
-            // execute insert query
-            mysqli_stmt_execute($st);
-        }
+//        //insert into availability table
+//        $st = mysqli_prepare($conn, 'INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status, last_update) VALUES (?, ?, ?, ?, ?, ?)');
+//        //bind the varibales
+//        mysqli_stmt_bind_param($st, 'isiisi', $number, $timeslot, $avail_bikes, $avail_slot, $status, $last_update);
+//
+//        // loop through the array
+//        foreach ($dbikeinfo as $row) {
+//            // get the locations details
+//            $number = $row['number'];
+//            $timeslot = ;
+//            $avail_bikes = $row['available_bikes'];
+//            $avail_slot = $row['available_bike_stands'];
+//            $status = $row['status'];
+//            $last_update = $row['last_update'];
+//
+////            echo '<pre>';
+////            print_r($number);
+////            print_r($timeslot);
+////            print_r($avail_bikes);
+////            print_r($avail_slot);
+////            print_r($status);
+////            echo '</pre>';
+//            // execute insert query
+//            mysqli_stmt_execute($st);
+//        }
+        mysqli_stmt_execute($gettime);
 //close connection
         mysqli_close($conn);
 
