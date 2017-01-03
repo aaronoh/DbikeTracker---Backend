@@ -85,7 +85,8 @@ var_dump(checkdate());
 
 // loop through the array
 foreach ($dbikeinfo as $row) {
-
+    
+    $timestamp = $row['last_update'];
     // get the locations details
     $number = $row['number'];
 //            $timeslot = ;
@@ -93,10 +94,6 @@ foreach ($dbikeinfo as $row) {
     $avail_slot = $row['available_bike_stands'];
     $status = $row['status'];
     $last_update = $update_time;
-    
-    //convert the unix timestamp to a datetime object
-    $timestamp = $row['last_update'];
-    
 
     echo '<pre>';
     print_r($number);
