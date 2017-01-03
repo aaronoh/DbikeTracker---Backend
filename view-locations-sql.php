@@ -21,23 +21,23 @@ if ($conn->connect_error) {
 
 $api_url = "https://api.jcdecaux.com/vls/v1/stations?contract=Dublin&apiKey=ec447add626cfb0869dd4747a7e50e21d39d1850";
 $contents = file_get_contents($api_url);
-echo json_encode($contents);
+$dbikeinfo = json_decode($contents, true);
         //insert into availability table
         $st = mysqli_prepare($conn, 'INSERT INTO live_data(number, avail_bikes, avail_slots) VALUES (?, ?, ?)');
         //bind the varibales
-        mysqli_stmt_bind_param($st, 'iii', $number, $avail_bikes, $avail_slot);
+        mysqli_stmt_bind_param($st, 'iii', $number, $avail_bikes, $avail_slots);
 
         // loop through the array
-        foreach ($contents as $row) {
+        foreach ($dbikeinfo as $row) {
             // get the locations details
             $number = $row['number'];
             $avail_bikes = $row['available_bikes'];
-            $avail_slot = $row['available_bike_stands'];
+            $avail_slots = $row['available_bike_stands'];
 
             echo '<pre>';
             print_r($number);
             print_r($avail_bikes);
-            print_r($avail_slot);
+            print_r($avail_slots);
             echo '</pre>';
              //execute insert query
             mysqli_stmt_execute($st);
