@@ -36,6 +36,13 @@ while ($row = mysqli_fetch_object($q)) {
     $data[] = $row;
 }
 echo json_encode($data);
+
+//Join 
+$joinQ = mysqli_query($conn, "SELECT locations.NAME, locations.LAT, locations.LNG, live_data.AVAIL_BIKES, live_data.AVAIL_SLOTS
+  FROM locations INNER JOIN live_data
+    ON locations.NUMBER = live_data.NUMBER");
+
+
 //close connection
 mysqli_close($conn);
 ?>
