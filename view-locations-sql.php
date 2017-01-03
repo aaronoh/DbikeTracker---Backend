@@ -31,16 +31,18 @@ foreach ($dbikeinfo as $row) {
 
 
 $data = array();
-$q = mysqli_query($conn, "select * from `locations`");
+$q = mysqli_query($conn, "SELECT locations.NAME, locations.LAT, locations.LNG, live_data.AVAIL_BIKES, live_data.AVAIL_SLOTS
+  FROM locations INNER JOIN live_data
+    ON locations.NUMBER = live_data.NUMBER");
 while ($row = mysqli_fetch_object($q)) {
     $data[] = $row;
 }
 echo json_encode($data);
 
 //Join 
-$joinQ = mysqli_query($conn, "SELECT locations.NAME, locations.LAT, locations.LNG, live_data.AVAIL_BIKES, live_data.AVAIL_SLOTS
-  FROM locations INNER JOIN live_data
-    ON locations.NUMBER = live_data.NUMBER");
+//$joinQ = mysqli_query($conn, "SELECT locations.NAME, locations.LAT, locations.LNG, live_data.AVAIL_BIKES, live_data.AVAIL_SLOTS
+//  FROM locations INNER JOIN live_data
+//    ON locations.NUMBER = live_data.NUMBER");
 
 
 //close connection
