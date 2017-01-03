@@ -78,11 +78,8 @@ $timestamp = strtotime($row['last_update']);
 $update_time = new DateTime($timestamp);
 //        $update_time->format('Y-m-d H:i:s');
 print_r($update_time);
-    $dt = DateTime::createFromFormat("d.m.Y H:i:s", $row['last_update']);
-if ($dt === false) {
-    throw new Exception("Invalid date");
-}
-$dt->format("Y-m-d H:i:s");
+var_dump(checkdate($update_time));
+
 
 
 // loop through the array
@@ -94,7 +91,7 @@ foreach ($dbikeinfo as $row) {
     $avail_bikes = $row['available_bikes'];
     $avail_slot = $row['available_bike_stands'];
     $status = $row['status'];
-    $last_update = $dt;
+    $last_update = $update_time;
 
     echo '<pre>';
     print_r($number);
