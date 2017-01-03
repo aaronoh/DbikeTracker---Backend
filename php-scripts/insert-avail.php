@@ -75,10 +75,11 @@ mysqli_stmt_bind_param($st, 'isiisi', $number, $timeslot, $avail_bikes, $avail_s
 //check times
 //        
 $timestamp = strtotime($row['last_update']);
+print_r ("timestamp "  . ($timestamp));
 $update_time = new DateTime($timestamp);
 //        $update_time->format('Y-m-d H:i:s');
-print_r($update_time);
-var_dump(checkdate($timestamp));
+print_r("update time "  . ($update_time));
+var_dump(checkdate());
 
 
 
