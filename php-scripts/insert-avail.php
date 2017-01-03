@@ -77,7 +77,7 @@ $day = date('w');
 //        
         $timestamp = strtotime($row['last_update']);
 //        $update_time = new DateTime($timestamp);
-        $insertdate = date("Y-m-d H:i:s", strtotime($timestamp));
+        $insertdate = date("Y-m-d H:i:s", $timestamp);
         
 
         // loop through the array
