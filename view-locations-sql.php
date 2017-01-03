@@ -25,12 +25,6 @@ foreach ($dbikeinfo as $row) {
     $number = $row['number'];
     $avail_bikes = $row['available_bikes'];
     $avail_slots = $row['available_bike_stands'];
-
-    echo '<pre>';
-    print_r($number);
-    print_r($avail_bikes);
-    print_r($avail_slots);
-    echo '</pre>';
     //execute update query
     mysqli_stmt_execute($st);
 }
