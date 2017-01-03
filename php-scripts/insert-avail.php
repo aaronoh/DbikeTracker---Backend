@@ -77,8 +77,8 @@ $day = date('w');
 //        
         $timestamp = strtotime($row['last_update']);
 //        $update_time = new DateTime($timestamp);
-//        $update_time->format('Y-m-d H:i:s');
-        $insertdate = date("Y-m-d H:i:s",$timestamp);
+        $insertdate = date("Y-m-d H:i:s", strtotime($timestamp));
+        
 
         // loop through the array
         foreach ($dbikeinfo as $row) {
@@ -88,7 +88,7 @@ $day = date('w');
             $avail_bikes = $row['available_bikes'];
             $avail_slot = $row['available_bike_stands'];
             $status = $row['status'];
-            $last_update = $insertdate;
+            $last_update = $update_time;
 
             echo '<pre>';
             print_r($number);
