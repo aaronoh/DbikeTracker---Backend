@@ -89,7 +89,7 @@ $day = date('w');
             $avail_bikes = $row['available_bikes'];
             $avail_slot = $row['available_bike_stands'];
             $status = $row['status'];
-            $last_update = $update_time;
+            $last_update = 'NOW()';
 
             echo '<pre>';
             print_r($number);
