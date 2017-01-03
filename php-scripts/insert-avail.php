@@ -74,9 +74,9 @@ mysqli_stmt_bind_param($st, 'isiisi', $number, $timeslot, $avail_bikes, $avail_s
 
 //check times
 //        
-$timestamp = $row['last_update'];
-var_dump($timestamp);
-$update_time = new DateTime($timestamp);
+
+
+//$update_time = new DateTime($timestamp);
 //        $update_time->format('Y-m-d H:i:s');
 
 var_dump(checkdate());
@@ -85,7 +85,7 @@ var_dump(checkdate());
 
 // loop through the array
 foreach ($dbikeinfo as $row) {
-
+$timestamp = $row['last_update'];
     // get the locations details
     $number = $row['number'];
 //            $timeslot = ;
@@ -106,5 +106,6 @@ foreach ($dbikeinfo as $row) {
     mysqli_stmt_execute($st);
 }
 //        mysqli_stmt_execute($gettime);
+      var_dump($timestamp);
 //close connection
 mysqli_close($conn);
