@@ -78,16 +78,16 @@ $timestamp = strtotime($row['last_update']);
 $update_time = new DateTime($timestamp);
 //        $update_time->format('Y-m-d H:i:s');
 print_r($update_time);
-
-
-
-// loop through the array
-foreach ($dbikeinfo as $row) {
     $dt = DateTime::createFromFormat("d.m.Y H:i:s", $row['last_update']);
 if ($dt === false) {
     throw new Exception("Invalid date");
 }
 $dt->format("Y-m-d H:i:s");
+
+
+// loop through the array
+foreach ($dbikeinfo as $row) {
+
     // get the locations details
     $number = $row['number'];
 //            $timeslot = ;
