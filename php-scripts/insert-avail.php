@@ -77,7 +77,7 @@ $day = date('w');
 //        
         $timestamp = $row['last_update'];
         $update_time = new DateTime($timestamp);
-        $update_time->format('Y-m-d H:i');
+        $update_time->format('Y-m-d H:i:s');
         print_r($update_time);
         
 
