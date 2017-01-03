@@ -11,19 +11,38 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-//if ($result = $conn->query("SELECT * FROM locations")) {
-//    $data_array = array();
-//    while($data = mysqli_fetch_assoc($result)){ 
-////        $data_array[] = $data;
-//          echo $_GET['jsoncallback'] . '(' . json_encode($data) . ');';
-//    }    
-//    $data->close();
-//    }
+//$data=array();
+//$q=mysqli_query($conn,"select * from `locations`");
+//while ($row=mysqli_fetch_object($q)){
+// $data[]=$row;
+//}
+//echo json_encode($data);
 
-$data=array();
-$q=mysqli_query($conn,"select * from `locations`");
-while ($row=mysqli_fetch_object($q)){
- $data[]=$row;
-}
-echo json_encode($data);
+
+$api_url = "https://api.jcdecaux.com/vls/v1/stations?contract=Dublin&apiKey=ec447add626cfb0869dd4747a7e50e21d39d1850";
+$contents = file_get_contents($api_url);
+echo json_encode($contents);
+        //insert into availability table
+        $st = mysqli_prepare($conn, 'INSERT INTO live_data(number, avail_bikes, avail_slots) VALUES (?, ?, ?)');
+        //bind the varibales
+        mysqli_stmt_bind_param($st, 'iii', $number, $avail_bikes, $avail_slot);
+
+        // loop through the array
+        foreach ($contents as $row) {
+            // get the locations details
+            $number = $row['number'];
+            $avail_bikes = $row['available_bikes'];
+            $avail_slot = $row['available_bike_stands'];
+
+            echo '<pre>';
+            print_r($number);
+            print_r($avail_bikes);
+            print_r($avail_slot);
+            echo '</pre>';
+             //execute insert query
+            mysqli_stmt_execute($st);
+        }
+        //close connection
+        mysqli_close($conn);
+
 ?>
