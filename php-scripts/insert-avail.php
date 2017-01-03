@@ -76,7 +76,7 @@ mysqli_stmt_bind_param($st, 'isiisi', $number, $timeslot, $avail_bikes, $avail_s
 //        
 
 
-
+$update_time = new DateTime($timestamp);
 //        $update_time->format('Y-m-d H:i:s');
 
 var_dump(checkdate());
@@ -96,7 +96,6 @@ foreach ($dbikeinfo as $row) {
     
     //convert the unix timestamp to a datetime object
     $timestamp = $row['last_update'];
-    $update_time = new DateTime($timestamp);
     
 
     echo '<pre>';
@@ -112,6 +111,5 @@ foreach ($dbikeinfo as $row) {
 }
 //        mysqli_stmt_execute($gettime);
       var_dump($timestamp);
-      var_dump($update_time);
 //close connection
 mysqli_close($conn);
