@@ -23,9 +23,10 @@ $api_url = "https://api.jcdecaux.com/vls/v1/stations?contract=Dublin&apiKey=ec44
 $contents = file_get_contents($api_url);
 $dbikeinfo = json_decode($contents, true);
         //insert into availability table
-        $st = mysqli_prepare($conn, 'INSERT INTO live_data(number, avail_bikes, avail_slots) VALUES (?, ?, ?)');
+        //$st = mysqli_prepare($conn, 'INSERT INTO live_data(number, avail_bikes, avail_slots) VALUES (?, ?, ?)');
+        $st = mysqli_prepare($conn, 'UPDATE live_data SET avail_bikes = ?, avail_slots = ? WHERE number = ?');
         //bind the varibales
-        mysqli_stmt_bind_param($st, 'iii', $number, $avail_bikes, $avail_slots);
+        mysqli_stmt_bind_param($st, 'iii', $avail_bikes, $avail_slots, $number);
 
         // loop through the array
         foreach ($dbikeinfo as $row) {
