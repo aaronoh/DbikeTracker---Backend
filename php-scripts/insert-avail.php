@@ -75,7 +75,7 @@ $day = date('w');
         
         //check times
 //        
-        $timestamp = $row['last_update'];
+        $timestamp = strtotime($row['last_update']);
         $update_time = new DateTime($timestamp);
 //        $update_time->format('Y-m-d H:i:s');
         print_r($update_time);
@@ -89,7 +89,7 @@ $day = date('w');
             $avail_bikes = $row['available_bikes'];
             $avail_slot = $row['available_bike_stands'];
             $status = $row['status'];
-            $last_update = date("Y-m-d H:i:s", $update_time);
+            $last_update = date("Y-m-d H:i:s", $timestamp);
 
             echo '<pre>';
             print_r($number);
