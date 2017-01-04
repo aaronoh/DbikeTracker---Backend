@@ -76,68 +76,26 @@ $dbikeinfo = json_decode($contents, true);
 
 $data = array();
 //$q = mysqli_query($conn, "SELECT * FROM TIMES");
-$timesquery = "SELECT * FROM TIMES";
-$times_result = $conn->query($timesquery);
-while ($row = $times_result->fetch_assoc()) {
+$timesquery = "SELECT availability.`LAST_UPDATE`, availability.`DAYOFWK`,times.`TIMEOFDY`, times.`DAYOFWK`
+FROM availability INNER JOIN times
+ON availability.`AVAIL_ID` = times.`TIMES_ID`";
+$result = $conn->query($timesquery);
+while ($row = $result->fetch_assoc()) {
 //    $last_update = $row2['LAST_UPDATE'];
 //    $dayofwk = $row2['DAYOFWK'];
 //echo "<br> timesid: ". $row["TIMES_ID"]. " - timeofdy: ". $row["TIMEOFDY"] . " - dayofwk: ". $row["DAYOFWK"] . "<br>";
-     $timeofdy = $row['TIMEOFDY'];
-     $tdayofwk = $row['DAYOFWK'];
-//     echo $timeofdy . $tdayofwk;
-}
-
-
-
-$data_check = array();
-
-$query = "SELECT LAST_UPDATE, DAYOFWK FROM AVAILABILITY";
-$result = $conn->query($query);
-//$qs = mysqli_query($conn, "SELECT LAST_UPDATE, DAYOFWK FROM AVAILABILITY");
-while ($row2 = $result->fetch_assoc()) {
-//    $last_update = $row2['LAST_UPDATE'];
-//    $dayofwk = $row2['DAYOFWK'];
-        $last_update = $row2["LAST_UPDATE"];
-        $dayofwk = $row2["DAYOFWK"];
-//echo "<br> lastupdate: ". $row2["LAST_UPDATE"]. " - dayofwk: ". $row2["DAYOFWK"] . "<br>";
-    
-}
-
-foreach ($row2 as $item){
-    
-    $last_update = $item['LAST_UPDATE'];
-    $dayofwk = $item["DAYOFWK"];
+    $last_update = $row['availability.LAST_UPDATE']; 
+    $timeofdy = $row['times.TIMEOFDY'];
+    $dayofwk = $row['times.DAYOFWK'];
+    $tdayofwk = $row['availability.DAYOFWK'];
     
     echo '<pre>';
-    print_r($dayofwk);
     print_r($last_update);
+    print_r($timeofdy);
+    print_r($dayofwk);
+    print_r($tdayofwk);
 
     echo '</pre>';
+//     echo $timeofdy . $tdayofwk;
 }
-
-
-
-
-
-
-//insert into availability table
-//        $st = mysqli_prepare($conn, 'INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status) VALUES (?, (SELECT TIMES_ID FROM TIMES WHERE , ?, ?, ?)');
-//        //bind the varibales
-//        mysqli_stmt_bind_param($st, 'isiis', $number, $timeslot, $avail_bikes, $avail_slot, $status);
-//
-//        // loop through the array
-//        foreach ($dbikeinfo as $row) {
-//            // get the locations details
-//            $number = $row['number'];
-//            $timeslot = strftime("%Y-%m-%d, %H:%M:%S", time());
-//            $avail_bikes = $row['available_bikes'];
-//            $avail_slot = $row['available_bike_stands'];
-//            $status = $row['status'];
-//            $timestamp = $row['last_update'];
-//
-//if (mysqli_query($conn, $st)) {
-//    echo "New record created successfully";
-//} else {
-//    echo "Error: " . $st . "<br>" . mysqli_error($conn);
-//}
 ?>
