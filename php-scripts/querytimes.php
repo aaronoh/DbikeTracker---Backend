@@ -104,6 +104,10 @@ while ($row2 = $result->fetch_assoc()) {
 }
 
 foreach ($row2 as $item){
+    
+    $last_update = $item['LAST_UPDATE'];
+    $dayofwk = $item["DAYOFWK"];
+    
     echo '<pre>';
     print_r($dayofwk);
     print_r($last_update);
