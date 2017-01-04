@@ -89,8 +89,8 @@ var_dump($time_data);
 $data_check = array();
 $qs = mysqli_query($conn, "SELECT LAST_UPDATE, DAYOFWK FROM AVAILABILITY");
 while ($row2 = mysqli_fetch_object($qs)) {
-    $last_update = $row2['LAST_UPDATE'];
-    $dayofwk = $row2['DAYOFWK'];
+    $row2['LAST_UPDATE'] = $last_update;
+    $row2['DAYOFWK'] = $dayofwk;
     
     echo "last update : " . $last_update;
     echo "day of week : " . $dayofwk;
