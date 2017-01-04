@@ -69,7 +69,7 @@ $day = date('w');
 //insert into availability table
 $st = mysqli_prepare($conn, 'INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status, last_update, dayofwk) VALUES (?, ?, ?, ?, ?, ?,?)');
 //bind the varibales
-mysqli_stmt_bind_param($st, 'isiisi', $number, $timeslot, $avail_bikes, $avail_slot, $status, $last_update, $dayofwk);
+mysqli_stmt_bind_param($st, 'isiissi', $number, $timeslot, $avail_bikes, $avail_slot, $status, $last_update, $dayofwk);
 
 
 //check times
@@ -78,7 +78,7 @@ mysqli_stmt_bind_param($st, 'isiisi', $number, $timeslot, $avail_bikes, $avail_s
 
 $update_time = new DateTime($timestamp);
 $update_time->format('H:i:s');
-
+//check to see if date is valid
 var_dump(checkdate());
 
 
