@@ -99,6 +99,10 @@ echo "<br> lastupdate: ". $row2["LAST_UPDATE"]. " - dayofwk: ". $row2["DAYOFWK"]
     
 }
 
+if($row2["LAST_UPDATE"] == $row["TIMEOFDY"]){
+    echo "nigga we made it";
+    echo $row2["LAST_UPDATE"] . $row["TIMEOFDY"];
+}
 
 
 
