@@ -84,10 +84,7 @@ while ($row = $times_result->fetch_assoc()) {
 echo "<br> timesid: ". $row["TIMES_ID"]. " - timeofdy: ". $row["TIMEOFDY"] . " - dayofwk: ". $row["DAYOFWK"] . "<br>";
     
 }
-echo "TIME TABLE";
-//$times_data = json_encode($data);
-$time_data = json_encode($data);
-//var_dump($time_data);
+
 
 
 $data_check = array();
@@ -101,10 +98,7 @@ while ($row2 = $result->fetch_assoc()) {
 echo "<br> lastupdate: ". $row2["LAST_UPDATE"]. " - dayofwk: ". $row2["DAYOFWK"] . "<br>";
     
 }
-echo "AVAIL TABLE";
-//$avail_data = json_encode($data_check);
-$avail_data = json_encode($data_check);
-echo $last_update;
+
 
 
 
