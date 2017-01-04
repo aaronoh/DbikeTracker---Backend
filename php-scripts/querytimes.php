@@ -76,7 +76,7 @@ $dbikeinfo = json_decode($contents, true);
 
 $data = array();
 //$q = mysqli_query($conn, "SELECT * FROM TIMES");
-$timesquery = "SELECT availability.`LAST_UPDATE`, availability.`DAYOFWK`,times.`TIMEOFDY`, times.`DAYOFWK`
+$timesquery = "SELECT availability.`LAST_UPDATE`, availability.`DAYOFWK` as DAYOFWKAV,times.`TIMEOFDY`, times.`DAYOFWK`
 FROM availability INNER JOIN times
 ON availability.`AVAIL_ID` = times.`TIMES_ID`";
 
@@ -91,13 +91,11 @@ while ($row = $result->fetch_assoc()) {
 //    $dayofwk = $row['DAYOFWK'];
 //    $tdayofwk = $row['DAYOFWK'];
     $data[] = $row;
-    echo '<pre>';
-    print_r($last_update);
-    print_r($timeofdy);
-    print_r($dayofwk);
-    print_r($tdayofwk);
-
-    echo '</pre>';
+//
+//    if($data[0] == ){
+//        
+//    }
+//    
 //     echo $timeofdy . $tdayofwk;
 }
 echo json_encode($data);
