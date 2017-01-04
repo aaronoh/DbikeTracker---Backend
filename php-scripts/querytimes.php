@@ -86,7 +86,7 @@ while ($row = $times_result->fetch_assoc()) {
      $tdayofwk = $row['DAYOFWK'];
 //     echo $timeofdy . $tdayofwk;
 }
-echo $timeofdy . $tdayofwk;
+
 
 
 $data_check = array();
@@ -101,6 +101,14 @@ while ($row2 = $result->fetch_assoc()) {
         $dayofwk = $row2["DAYOFWK"];
 //echo "<br> lastupdate: ". $row2["LAST_UPDATE"]. " - dayofwk: ". $row2["DAYOFWK"] . "<br>";
     
+}
+
+foreach ($row2 as $item){
+    echo '<pre>';
+    print_r($dayofwk);
+    print_r($last_update);
+
+    echo '</pre>';
 }
 
 
