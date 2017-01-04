@@ -75,15 +75,19 @@ $dbikeinfo = json_decode($contents, true);
 //echo " day as int is " . $day . " ";
 
 $data = array();
-$q = mysqli_query($conn, "SELECT * FROM TIMES");
-while ($row = mysqli_fetch_object($q)) {
-    $data[] = $row;
+//$q = mysqli_query($conn, "SELECT * FROM TIMES");
+$timesquery = "SELECT * FROM TIMES";
+$times_result = $conn->query($query);
+while ($row = $times_result->fetch_assoc()) {
+//    $last_update = $row2['LAST_UPDATE'];
+//    $dayofwk = $row2['DAYOFWK'];
+echo "<br> timesid: ". $row["TIMES_ID"]. " - timeofdy: ". $row["TIMEOFDY"] . " - dayofwk: ". $row["DAYOFWK"] . "<br>";
+    
 }
-
 echo "TIME TABLE";
 //$times_data = json_encode($data);
 $time_data = json_encode($data);
-var_dump($time_data);
+//var_dump($time_data);
 
 
 $data_check = array();
