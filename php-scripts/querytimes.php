@@ -79,16 +79,18 @@ $data = array();
 $timesquery = "SELECT availability.`LAST_UPDATE`, availability.`DAYOFWK`,times.`TIMEOFDY`, times.`DAYOFWK`
 FROM availability INNER JOIN times
 ON availability.`AVAIL_ID` = times.`TIMES_ID`";
+
+
 $result = $conn->query($timesquery);
 while ($row = $result->fetch_assoc()) {
 //    $last_update = $row2['LAST_UPDATE'];
 //    $dayofwk = $row2['DAYOFWK'];
 //echo "<br> timesid: ". $row["TIMES_ID"]. " - timeofdy: ". $row["TIMEOFDY"] . " - dayofwk: ". $row["DAYOFWK"] . "<br>";
-    $last_update = $row['LAST_UPDATE']; 
-    $timeofdy = $row['TIMEOFDY'];
-    $dayofwk = $row['DAYOFWK'];
-    $tdayofwk = $row['DAYOFWK'];
-    
+//    $last_update = $row['LAST_UPDATE']; 
+//    $timeofdy = $row['TIMEOFDY'];
+//    $dayofwk = $row['DAYOFWK'];
+//    $tdayofwk = $row['DAYOFWK'];
+    $data[] = $row;
     echo '<pre>';
     print_r($last_update);
     print_r($timeofdy);
@@ -98,4 +100,5 @@ while ($row = $result->fetch_assoc()) {
     echo '</pre>';
 //     echo $timeofdy . $tdayofwk;
 }
+echo json_encode($data);
 ?>
