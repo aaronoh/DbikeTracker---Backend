@@ -87,12 +87,14 @@ var_dump($time_data);
 
 
 $data_check = array();
-$result = $conn->query($qs);
-$qs = mysqli_query($conn, "SELECT LAST_UPDATE, DAYOFWK FROM AVAILABILITY");
+
+$query = "SELECT LAST_UPDATE, DAYOFWK FROM AVAILABILITY";
+$result = $conn->query($query);
+//$qs = mysqli_query($conn, "SELECT LAST_UPDATE, DAYOFWK FROM AVAILABILITY");
 while ($row2 = $result->fetch_assoc()) {
 //    $last_update = $row2['LAST_UPDATE'];
 //    $dayofwk = $row2['DAYOFWK'];
-echo "<br> lastupdate: ". $row2["last_update"]. " - dayofwk: ". $row2["dayofwk"] . "<br>";
+echo "<br> lastupdate: ". $row2["last_update"]. " - dayofwk: ". $row2["dayofwk"]. $row["lastname"] . "<br>";
     
 }
 echo "AVAIL TABLE";
