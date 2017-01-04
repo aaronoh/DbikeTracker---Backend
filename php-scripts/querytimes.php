@@ -84,10 +84,10 @@ while ($row = $result->fetch_assoc()) {
 //    $last_update = $row2['LAST_UPDATE'];
 //    $dayofwk = $row2['DAYOFWK'];
 //echo "<br> timesid: ". $row["TIMES_ID"]. " - timeofdy: ". $row["TIMEOFDY"] . " - dayofwk: ". $row["DAYOFWK"] . "<br>";
-    $last_update = $row['availability.LAST_UPDATE']; 
-    $timeofdy = $row['times.TIMEOFDY'];
-    $dayofwk = $row['times.DAYOFWK'];
-    $tdayofwk = $row['availability']['DAYOFWK'];
+    $last_update = $row['LAST_UPDATE']; 
+    $timeofdy = $row['TIMEOFDY'];
+    $dayofwk = $row['DAYOFWK'];
+    $tdayofwk = $row['DAYOFWK'];
     
     echo '<pre>';
     print_r($last_update);
