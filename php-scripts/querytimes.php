@@ -62,17 +62,17 @@ $dbikeinfo = json_decode($contents, true);
 
 
 
-
-$epoch = strtotime('now'); //current time
-$dt = new DateTime("@$epoch");  // convert UNIX timestamp to PHP DateTime
-$tt = new DateTime("@$epoch"); //convert the epoch to UNIX time
-echo $tt->format('H:i:s'); // output = 21:06:43
-$time = date('H:i:s');
-echo $tt->format('Y-m-d'); // output = 2017-01-01
-$day = date('w');
-
-
-echo " day as int is " . $day . " ";
+//
+//$epoch = strtotime('now'); //current time
+//$dt = new DateTime("@$epoch");  // convert UNIX timestamp to PHP DateTime
+//$tt = new DateTime("@$epoch"); //convert the epoch to UNIX time
+//echo $tt->format('H:i:s'); // output = 21:06:43
+//$time = date('H:i:s');
+//echo $tt->format('Y-m-d'); // output = 2017-01-01
+//$day = date('w');
+//
+//
+//echo " day as int is " . $day . " ";
 
 $data = array();
 $q = mysqli_query($conn, "SELECT * FROM TIMES");
@@ -82,7 +82,8 @@ while ($row = mysqli_fetch_object($q)) {
 
 echo "TIME TABLE";
 //$times_data = json_encode($data);
-echo json_encode($data);
+$time_data = json_encode($data);
+echo $time_data;
 
 
 $data_check = array();
@@ -92,7 +93,8 @@ while ($row2 = mysqli_fetch_object($qs)) {
 }
 echo "AVAIL TABLE";
 //$avail_data = json_encode($data_check);
-echo json_encode($data_check);
+$avail_data = json_encode($data_check);
+echo $avail_data;
 
 
 
