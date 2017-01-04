@@ -69,17 +69,17 @@ $day = date('w');
 //insert into availability table
 $st = mysqli_prepare($conn, 'INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status, last_update, dayofwk) VALUES (?, ?, ?, ?, ?, ?,?)');
 //bind the varibales
-mysqli_stmt_bind_param($st, 'isiissi', $number, $timeslot, $avail_bikes, $avail_slot, $status, $last_update, $dayofwk);
+mysqli_stmt_bind_param($st, 'isiissi', $number, $timeslot, $avail_bikes, $avail_slot, $status, $time, $dayofwk);
 
 
 //check times
 //        
 
 
-$update_time = new DateTime($timestamp);
-$update_time->format('H:i:s');
-//check to see if date is valid
-var_dump(checkdate());
+//$update_time = new DateTime($timestamp);
+//$update_time->format('H:i:s');
+////check to see if date is valid
+//var_dump(checkdate());
 
 
 
@@ -93,7 +93,7 @@ foreach ($dbikeinfo as $row) {
     $avail_bikes = $row['available_bikes'];
     $avail_slot = $row['available_bike_stands'];
     $status = $row['status'];
-    $last_update = $update_time;
+    $last_update = $time;
     $dayofwk = $day;
 
     echo '<pre>';
