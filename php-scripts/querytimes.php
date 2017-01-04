@@ -80,7 +80,8 @@ while ($row = mysqli_fetch_object($q)) {
     $data[] = $row;
 }
 echo 'TIMES TABLE';
-//echo json_encode($data);
+$times_data = json_encode($data);
+echo $data->TIMEOFDY;
 
 $data_check = array();
 $qs = mysqli_query($conn, "SELECT LAST_UPDATE, DAYOFWK FROM AVAILABILITY");
@@ -88,8 +89,9 @@ while ($row2 = mysqli_fetch_object($qs)) {
     $data_check[] = $row2;
 }
 echo 'AVAIL TABLE';
-echo $data_check[0];
-//echo json_encode($data_check);
+$avail_data = json_encode($data_check);
+echo $data_check->LAST_UPDATE;
+
 
 
 
