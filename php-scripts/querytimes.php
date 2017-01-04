@@ -70,9 +70,10 @@ $dbikeinfo = json_decode($contents, true);
 
 $data = array();
 //$q = mysqli_query($conn, "SELECT * FROM TIMES");
-$timesquery = "SELECT availability.`LAST_UPDATE`, availability.`DAYOFWK` as DAYOFWKAV,times.`TIMEOFDY`, times.`DAYOFWK`
-FROM availability INNER JOIN times
-ON availability.`AVAIL_ID` = times.`TIMES_ID`";
+$timesquery = "SELECT times.* , availability.`LAST_UPDATE`, availability.`DAYOFWK` as DAYOFWKAV 
+FROM TIMES JOIN availability
+ON times.`DAYOFWK` = availability.DAYOFWK"
+;
 
 
 $result = $conn->query($timesquery);
