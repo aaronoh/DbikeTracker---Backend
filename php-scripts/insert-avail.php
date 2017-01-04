@@ -67,9 +67,9 @@ $day = date('w');
 
 //compare the time we just got to a time variable like NOW()/timeofdy;
 //insert into availability table
-$st = mysqli_prepare($conn, 'INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status, last_update) VALUES (?, ?, ?, ?, ?, ?)');
+$st = mysqli_prepare($conn, 'INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status, last_update, dayofwk) VALUES (?, ?, ?, ?, ?, ?,?)');
 //bind the varibales
-mysqli_stmt_bind_param($st, 'isiisi', $number, $timeslot, $avail_bikes, $avail_slot, $status, $last_update);
+mysqli_stmt_bind_param($st, 'isiisi', $number, $timeslot, $avail_bikes, $avail_slot, $status, $last_update, $dayofwk);
 
 
 //check times
@@ -77,7 +77,7 @@ mysqli_stmt_bind_param($st, 'isiisi', $number, $timeslot, $avail_bikes, $avail_s
 
 
 $update_time = new DateTime($timestamp);
-//        $update_time->format('Y-m-d H:i:s');
+$update_time->format('H:i:s');
 
 var_dump(checkdate());
 
@@ -94,6 +94,7 @@ foreach ($dbikeinfo as $row) {
     $avail_slot = $row['available_bike_stands'];
     $status = $row['status'];
     $last_update = $update_time;
+    $dayofwk = $day;
 
     echo '<pre>';
     print_r($number);
@@ -102,6 +103,7 @@ foreach ($dbikeinfo as $row) {
     print_r($avail_slot);
     print_r($status);
     print_r($last_update);
+    print_r($day);
     echo '</pre>';
     //execute insert query
     mysqli_stmt_execute($st);
