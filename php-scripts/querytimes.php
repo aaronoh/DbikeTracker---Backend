@@ -83,7 +83,7 @@ while ($row = mysqli_fetch_object($q)) {
 echo "TIME TABLE";
 //$times_data = json_encode($data);
 $time_data = json_encode($data);
-echo $time_data;
+var_dump($time_data);
 
 
 $data_check = array();
