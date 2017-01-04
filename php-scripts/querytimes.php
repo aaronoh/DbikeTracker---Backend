@@ -84,9 +84,9 @@ while ($row = $times_result->fetch_assoc()) {
 //echo "<br> timesid: ". $row["TIMES_ID"]. " - timeofdy: ". $row["TIMEOFDY"] . " - dayofwk: ". $row["DAYOFWK"] . "<br>";
      $timeofdy = $row['TIMEOFDY'];
      $tdayofwk = $row['DAYOFWK'];
-     echo $timeofdy . $tdayofwk;
+//     echo $timeofdy . $tdayofwk;
 }
-
+echo $timeofdy . $tdayofwk;
 
 
 $data_check = array();
