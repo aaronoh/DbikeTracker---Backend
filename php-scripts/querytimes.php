@@ -79,13 +79,17 @@ $q = mysqli_query($conn, "SELECT * FROM TIMES");
 while ($row = mysqli_fetch_object($q)) {
     $data[] = $row;
 }
-echo json_encode($data);
+echo 'TIMES TABLE';
+//echo json_encode($data);
+
 $data_check = array();
 $qs = mysqli_query($conn, "SELECT LAST_UPDATE, DAYOFWK FROM AVAILABILITY");
 while ($row2 = mysqli_fetch_object($qs)) {
     $data_check[] = $row2;
 }
-echo json_encode($data_check);
+echo 'AVAIL TABLE';
+echo $data_check['LAST_UPDATE'];
+//echo json_encode($data_check);
 
 
 
