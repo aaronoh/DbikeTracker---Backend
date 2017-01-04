@@ -91,7 +91,7 @@ while ($row2 = mysqli_fetch_object($qs)) {
 }
 echo 'AVAIL TABLE';
 $avail_data = json_encode($data_check);
-$decode_avail = json_decode($decode_avail);
+$decode_avail = json_decode($avail_data);
 echo $data_check->LAST_UPDATE;
 
 
