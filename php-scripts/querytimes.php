@@ -93,9 +93,8 @@ while ($row2 = mysqli_fetch_object($qs)) {
 }
 echo "AVAIL TABLE";
 //$avail_data = json_encode($data_check);
-$avail_data = json_encode($data_check);
-$avail_decode = json_decode($avail_data, true);
-echo $avail_decode;
+$avail_data = json_decode($data_check, true);
+echo $avail_data;
 
 
 
