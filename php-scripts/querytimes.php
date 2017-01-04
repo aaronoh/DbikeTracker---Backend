@@ -89,8 +89,11 @@ while ($row = $result->fetch_assoc()) {
         if($last_update == $timeofdy){
 
             echo '<pre>';
-            print_r($last_update);
-            print_r($timeofdy);
+//            print_r($last_update);
+//            print_r($timeofdy);
+            count($timeofdy);
+            count($last_update);
+            
             echo '</pre>';
         
     }
