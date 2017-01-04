@@ -88,7 +88,7 @@ while ($row2 = mysqli_fetch_object($qs)) {
     $data_check[] = $row2;
 }
 echo 'AVAIL TABLE';
-echo $data_check['LAST_UPDATE'];
+echo $data_check[0];
 //echo json_encode($data_check);
 
 
