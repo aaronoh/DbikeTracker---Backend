@@ -95,11 +95,11 @@ $result = $conn->query($query);
 while ($row2 = $result->fetch_assoc()) {
 //    $last_update = $row2['LAST_UPDATE'];
 //    $dayofwk = $row2['DAYOFWK'];
-echo "<br> lastupdate: ". $row2["LAST_UPDATE"]. " - dayofwk: ". $row2["DAYOFWK"] . "<br>";
+        $last_update = $row2["LAST_UPDATE"];
+        echo $last_update;
+//echo "<br> lastupdate: ". $row2["LAST_UPDATE"]. " - dayofwk: ". $row2["DAYOFWK"] . "<br>";
     
 }
-
-echo $row2;
 
 
 
