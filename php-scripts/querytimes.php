@@ -87,7 +87,7 @@ while ($row = $result->fetch_assoc()) {
     $last_update = $row['availability.LAST_UPDATE']; 
     $timeofdy = $row['times.TIMEOFDY'];
     $dayofwk = $row['times.DAYOFWK'];
-    $tdayofwk = $row['availability.DAYOFWK'];
+    $tdayofwk = $row['availability']['DAYOFWK'];
     
     echo '<pre>';
     print_r($last_update);
