@@ -81,8 +81,10 @@ $times_result = $conn->query($timesquery);
 while ($row = $times_result->fetch_assoc()) {
 //    $last_update = $row2['LAST_UPDATE'];
 //    $dayofwk = $row2['DAYOFWK'];
-echo "<br> timesid: ". $row["TIMES_ID"]. " - timeofdy: ". $row["TIMEOFDY"] . " - dayofwk: ". $row["DAYOFWK"] . "<br>";
-    
+//echo "<br> timesid: ". $row["TIMES_ID"]. " - timeofdy: ". $row["TIMEOFDY"] . " - dayofwk: ". $row["DAYOFWK"] . "<br>";
+     $timeofdy = $row['TIMEOFDY'];
+     $tdayofwk = $row['DAYOFWK'];
+     echo $timeofdy . $tdayofwk;
 }
 
 
@@ -101,7 +103,7 @@ while ($row2 = $result->fetch_assoc()) {
     
 }
 
-echo $last_update . $dayofwk;
+
 
 
 
