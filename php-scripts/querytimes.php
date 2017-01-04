@@ -87,7 +87,7 @@ while ($row = $result->fetch_assoc()) {
 
     for ($i = 0; $i <= count($row); $i++) {
         if($last_update[i] == $timeofdy[i]){
-            echo $last_update . $timeofdy;
+            echo $last_update[i] . $timeofdy[i];
         }
     }
 
