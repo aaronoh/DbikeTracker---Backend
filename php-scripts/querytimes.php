@@ -87,7 +87,7 @@ while ($row = $result->fetch_assoc()) {
     $tdayofwk = $row['DAYOFWK'];
 
         if($last_update == $timeofdy){
-
+            $x = 0;
             echo '<pre>';
 //            print_r($last_update);
 //            print_r($timeofdy);
@@ -95,7 +95,8 @@ while ($row = $result->fetch_assoc()) {
             echo count($last_update);
             
             echo '</pre>';
-        
+        $x++;
+        print_r($x);
     }
 
 
