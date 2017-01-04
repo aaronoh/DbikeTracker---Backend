@@ -85,9 +85,12 @@ while ($row = $result->fetch_assoc()) {
     $dayofwk = $row['DAYOFWKAV'];
     $tdayofwk = $row['DAYOFWK'];
 
-    for ($i = 0; $i <= count($row); $i++) {
-        if($last_update[i] == $timeofdy[i] && $dayofwk[i] == $tdayofwk[i]){
-            echo 'maybe going somewhere';
+    foreach ($row as $value) {
+        if ($last_update[i] == $timeofdy[i] && $dayofwk[i] == $tdayofwk[i]) {
+            $last_update = $value['LAST_UPDATE'];
+            $timeofdy = $value['TIMEOFDY'];
+            $dayofwk = $value['DAYOFWKAV'];
+            $tdayofwk = $value['DAYOFWK'];
         }
     }
 
