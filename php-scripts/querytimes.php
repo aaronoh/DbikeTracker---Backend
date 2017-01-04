@@ -90,12 +90,13 @@ while ($row = $result->fetch_assoc()) {
     $timeofdy = $row['TIMEOFDY'];
     $dayofwk = $row['DAYOFWKAV'];
     $tdayofwk = $row['DAYOFWK'];
-echo '<pre>';
-            print_r($last_update);
-            print_r($timeofdy);
-            print_r($dayofwk);
-            print_r($tdayofwk);
-            echo '</pre>';
+    
+    if($last_update == $timeofdy){
+        echo '<pre>';
+        print_r($last_update);
+        print_r($timeofdy);
+        echo '</pre>';
+    }
 
 //    if($data[0] == ){
 //        
