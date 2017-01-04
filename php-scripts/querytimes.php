@@ -85,7 +85,7 @@ if ($result = mysqli_query($conn, 'SELECT * FROM TIMES')) {
         $data[] = $row;
         
     }
-    printf($row);
+    echo json_encode($data);
 }
 
 
