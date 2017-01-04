@@ -85,7 +85,7 @@ while ($row = $result->fetch_assoc()) {
     $dayofwk = $row['DAYOFWKAV'];
     $tdayofwk = $row['DAYOFWK'];
 
-        if($last_update[i] == $timeofdy[i] && $dayofwk[i] == $tdayofwk[i]){
+        if($last_update == $timeofdy && $dayofwk == $tdayofwk){
             echo '<pre>';
             print_r($last_update[i]);
             print_r($timeofdy[i]);
