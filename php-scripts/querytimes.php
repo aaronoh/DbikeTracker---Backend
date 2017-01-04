@@ -94,7 +94,7 @@ $result = $conn->query($query);
 while ($row2 = $result->fetch_assoc()) {
 //    $last_update = $row2['LAST_UPDATE'];
 //    $dayofwk = $row2['DAYOFWK'];
-echo "<br> lastupdate: ". $row2["last_update"]. " - dayofwk: ". $row2["dayofwk"]. $row["lastname"] . "<br>";
+echo "<br> lastupdate: ". $row2["LAST_UPDATE"]. " - dayofwk: ". $row2["DAYOFWK"] . "<br>";
     
 }
 echo "AVAIL TABLE";
