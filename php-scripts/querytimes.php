@@ -81,8 +81,8 @@ while ($row = mysqli_fetch_object($q)) {
 }
 
 echo "TIME TABLE";
-$times_data = json_encode($data);
-echo json_decode($times_data);
+//$times_data = json_encode($data);
+echo json_encode($data);
 
 
 $data_check = array();
@@ -91,8 +91,8 @@ while ($row2 = mysqli_fetch_object($qs)) {
     $data_check[] = $row2;
 }
 echo "AVAIL TABLE";
-$avail_data = json_encode($data_check);
-echo json_decode($avail_data);
+//$avail_data = json_encode($data_check);
+echo json_encode($data_check);
 
 
 
