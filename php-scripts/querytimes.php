@@ -56,12 +56,6 @@ $dbikeinfo = json_decode($contents, true);
 //close connection
 //        mysqli_close($conn);
 //insert new time stamp every 10 minutes
-
-
-
-
-
-
 //
 //$epoch = strtotime('now'); //current time
 //$dt = new DateTime("@$epoch");  // convert UNIX timestamp to PHP DateTime
@@ -86,15 +80,18 @@ while ($row = $result->fetch_assoc()) {
 //    $last_update = $row2['LAST_UPDATE'];
 //    $dayofwk = $row2['DAYOFWK'];
 //echo "<br> timesid: ". $row["TIMES_ID"]. " - timeofdy: ". $row["TIMEOFDY"] . " - dayofwk: ". $row["DAYOFWK"] . "<br>";
-    $last_update = $row['LAST_UPDATE']; 
+    $last_update = $row['LAST_UPDATE'];
     $timeofdy = $row['TIMEOFDY'];
     $dayofwk = $row['DAYOFWKAV'];
     $tdayofwk = $row['DAYOFWK'];
-    
-    if($last_update == $timeofdy){
-        echo 'we in';
 
+    for ($i = 0; $i <= count($row); $i++) {
+        if($last_update[i] == $timeofdy[i]){
+            echo $last_update . $timeofdy;
+        }
     }
+
+
 
 //    if($data[0] == ){
 //        
