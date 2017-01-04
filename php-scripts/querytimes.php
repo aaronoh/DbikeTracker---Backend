@@ -87,11 +87,11 @@ while ($row = $result->fetch_assoc()) {
     $tdayofwk = $row['DAYOFWK'];
 
         if($last_update == $timeofdy){
-            echo 'VERYDYYY NICE';
-//            echo '<pre>';
-//            print_r($last_update);
-//            print_r($timeofdy);
-//            echo '</pre>';
+
+            echo '<pre>';
+            print_r($last_update);
+            print_r($timeofdy);
+            echo '</pre>';
         
     }
 
