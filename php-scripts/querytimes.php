@@ -89,9 +89,9 @@ while ($row = $result->fetch_assoc()) {
     
     
  if ($last_update == $timeofdy && $dayofwk == $tdayofwk) {
- $timeslot_query = mysqli_prepare($conn, 'UPDATE availability SET timeslot = ?');
+ $timeslot_query = mysqli_prepare($conn, 'UPDATE availability SET TIMESLOT = ?');
 ///        bind the varibales
-        mysqli_stmt_bind_param($timeslot_query, 'i', $timesid);
+        mysqli_stmt_bind_param($timeslot_query, 'i', $row['TIMES_ID']);
 //         execute insert query
         mysqli_stmt_execute($timeslot_query);
         
@@ -106,7 +106,7 @@ while ($row = $result->fetch_assoc()) {
 //
 //        echo '</pre>';
     }
-mysqli_close($conn);
+
 
 
 
@@ -116,5 +116,6 @@ mysqli_close($conn);
 //    
 //     echo $timeofdy . $tdayofwk;
 }
+mysqli_close($conn);
 echo json_encode($data);
 ?>
