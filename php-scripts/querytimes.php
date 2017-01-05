@@ -83,29 +83,31 @@ if (mysqli_num_rows($result) > 0) {
         $timeofdy = $row['TIMEOFDY'];
         $dayofwk = $row['DAYOFWKAV'];
         $arrayofdays = $row['DAYOFWK'];
-        
-$diff = array_diff($dayofwk, $arrayofdays);
-echo "<br> THE DIFF IS : " . $diff . "</br>";
+        if (in_array($dayofwk, $arrayofdays, TRUE)) {
+            echo "Match found<br>";
+        } else {
+            echo "Match not found<br>";
+        }
+
 
 //        echo "<br> ARRAY OF DAYS " . $arrayofdays . "</br>";
 //        echo "<br> DAY OF WEEK " . $dayofwk . "</br>";
 //        echo "<br> LAST UPDATE  " . $last_update . "</br>";
 //        echo "<br> TIME OF DAY " . $timeofdy . "</br>";
-        
-        for ($i = 0; $i <= count($result); $i++){
-        if ($last_update == $timeofdy && $dayofwk == $arrayofdays) {
-            
+
+        for ($i = 0; $i <= count($result); $i++) {
+            if ($last_update == $timeofdy && $dayofwk == $arrayofdays) {
+
 //            echo "<br> dayofwk: " . $dayofwk . " - arrayofdays: " . $arrayofdays . "</br>";
 //            echo "<br> lastupdate: " . $last_update . " - timeofdy: " . $timeofdy . "</br>";
 ////            echo "<br> timesid: ". $row["TIMES_ID"]. " - dayofwk1: ". $row['DAYOFWKAV'] . " - dayofwk2: ". $row["DAYOFWK"] .  " - lastupdate: ". $row["LAST_UPDATE"] ." - timeofdy: ". $row["TIMEOFDY"] . "<br>";
-            $timeslot_query = mysqli_prepare($conn, "UPDATE availability SET TIMESLOT = ? WHERE DAYOFWK = $arrayofdays");
+                $timeslot_query = mysqli_prepare($conn, "UPDATE availability SET TIMESLOT = ? WHERE DAYOFWK = $arrayofdays");
 //         mysqli_prepare($conn, 'INSERT INTO timeslotjunc(TIMES_ID) VALUES(?)');
 ///        bind the varibales
-            mysqli_stmt_bind_param($timeslot_query, 'i', $row['TIMES_ID']);
-            //         execute insert query
-            mysqli_stmt_execute($timeslot_query);
-            
-        }
+                mysqli_stmt_bind_param($timeslot_query, 'i', $row['TIMES_ID']);
+                //         execute insert query
+                mysqli_stmt_execute($timeslot_query);
+            }
         }
     }
 }
