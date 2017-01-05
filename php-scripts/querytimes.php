@@ -72,8 +72,7 @@ $data = array();
 //$q = mysqli_query($conn, "SELECT * FROM TIMES");
 $timesquery = "SELECT times.* , availability.`LAST_UPDATE`, availability.`DAYOFWK` as DAYOFWKAV 
 FROM TIMES JOIN availability
-ON times.`DAYOFWK` = availability.DAYOFWK"
-;
+ON times.`DAYOFWK` = availability.DAYOFWK";
 
 
 $result = $conn->query($timesquery);
@@ -88,9 +87,12 @@ while ($row = $result->fetch_assoc()) {
 
     
     
-    if ($last_update == $timeofdy && $dayofwk == $tdayofwk) {
-        
-        echo "<br> last_update: ". $row["LAST_UPDATE"]. " - timeofdy: ". $row["TIMEOFDY"] . " - dayofwk: ". $row["DAYOFWK"] . " - avdayofwk: " . $row['DAYOFWKAV'] . "<br>";
+ if ($last_update == $timeofdy && $dayofwk == $tdayofwk) {
+// $timeslot_query = mysqli_prepare($conn, 'UPDATE availability SET timeslot = ?');
+/////        bind the varibales
+//        mysqli_stmt_bind_param($st, 'i',);
+        echo "<br> last_update: ". $row["TIMESID"]. "<br>";
+//        echo "<br> last_update: ". $row["LAST_UPDATE"]. " - timeofdy: ". $row["TIMEOFDY"] . " - dayofwk: ". $row["DAYOFWK"] . " - avdayofwk: " . $row['DAYOFWKAV'] . "<br>";
 //        $x = 0;
 //        echo '<pre>';
 ////            print_r($last_update);
