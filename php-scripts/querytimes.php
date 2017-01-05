@@ -83,7 +83,7 @@ if (mysqli_num_rows($result) > 0) {
         $timeofdy = $row['TIMEOFDY'];
         $dayofwk = $row['DAYOFWKAV'];
         $arrayofdays = $row['DAYOFWK'];
-        if (in_array($arrayofdays,$dayofwk TRUE)) {
+        if (in_array($arrayofdays,$dayofwk, TRUE)) {
             echo "Match found<br>";
         } else {
             echo "Match not found<br>";
