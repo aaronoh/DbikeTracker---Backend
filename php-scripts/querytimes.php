@@ -85,7 +85,7 @@ if (mysqli_num_rows($result) > 0) {
         $arrayofdays = $row['DAYOFWK'];
 
         
-        $containsAllValues = !array_diff($arrayofdays, $dayofwk); 
+        $containsAllValues = array_diff($arrayofdays, $dayofwk); 
         echo "<br> check times : " . $containsAllValues . "</br>";
 
 //        echo "<br> ARRAY OF DAYS " . $arrayofdays . "</br>";
