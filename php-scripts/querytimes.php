@@ -88,7 +88,7 @@ while ($row = $result->fetch_assoc()) {
 
 
     foreach ($row as $timeslotid) {
-        print_r($timeslotid);
+        echo "current value of \$row $timeslotid .\n"; 
 //        if ($last_update == $timeofdy && $dayofwk == $tdayofwk) {
 //            $timeslot_query = mysqli_prepare($conn, "UPDATE availability SET TIMESLOT = ? WHERE DAYOFWK = $tdayofwk");
 ////         mysqli_prepare($conn, 'INSERT INTO timeslotjunc(TIMES_ID) VALUES(?)');
