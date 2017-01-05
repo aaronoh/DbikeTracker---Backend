@@ -85,8 +85,8 @@ if (mysqli_num_rows($result) > 0) {
         $arrayofdays = $row['DAYOFWK'];
 
 
-        echo $arrayofdays;
-        echo $dayofwk;
+        echo "<br> ARRAY OF DAYS " . $arrayofdays . "</br>";
+        echo "<br> DAY OF WEEK " . $dayofwk . "</br>";
 
         if ($dayofwk == $arrayofdays) {
             echo "<br> dayofwk: " . $dayofwk . " - arrayofdays: " . $arrayofdays . "</br>";
