@@ -76,20 +76,20 @@ ON times.`DAYOFWK` = availability.DAYOFWK";
 
 
 $result = $conn->query($timesquery);
-while ($row = $result->fetch_assoc()) {
+if (mysqli_num_rows($result) > 0) {
+    foreach ($result as $row) {
 //    $last_update = $row2['LAST_UPDATE'];
 //    $dayofwk = $row2['DAYOFWK'];
-//echo "<br> timesid: ". $row["TIMES_ID"]. " - timeofdy: ". $row["TIMEOFDY"] . " - dayofwk: ". $row["DAYOFWK"] . "<br>";
-    $timesid = $row['TIMES_ID'];
-    $last_update = $row['LAST_UPDATE'];
-    $timeofdy = $row['TIMEOFDY'];
-    $dayofwk = $row['DAYOFWKAV'];
-    $tdayofwk = $row['DAYOFWK'];
+echo "<br> timesid: ". $row["TIMES_ID"]. " - timeofdy: ". $row["TIMEOFDY"] . " - dayofwk: ". $row["DAYOFWK"] . "<br>";
+        $timesid = $row['TIMES_ID'];
+        $last_update = $row['LAST_UPDATE'];
+        $timeofdy = $row['TIMEOFDY'];
+        $dayofwk = $row['DAYOFWKAV'];
+        $tdayofwk = $row['DAYOFWK'];
 
 
-    foreach ($row as $timeslotid) {
-        echo "current value of \$row:  $timeslotid"; 
-        echo gettype($timeslotid);
+
+
 //        if ($timeslotid[3] == $timeslotid[1] && $timeslotid[2] == $timeslotid[4]) {
 //            $timeslot_query = mysqli_prepare($conn, "UPDATE availability SET TIMESLOT = ? WHERE DAYOFWK = $tdayofwk");
 ////         mysqli_prepare($conn, 'INSERT INTO timeslotjunc(TIMES_ID) VALUES(?)');
@@ -97,17 +97,8 @@ while ($row = $result->fetch_assoc()) {
 //            mysqli_stmt_bind_param($timeslot_query, 'i', $row['TIMES_ID']);
 ////         execute insert query
 //            mysqli_stmt_execute($timeslot_query);
-
 //        }
-//
-//
-//
-//
-////    if($data[0] == ){
-////        
-////    }
-////    
-////     echo $timeofdy . $tdayofwk;
+
     }
 }
 //close the while loop
