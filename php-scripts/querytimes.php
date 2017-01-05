@@ -86,9 +86,8 @@ while ($row = $result->fetch_assoc()) {
     $dayofwk = $row['DAYOFWKAV'];
     $tdayofwk = $row['DAYOFWK'];
 
-    echo count($timeofdy);
-    echo count($last_update);
-
+    echo count($result);
+    
     if ($last_update == $timeofdy) {
 //        $x = 0;
 //        echo '<pre>';
