@@ -72,7 +72,7 @@ $data = array();
 //$q = mysqli_query($conn, "SELECT * FROM TIMES");
 $timesquery = "SELECT times.* , availability.`LAST_UPDATE`, availability.`DAYOFWK` as DAYOFWKAV 
 FROM TIMES JOIN availability
-ON times.`DAYOFWK` = availability.DAYOFWK";
+ON  availability.DAYOFWK = times.`DAYOFWK`";
 
 
 $result = $conn->query($timesquery);
