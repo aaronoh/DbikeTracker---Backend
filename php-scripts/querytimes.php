@@ -90,13 +90,13 @@ while ($row = $result->fetch_assoc()) {
     foreach ($row as $timeslotid) {
 //        echo "current value of \$row $timeslotid .\n"; 
         if ($timeslotid[3] == $timeslotid[1] && $timeslotid[2] == $timeslotid[4]) {
-//            echo 'we made it here';
-            $timeslot_query = mysqli_prepare($conn, "UPDATE availability SET TIMESLOT = ? WHERE DAYOFWK = $timeslotid[4]");
-//         mysqli_prepare($conn, 'INSERT INTO timeslotjunc(TIMES_ID) VALUES(?)');
-///        bind the varibales
-            mysqli_stmt_bind_param($timeslot_query, 'i', $timeslotid[0]);
-//         execute insert query
-            mysqli_stmt_execute($timeslot_query);
+          echo '<br>timesid : ' . $timeslotid[0] . '</br>';
+//            $timeslot_query = mysqli_prepare($conn, "UPDATE availability SET TIMESLOT = ? WHERE DAYOFWK = $timeslotid[4]");
+////         mysqli_prepare($conn, 'INSERT INTO timeslotjunc(TIMES_ID) VALUES(?)');
+/////        bind the varibales
+//            mysqli_stmt_bind_param($timeslot_query, 'i', $timeslotid[0]);
+////         execute insert query
+//            mysqli_stmt_execute($timeslot_query);
 
         }
 //
