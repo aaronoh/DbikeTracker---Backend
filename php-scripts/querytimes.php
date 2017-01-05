@@ -80,6 +80,7 @@ while ($row = $result->fetch_assoc()) {
 //    $last_update = $row2['LAST_UPDATE'];
 //    $dayofwk = $row2['DAYOFWK'];
 //echo "<br> timesid: ". $row["TIMES_ID"]. " - timeofdy: ". $row["TIMEOFDY"] . " - dayofwk: ". $row["DAYOFWK"] . "<br>";
+    $timesid = $row['TIMESID'];
     $last_update = $row['LAST_UPDATE'];
     $timeofdy = $row['TIMEOFDY'];
     $dayofwk = $row['DAYOFWKAV'];
@@ -91,7 +92,7 @@ while ($row = $result->fetch_assoc()) {
 // $timeslot_query = mysqli_prepare($conn, 'UPDATE availability SET timeslot = ?');
 /////        bind the varibales
 //        mysqli_stmt_bind_param($st, 'i',);
-        echo "<br> last_update: ". $row["TIMESID"]. "<br>";
+        echo "<br> timesid: ". $row["TIMESID"]. "<br>";
 //        echo "<br> last_update: ". $row["LAST_UPDATE"]. " - timeofdy: ". $row["TIMEOFDY"] . " - dayofwk: ". $row["DAYOFWK"] . " - avdayofwk: " . $row['DAYOFWKAV'] . "<br>";
 //        $x = 0;
 //        echo '<pre>';
