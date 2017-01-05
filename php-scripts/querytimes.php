@@ -88,12 +88,12 @@ while ($row = $result->fetch_assoc()) {
 
 
     foreach ($row as $timeslotid) {
-        $timesid = $timeslotid['TIMES_ID'];
-        $last_update = $timeslotid['LAST_UPDATE'];
-        $timeofdy = $timeslotid['TIMEOFDY'];
-        $dayofwk = $timeslotid['DAYOFWKAV'];
-        $tdayofwk = $timeslotid['DAYOFWK'];
-        echo "<br> timesid: ". $timeslotid['TIMES_ID']. " - timeofdy: ". $timeslotid['LAST_UPDATE'] . " - dayofwk: ". $timeslotid['TIMEOFDY'] . "<br>";
+        $tid = $timeslotid['TIMES_ID'];
+        $lu = $timeslotid['LAST_UPDATE'];
+        $tody = $timeslotid['TIMEOFDY'];
+        $dwk = $timeslotid['DAYOFWKAV'];
+        $tdwk = $timeslotid['DAYOFWK'];
+        echo "<br> timesid: ". $tid . " - timeofdy: ". $lu . " - dayofwk: ". $tody . "<br>";
 //        echo "current value of \$row $timeslotid .\n"; 
         if ($last_update == $timeofdy && $dayofwk == $tdayofwk) {
             $timeslot_query = mysqli_prepare($conn, "UPDATE availability SET TIMESLOT = ? WHERE DAYOFWK = $tdayofwk");
@@ -103,16 +103,16 @@ while ($row = $result->fetch_assoc()) {
 //         execute insert query
             mysqli_stmt_execute($timeslot_query);
 
-            echo "<br> timesid: " . $row["TIMES_ID"] . "<br>";
-            echo "<br> last_update: " . $row["LAST_UPDATE"] . " - timeofdy: " . $row["TIMEOFDY"] . " - dayofwk: " . $row["DAYOFWK"] . " - avdayofwk: " . $row['DAYOFWKAV'] . "<br>";
-            $x = 0;
-            echo '<pre>';
-//            print_r($last_update);
-//            print_r($timeofdy);
-            echo count($timeofdy);
-            echo count($last_update);
-
-            echo '</pre>';
+//            echo "<br> timesid: " . $row["TIMES_ID"] . "<br>";
+//            echo "<br> last_update: " . $row["LAST_UPDATE"] . " - timeofdy: " . $row["TIMEOFDY"] . " - dayofwk: " . $row["DAYOFWK"] . " - avdayofwk: " . $row['DAYOFWKAV'] . "<br>";
+//            $x = 0;
+//            echo '<pre>';
+////            print_r($last_update);
+////            print_r($timeofdy);
+//            echo count($timeofdy);
+//            echo count($last_update);
+//
+//            echo '</pre>';
         }
 //
     }
