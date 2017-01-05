@@ -94,7 +94,7 @@ while ($row = $result->fetch_assoc()) {
             $timeslot_query = mysqli_prepare($conn, "UPDATE availability SET TIMESLOT = ? WHERE DAYOFWK = $tdayofwk");
 //         mysqli_prepare($conn, 'INSERT INTO timeslotjunc(TIMES_ID) VALUES(?)');
 ///        bind the varibales
-            mysqli_stmt_bind_param($timeslot_query, 'i', $row['TIMES_ID']);
+            mysqli_stmt_bind_param($timeslot_query, 'i', $row[0]);
 //         execute insert query
             mysqli_stmt_execute($timeslot_query);
 
