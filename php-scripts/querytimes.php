@@ -84,8 +84,8 @@ if (mysqli_num_rows($result) > 0) {
         $dayofwk = $row['DAYOFWKAV'];
         $arrayofdays = $row['DAYOFWK'];
         
-        echo "<br> Times of day : " . $timeofdy . "</br>";
-
+$diff = array_diff($dayofwk, $arrayofdays);
+echo "<br> THE DIFF IS : " . $diff . "</br>";
 
 //        echo "<br> ARRAY OF DAYS " . $arrayofdays . "</br>";
 //        echo "<br> DAY OF WEEK " . $dayofwk . "</br>";
