@@ -87,21 +87,17 @@ if (mysqli_num_rows($result) > 0) {
 
 
 
-        if ($dayofwk == $day) {
-            echo "<br> dayofwk: ". $dayofwk . " - daynow: ". $day . "</br>";
+        if (in_array($last_update, $result)) {
+            echo "<br> dayofwk: " . $dayofwk . " - daynow: " . $day . "</br>";
 ////            echo "<br> timesid: ". $row["TIMES_ID"]. " - dayofwk1: ". $row['DAYOFWKAV'] . " - dayofwk2: ". $row["DAYOFWK"] .  " - lastupdate: ". $row["LAST_UPDATE"] ." - timeofdy: ". $row["TIMEOFDY"] . "<br>";
             $timeslot_query = mysqli_prepare($conn, "UPDATE availability SET TIMESLOT = ? WHERE DAYOFWK = $tdayofwk");
 //         mysqli_prepare($conn, 'INSERT INTO timeslotjunc(TIMES_ID) VALUES(?)');
 ///        bind the varibales
             mysqli_stmt_bind_param($timeslot_query, 'i', $row['TIMES_ID']);
-
-        }
-        if ($timeofdy == $last_update){
-            echo "<br> timeody: ". $timeofdy . " - lastupdate: ". $last_update . "</br>";
+            echo "<br> timeody: " . $timeofdy . " - lastupdate: " . $last_update . "</br>";
             //         execute insert query
             mysqli_stmt_execute($timeslot_query);
         }
-    
 
     }
 }
