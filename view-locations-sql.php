@@ -31,7 +31,7 @@ foreach ($dbikeinfo as $row) {
 
 
 $data = array();
-$q = mysqli_query($conn, "SELECT locations.NAME, locations.LAT, locations.LNG, live_data.AVAIL_BIKES, live_data.AVAIL_SLOTS
+$q = mysqli_query($conn, "SELECT locations.NUMBER, locations.NAME, locations.LAT, locations.LNG, live_data.AVAIL_BIKES, live_data.AVAIL_SLOTS
   FROM locations INNER JOIN live_data
     ON locations.NUMBER = live_data.NUMBER ORDER BY live_data.NUMBER");
 while ($row = mysqli_fetch_object($q)) {
