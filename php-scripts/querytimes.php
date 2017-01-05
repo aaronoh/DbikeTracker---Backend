@@ -88,7 +88,7 @@ if (mysqli_num_rows($result) > 0) {
 //        echo "<br> ARRAY OF DAYS " . $arrayofdays . "</br>";
 //        echo "<br> DAY OF WEEK " . $dayofwk . "</br>";
         echo "<br> LAST UPDATE  " . $last_update . "</br>";
-        echo "<br> TIME OF DAY " . $timeofday . "</br>";
+        echo "<br> TIME OF DAY " . $timeofdy . "</br>";
 
         if ($last_update == $timeofdy) {
 //            echo "<br> dayofwk: " . $dayofwk . " - arrayofdays: " . $arrayofdays . "</br>";
