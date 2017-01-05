@@ -84,10 +84,7 @@ if (mysqli_num_rows($result) > 0) {
         $dayofwk = $row['DAYOFWKAV'];
         $arrayofdays = $row['DAYOFWK'];
 
-        if($timeofdy == $last_update && $dayofwk == $arrayofdays){
-            $timesid = $timesid;
-            
-        }
+
         
 
 
