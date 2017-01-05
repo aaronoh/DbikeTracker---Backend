@@ -88,33 +88,25 @@ while ($row = $result->fetch_assoc()) {
 
 
     foreach ($row as $timeslotid) {
-        $tid = $timeslotid['TIMES_ID'];
-        $lu = $timeslotid['LAST_UPDATE'];
-        $tody = $timeslotid['TIMEOFDY'];
-        $dwk = $timeslotid['DAYOFWKAV'];
-        $tdwk = $timeslotid['DAYOFWK'];
-        echo "<br> timesid: ". $tid . " - timeofdy: ". $lu . " - dayofwk: ". $tody . "<br>";
-//        echo "current value of \$row $timeslotid .\n"; 
-        if ($last_update == $timeofdy && $dayofwk == $tdayofwk) {
-            $timeslot_query = mysqli_prepare($conn, "UPDATE availability SET TIMESLOT = ? WHERE DAYOFWK = $tdayofwk");
-//         mysqli_prepare($conn, 'INSERT INTO timeslotjunc(TIMES_ID) VALUES(?)');
-///        bind the varibales
-            mysqli_stmt_bind_param($timeslot_query, 'i', $row['TIMES_ID']);
-//         execute insert query
-            mysqli_stmt_execute($timeslot_query);
+        echo "current value of \$row $timeslotid .\n"; 
+//        if ($last_update == $timeofdy && $dayofwk == $tdayofwk) {
+//            $timeslot_query = mysqli_prepare($conn, "UPDATE availability SET TIMESLOT = ? WHERE DAYOFWK = $tdayofwk");
+////         mysqli_prepare($conn, 'INSERT INTO timeslotjunc(TIMES_ID) VALUES(?)');
+/////        bind the varibales
+//            mysqli_stmt_bind_param($timeslot_query, 'i', $row['TIMES_ID']);
+////         execute insert query
+//            mysqli_stmt_execute($timeslot_query);
 
-//            echo "<br> timesid: " . $row["TIMES_ID"] . "<br>";
-//            echo "<br> last_update: " . $row["LAST_UPDATE"] . " - timeofdy: " . $row["TIMEOFDY"] . " - dayofwk: " . $row["DAYOFWK"] . " - avdayofwk: " . $row['DAYOFWKAV'] . "<br>";
-//            $x = 0;
-//            echo '<pre>';
-////            print_r($last_update);
-////            print_r($timeofdy);
-//            echo count($timeofdy);
-//            echo count($last_update);
+//        }
 //
-//            echo '</pre>';
-        }
 //
+//
+//
+////    if($data[0] == ){
+////        
+////    }
+////    
+////     echo $timeofdy . $tdayofwk;
     }
 }
 //close the while loop
