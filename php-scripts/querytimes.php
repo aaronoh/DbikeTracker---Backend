@@ -88,7 +88,7 @@ while ($row = $result->fetch_assoc()) {
 
     
     
- if ($last_update == $timeofdy && $dayofwk == $tdayofwk) {
+ if ($last_update == $timeofdy) {
 // $timeslot_query = mysqli_prepare($conn, 'INSERT INTO timeslotjunc(TIMES_ID) VALUES(?)');
 ////         ($conn, 'UPDATE availability SET TIMESLOT = ?');
 /////        bind the varibales
