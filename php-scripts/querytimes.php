@@ -92,6 +92,9 @@ if (mysqli_num_rows($result) > 0) {
         $i = 0;
         if (($last_update[$i] == $timeofdy[$i]) && ($dayofwk[$i] == $arrayofdays[$i])) {
             
+            $checktimes = array_intersect($dayofwk, $arrayofdays);
+            print_r($checktimes);
+            
             echo "<br> dayofwk: " . $dayofwk . " - arrayofdays: " . $arrayofdays . "</br>";
             echo "<br> lastupdate: " . $last_update . " - timeofdy: " . $timeofdy . "</br>";
 ////            echo "<br> timesid: ". $row["TIMES_ID"]. " - dayofwk1: ". $row['DAYOFWKAV'] . " - dayofwk2: ". $row["DAYOFWK"] .  " - lastupdate: ". $row["LAST_UPDATE"] ." - timeofdy: ". $row["TIMEOFDY"] . "<br>";
