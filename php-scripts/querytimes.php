@@ -57,13 +57,13 @@ $dbikeinfo = json_decode($contents, true);
 //        mysqli_close($conn);
 //insert new time stamp every 10 minutes
 //
-//$epoch = strtotime('now'); //current time
-//$dt = new DateTime("@$epoch");  // convert UNIX timestamp to PHP DateTime
-//$tt = new DateTime("@$epoch"); //convert the epoch to UNIX time
-//echo $tt->format('H:i:s'); // output = 21:06:43
-//$time = date('H:i:s');
-//echo $tt->format('Y-m-d'); // output = 2017-01-01
-//$day = date('w');
+$epoch = strtotime('now'); //current time
+$dt = new DateTime("@$epoch");  // convert UNIX timestamp to PHP DateTime
+$tt = new DateTime("@$epoch"); //convert the epoch to UNIX time
+echo $tt->format('H:i:s'); // output = 21:06:43
+$time = date('H:i:s');
+echo $tt->format('Y-m-d'); // output = 2017-01-01
+$day = date('w');
 //
 //
 //echo " day as int is " . $day . " ";
@@ -90,14 +90,15 @@ if (mysqli_num_rows($result) > 0) {
 
 
 
-        if ($dayofwk == 4) {
-            echo "<br> timesid: ". $row["TIMES_ID"]. " - dayofwk1: ". $row['DAYOFWKAV'] . " - dayofwk2: ". $row["DAYOFWK"] .  " - lastupdate: ". $row["LAST_UPDATE"] ." - timeofdy: ". $row["TIMEOFDY"] . "<br>";
-            $timeslot_query = mysqli_prepare($conn, "UPDATE availability SET TIMESLOT = ? WHERE DAYOFWK = $tdayofwk");
-//         mysqli_prepare($conn, 'INSERT INTO timeslotjunc(TIMES_ID) VALUES(?)');
-///        bind the varibales
-            mysqli_stmt_bind_param($timeslot_query, 'i', $row['TIMES_ID']);
-//         execute insert query
-            mysqli_stmt_execute($timeslot_query);
+        if ($dayofwk == $day) {
+            echo "<br> dayofwk: ". $dayofwk . " - daynow: ". $day;
+//            echo "<br> timesid: ". $row["TIMES_ID"]. " - dayofwk1: ". $row['DAYOFWKAV'] . " - dayofwk2: ". $row["DAYOFWK"] .  " - lastupdate: ". $row["LAST_UPDATE"] ." - timeofdy: ". $row["TIMEOFDY"] . "<br>";
+//            $timeslot_query = mysqli_prepare($conn, "UPDATE availability SET TIMESLOT = ? WHERE DAYOFWK = $tdayofwk");
+////         mysqli_prepare($conn, 'INSERT INTO timeslotjunc(TIMES_ID) VALUES(?)');
+/////        bind the varibales
+//            mysqli_stmt_bind_param($timeslot_query, 'i', $row['TIMES_ID']);
+////         execute insert query
+//            mysqli_stmt_execute($timeslot_query);
         }
 
     }
