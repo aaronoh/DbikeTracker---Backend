@@ -87,7 +87,7 @@ if (mysqli_num_rows($result) > 0) {
 
 
 
-        if (in_array($last_update, $result)) {
+        if (in_array($last_update, $row)) {
             echo "<br> dayofwk: " . $dayofwk . " - daynow: " . $day . "</br>";
 ////            echo "<br> timesid: ". $row["TIMES_ID"]. " - dayofwk1: ". $row['DAYOFWKAV'] . " - dayofwk2: ". $row["DAYOFWK"] .  " - lastupdate: ". $row["LAST_UPDATE"] ." - timeofdy: ". $row["TIMEOFDY"] . "<br>";
             $timeslot_query = mysqli_prepare($conn, "UPDATE availability SET TIMESLOT = ? WHERE DAYOFWK = $tdayofwk");
