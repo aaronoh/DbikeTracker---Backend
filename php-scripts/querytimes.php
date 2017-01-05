@@ -95,8 +95,10 @@ while ($row = $result->fetch_assoc()) {
             echo sizeof($last_update);
             
             echo '</pre>';
-
+        $x++;
+        
     }
+    print_r($x);
 
 
 
