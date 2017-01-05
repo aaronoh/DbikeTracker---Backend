@@ -84,7 +84,7 @@ if (mysqli_num_rows($result) > 0) {
         $dayofwk = $row['DAYOFWKAV'];
         $arrayofdays = $row['DAYOFWK'];
         
-       $checkdays = in_array($dayofwk, $arrayofdays);
+       $checkdays = in_array('3', $arrayofdays);
        echo "<br> CHECK THE DAYS: " . $checkdays . "</br>";
 
 
