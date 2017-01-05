@@ -78,9 +78,6 @@ ON  availability.LAST_UPDATE = times.TIMEOFDY";
 $result = $conn->query($timesquery);
 if (mysqli_num_rows($result) > 0) {
     foreach ($result as $row) {
-//    $last_update = $row2['LAST_UPDATE'];
-//    $dayofwk = $row2['DAYOFWK'];
-
         $timesid = $row['TIMES_ID'];
         $last_update = $row['LAST_UPDATE'];
         $timeofdy = $row['TIMEOFDY'];
@@ -90,8 +87,8 @@ if (mysqli_num_rows($result) > 0) {
 
 
 
-        if ($dayofwk == $day) {
-            echo "<br> dayofwk: ". $dayofwk . " - daynow: ". $day;
+        if ($dayofwk == $day && $timeofdy == $last_update) {
+            echo "<br> dayofwk: ". $dayofwk . " - daynow: ". $day . " - timeofdy: ". $timeofdy  . " - lastupdate: ". $last_update;
 //            echo "<br> timesid: ". $row["TIMES_ID"]. " - dayofwk1: ". $row['DAYOFWKAV'] . " - dayofwk2: ". $row["DAYOFWK"] .  " - lastupdate: ". $row["LAST_UPDATE"] ." - timeofdy: ". $row["TIMEOFDY"] . "<br>";
 //            $timeslot_query = mysqli_prepare($conn, "UPDATE availability SET TIMESLOT = ? WHERE DAYOFWK = $tdayofwk");
 ////         mysqli_prepare($conn, 'INSERT INTO timeslotjunc(TIMES_ID) VALUES(?)');
