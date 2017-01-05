@@ -106,7 +106,7 @@ while ($row = $result->fetch_assoc()) {
 //
 //        echo '</pre>';
     }
-
+mysqli_close($conn);
 
 
 
