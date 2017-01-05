@@ -92,12 +92,12 @@ if (mysqli_num_rows($result) > 0) {
 
         if ($last_update == $timeofdy && $dayofwk == $tdayofwk) {
             echo "<br> timesid: ". $row["TIMES_ID"]. " - timeofdy: ". $row["TIMEOFDY"] . " - dayofwk: ". $row["DAYOFWK"] . "<br>";
-//            $timeslot_query = mysqli_prepare($conn, "UPDATE availability SET TIMESLOT = ? WHERE DAYOFWK = $tdayofwk");
-////         mysqli_prepare($conn, 'INSERT INTO timeslotjunc(TIMES_ID) VALUES(?)');
-/////        bind the varibales
-//            mysqli_stmt_bind_param($timeslot_query, 'i', $row['TIMES_ID']);
-////         execute insert query
-//            mysqli_stmt_execute($timeslot_query);
+            $timeslot_query = mysqli_prepare($conn, "UPDATE availability SET TIMESLOT = ? WHERE DAYOFWK = $tdayofwk");
+//         mysqli_prepare($conn, 'INSERT INTO timeslotjunc(TIMES_ID) VALUES(?)');
+///        bind the varibales
+            mysqli_stmt_bind_param($timeslot_query, 'i', $row['TIMES_ID']);
+//         execute insert query
+            mysqli_stmt_execute($timeslot_query);
         }
 
     }
