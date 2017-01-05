@@ -90,8 +90,8 @@ if (mysqli_num_rows($result) > 0) {
 //        echo "<br> LAST UPDATE  " . $last_update . "</br>";
 //        echo "<br> TIME OF DAY " . $timeofdy . "</br>";
         $i = 0;
-        if ($last_update == $timeofdy) {
-            while($arrayofdays == $dayofwk){
+        if ($last_update == $timeofdy && $arrayofdays == $dayofwk) {
+            
             echo "<br> dayofwk: " . $dayofwk . " - arrayofdays: " . $arrayofdays . "</br>";
             echo "<br> lastupdate: " . $last_update . " - timeofdy: " . $timeofdy . "</br>";
 ////            echo "<br> timesid: ". $row["TIMES_ID"]. " - dayofwk1: ". $row['DAYOFWKAV'] . " - dayofwk2: ". $row["DAYOFWK"] .  " - lastupdate: ". $row["LAST_UPDATE"] ." - timeofdy: ". $row["TIMEOFDY"] . "<br>";
@@ -101,7 +101,7 @@ if (mysqli_num_rows($result) > 0) {
             mysqli_stmt_bind_param($timeslot_query, 'i', $row['TIMES_ID']);
             //         execute insert query
             mysqli_stmt_execute($timeslot_query);
-            }
+            
         }
 
     }
