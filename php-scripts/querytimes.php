@@ -84,6 +84,8 @@ if (mysqli_num_rows($result) > 0) {
         $dayofwk = $row['DAYOFWKAV'];
         $arrayofdays = $row['DAYOFWK'];
 
+        $checktimes = array_intersect($dayofwk, $arrayofdays);
+        echo "<br> check times : " . $checktimes . "</br>";
 
 //        echo "<br> ARRAY OF DAYS " . $arrayofdays . "</br>";
 //        echo "<br> DAY OF WEEK " . $dayofwk . "</br>";
@@ -91,10 +93,9 @@ if (mysqli_num_rows($result) > 0) {
 //        echo "<br> TIME OF DAY " . $timeofdy . "</br>";
         $i = 0;
         if (($last_update[$i] == $timeofdy[$i]) && ($dayofwk[$i] == $arrayofdays[$i])) {
-            
-            $checktimes = array_intersect($dayofwk, $arrayofdays);
-            echo "<br> check times : " . $checktimes . "</br>";
-            
+
+
+
 //            echo "<br> dayofwk: " . $dayofwk . " - arrayofdays: " . $arrayofdays . "</br>";
 //            echo "<br> lastupdate: " . $last_update . " - timeofdy: " . $timeofdy . "</br>";
 ////            echo "<br> timesid: ". $row["TIMES_ID"]. " - dayofwk1: ". $row['DAYOFWKAV'] . " - dayofwk2: ". $row["DAYOFWK"] .  " - lastupdate: ". $row["LAST_UPDATE"] ." - timeofdy: ". $row["TIMEOFDY"] . "<br>";
@@ -106,7 +107,6 @@ if (mysqli_num_rows($result) > 0) {
             mysqli_stmt_execute($timeslot_query);
             $i++;
         }
-
     }
 }
 //close the while loop
