@@ -89,10 +89,13 @@ while ($row = $result->fetch_assoc()) {
     
     
  if ($last_update == $timeofdy && $dayofwk == $tdayofwk) {
-// $timeslot_query = mysqli_prepare($conn, 'UPDATE availability SET timeslot = ?');
-/////        bind the varibales
-//        mysqli_stmt_bind_param($st, 'i',);
-        echo "<br> timesid: ". $row["TIMES_ID"]. "<br>";
+ $timeslot_query = mysqli_prepare($conn, 'UPDATE availability SET timeslot = ?');
+///        bind the varibales
+        mysqli_stmt_bind_param($st, 'i', $timesid);
+//         execute insert query
+        mysqli_stmt_execute($timeslot_query);
+        
+//        echo "<br> timesid: ". $row["TIMES_ID"]. "<br>";
 //        echo "<br> last_update: ". $row["LAST_UPDATE"]. " - timeofdy: ". $row["TIMEOFDY"] . " - dayofwk: ". $row["DAYOFWK"] . " - avdayofwk: " . $row['DAYOFWKAV'] . "<br>";
 //        $x = 0;
 //        echo '<pre>';
