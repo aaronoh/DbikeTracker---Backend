@@ -83,6 +83,9 @@ if (mysqli_num_rows($result) > 0) {
         $timeofdy = $row['TIMEOFDY'];
         $dayofwk = $row['DAYOFWKAV'];
         $arrayofdays = $row['DAYOFWK'];
+        
+       $checkdays = in_array($arrayofdays, $dayofwk);
+       echo "<br> CHECK THE DAYS: " . $checkdays . "</br>";
 
 
 //        echo "<br> ARRAY OF DAYS " . $arrayofdays . "</br>";
@@ -94,7 +97,7 @@ if (mysqli_num_rows($result) > 0) {
         if ($last_update == $timeofdy && $dayofwk == $arrayofdays) {
             
             echo "<br> dayofwk: " . $dayofwk . " - arrayofdays: " . $arrayofdays . "</br>";
-            echo "<br> lastupdate: " . $last_update . " - timeofdy: " . $timeofdy . "</br>";
+//            echo "<br> lastupdate: " . $last_update . " - timeofdy: " . $timeofdy . "</br>";
 ////            echo "<br> timesid: ". $row["TIMES_ID"]. " - dayofwk1: ". $row['DAYOFWKAV'] . " - dayofwk2: ". $row["DAYOFWK"] .  " - lastupdate: ". $row["LAST_UPDATE"] ." - timeofdy: ". $row["TIMEOFDY"] . "<br>";
             $timeslot_query = mysqli_prepare($conn, "UPDATE availability SET TIMESLOT = ? WHERE DAYOFWK = $arrayofdays");
 //         mysqli_prepare($conn, 'INSERT INTO timeslotjunc(TIMES_ID) VALUES(?)');
