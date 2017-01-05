@@ -91,12 +91,11 @@ while ($row = $result->fetch_assoc()) {
             echo '<pre>';
 //            print_r($last_update);
 //            print_r($timeofdy);
-            echo count($timeofdy);
-            echo count($last_update);
+            echo sizeof($timeofdy);
+            echo sizeof($last_update);
             
             echo '</pre>';
-        $x++;
-        print_r($x);
+
     }
 
 
