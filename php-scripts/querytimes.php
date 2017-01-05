@@ -84,8 +84,9 @@ if (mysqli_num_rows($result) > 0) {
         $dayofwk = $row['DAYOFWKAV'];
         $arrayofdays = $row['DAYOFWK'];
 
-        $checktimes = array_intersect($dayofwk, $arrayofdays);
-        echo "<br> check times : " . $checktimes . "</br>";
+        
+        $containsAllValues = !array_diff($arrayofdays, $dayofwk); 
+        echo "<br> check times : " . $containsAllValues . "</br>";
 
 //        echo "<br> ARRAY OF DAYS " . $arrayofdays . "</br>";
 //        echo "<br> DAY OF WEEK " . $dayofwk . "</br>";
