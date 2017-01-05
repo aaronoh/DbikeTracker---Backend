@@ -107,16 +107,16 @@ while ($row = $result->fetch_assoc()) {
 //        echo count($last_update);
 //
 //        echo '</pre>';
-        }
-
-
-
-
-//    if($data[0] == ){
-//        
-//    }
-//    
-//     echo $timeofdy . $tdayofwk;
+//        }
+//
+//
+//
+//
+////    if($data[0] == ){
+////        
+////    }
+////    
+////     echo $timeofdy . $tdayofwk;
     }
 }
 //close the while loop
