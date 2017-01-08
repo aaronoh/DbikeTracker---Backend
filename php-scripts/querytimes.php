@@ -122,7 +122,7 @@ if ($result) {
                 $conn->execute($params);
                 
                 $checkquery = $conn->prepare($timeslot_query);
-                echo "erro is " . $checkquery->errorInfo();
+                print_r($checkquery->errorInfo());
                 
 //            echo "<br> dayofwk: " . $dayofwk . " - arrayofdays: " . $arrayofdays . "</br>";
 //            echo "<br> lastupdate: " . $last_update . " - timeofdy: " . $timeofdy . "</br>";
