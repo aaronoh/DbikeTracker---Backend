@@ -118,11 +118,18 @@ echo "nigga we made it ";
                 $params = array('TIMESLOT_VAL' => $timesid, 'DAYOFWEEK' => $arrayofdays);
                 $timeslot_query = "UPDATE availability SET TIMESLOT = :TIMESLOT_VAL WHERE DAYOFWK = :DAYOFWEEK";
                 $conn->prepare($timeslot_query);
-                $statement = $conn->prepare($timeslot_query);  
-               $result = $statement->execute($params);
+                $statement = $conn->prepare($timeslot_query);
+                $statement->bindParam(':TIMESLOT_VAL', $timesid, PDO::PARAM_INT);
+                $statement->bindParam(':DAYOFWEEK', $arrayofdays, PDO::PARAM_INT);
+                $result = $statement->execute($params);
 
                 $checkquery = $conn->prepare($timeslot_query);
                 print_r($checkquery->errorInfo());
+                
+                                echo "Error---";
+                print_r($statement->errorInfo());
+                //print_r($result->errorInfo());
+                echo "Column count";
 
 //            echo "<br> dayofwk: " . $dayofwk . " - arrayofdays: " . $arrayofdays . "</br>";
 //            echo "<br> lastupdate: " . $last_update . " - timeofdy: " . $timeofdy . "</br>";
