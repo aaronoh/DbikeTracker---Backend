@@ -90,8 +90,7 @@ if (mysqli_num_rows($result) > 0) {
         $timesid = $row['TIMES_ID'];
         $last_update = $row['LAST_UPDATE'];
         $timeofdy = $row['TIMEOFDY'];
-        $dayofwk = $row['DAYOFWKAV'];
-        $dayofwk = $dayMap;
+        $dayMap = $row['DAYOFWKAV'];
         $arrayofdays = $row['DAYOFWK'];
 
         
@@ -99,13 +98,13 @@ if (mysqli_num_rows($result) > 0) {
 //        echo "<br> check times : " . $containsAllValues . "</br>";
 
 //        echo "<br> ARRAY OF DAYS " . $arrayofdays . "</br>";
-        echo "<br> DAY OF WEEK " . $dayofwk . "</br>";
+        echo "<br> DAY OF WEEK " . $dayMap . "</br>";
 //        echo "<br> LAST UPDATE  " . $last_update . "</br>";
 //        echo "<br> TIME OF DAY " . $timeofdy . "</br>";
         
-        if (($last_update == $timeofdy) && ($dayofwk == $dayMap)) {
-echo "<br> ARRAY OF DAYS " . $arrayofdays . "</br>";
-        echo "<br> DAY OF WEEK " . $dayMap . "</br>";
+//        if (($last_update == $timeofdy) && ($dayofwk == $dayMap)) {
+//echo "<br> ARRAY OF DAYS " . $arrayofdays . "</br>";
+//        echo "<br> DAY OF WEEK " . $dayMap . "</br>";
 
 
 //            echo "<br> dayofwk: " . $dayofwk . " - arrayofdays: " . $arrayofdays . "</br>";
@@ -120,7 +119,7 @@ echo "<br> ARRAY OF DAYS " . $arrayofdays . "</br>";
 
         }
     }
-}
+//}
 //close the while loop
 mysqli_close($conn);
 echo json_encode($data);
