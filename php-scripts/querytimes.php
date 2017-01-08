@@ -24,6 +24,17 @@ $username = "b4c04b4b0847ac";
 $password = "bdfbd3f7";
 $db = "heroku_1aebd2cf6f33fe1";
 $dsn = "mysql:host=" . $server . ";dbname=" . $db;
+
+$dayMap = array(
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday'
+);
+
 //create the conneciton
 //        $conn = new mysqli($server, $username, $password, $db);
 //$conn = mysqli_connect($server, $username, $password, $db) or die('Error in Connecting: ' . mysqli_error($conn));
