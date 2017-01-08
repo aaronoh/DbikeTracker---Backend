@@ -63,7 +63,7 @@ echo $tt->format('H:i:s'); // output = 21:06:43
 $time = date('H:i:s');
 echo $tt->format('Y-m-d'); // output = 2017-01-01
 $day = date('w');
-//
+$dayMap = array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
 //
 //echo " day as int is " . $day . " ";
 $data = array();
@@ -79,14 +79,14 @@ if (mysqli_num_rows($result) > 0) {
         $timeofdy = $row['TIMEOFDY'];
         $dayofwk = $dayMap[$row['DAYOFWKAV']];
         $arrayofdays = $row['DAYOFWK'];
-        
-      
+
+
         echo "<br> ARRAY OF DAYS " . $arrayofdays . "</br>";
         echo "<br> DAY OF WEEK " . $dayofwk . "</br>";
         echo "<br> LAST UPDATE  " . $last_update . "</br>";
         echo "<br> TIME OF DAY " . $timeofdy . "</br>";
-        $i = 0;
-        if (($last_update[$i] == $timeofdy[$i]) && ($dayofwk[$i] == $arrayofdays[$i])) {
+
+        if (($last_update == $timeofdy) && ($dayofwk == $arrayofdays)) {
 //            echo "<br> dayofwk: " . $dayofwk . " - arrayofdays: " . $arrayofdays . "</br>";
 //            echo "<br> lastupdate: " . $last_update . " - timeofdy: " . $timeofdy . "</br>";
 ////            echo "<br> timesid: ". $row["TIMES_ID"]. " - dayofwk1: ". $row['DAYOFWKAV'] . " - dayofwk2: ". $row["DAYOFWK"] .  " - lastupdate: ". $row["LAST_UPDATE"] ." - timeofdy: ". $row["TIMEOFDY"] . "<br>";
