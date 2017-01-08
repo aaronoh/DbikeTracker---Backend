@@ -92,14 +92,14 @@ if ($result) {
             $timesid = $row['TIMES_ID'];
             $last_update = $row['LAST_UPDATE'];
             $timeofdy = $row['TIMEOFDY'];
-            $dayofwk = $row['DAYOFWKAV'];
+            $dayofwk = $dayMap[$row['DAYOFWKAV']];
             $arrayofdays = $row['DAYOFWK'];
 //            echo "<br> ARRAY OF DAYS " . $arrayofdays . "</br>";
 //            echo "<br> DAY OF WEEK " . $dayofwk . "</br>";
 //            echo "<br> DAY OF WEEK INTEGER " . $row['DAYOFWKAV'] . "</br>";
 //            echo "<br> LAST UPDATE  " . $last_update . "</br>";
 //            echo "<br> TIME OF DAY " . $timeofdy . "</br>";
-            if (($last_update == $timeofdy) && ($dayofwk == $arrayofdays)) {
+            if (($last_update == $timeofdy) && ($row['DAYOFWKAV'] == $arrayofdays)) {
                 echo "Updating! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
 //            echo "<br> dayofwk: " . $dayofwk . " - arrayofdays: " . $arrayofdays . "</br>";
 //            echo "<br> lastupdate: " . $last_update . " - timeofdy: " . $timeofdy . "</br>";
@@ -114,6 +114,8 @@ if ($result) {
                 $statement = $conn->prepare($timeslot_query);
                 $params = array('timeslotVal' => $timesid, 'dayOfWeek' => $arrayofdays);
                 $res = $statement->execute($params);
+                
+                echo "<br/> UPDATE availability SET TIMESLOT = " . $timesid . " WHERE DAYOFWK = " . $arrayofdays;
                 if (!$res) {
                     echo "</br>Error---";
                     print_r($statement->errorInfo());
