@@ -92,14 +92,14 @@ if ($result) {
             $timesid = $row['TIMES_ID'];
             $last_update = $row['LAST_UPDATE'];
             $timeofdy = $row['TIMEOFDY'];
-            $dayofwk = $dayMap[$row['DAYOFWKAV']];
+            $dayofwk = $row['DAYOFWKAV'];
             $arrayofdays = $row['DAYOFWK'];
 //            echo "<br> ARRAY OF DAYS " . $arrayofdays . "</br>";
 //            echo "<br> DAY OF WEEK " . $dayofwk . "</br>";
 //            echo "<br> DAY OF WEEK INTEGER " . $row['DAYOFWKAV'] . "</br>";
 //            echo "<br> LAST UPDATE  " . $last_update . "</br>";
 //            echo "<br> TIME OF DAY " . $timeofdy . "</br>";
-            if (($last_update == $timeofdy) && ($row['DAYOFWKAV'] == $arrayofdays)) {
+            if (($last_update == $timeofdy) && ($dayofwk == $arrayofdays)) {
                 echo "Updating! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
 //            echo "<br> dayofwk: " . $dayofwk . " - arrayofdays: " . $arrayofdays . "</br>";
 //            echo "<br> lastupdate: " . $last_update . " - timeofdy: " . $timeofdy . "</br>";
