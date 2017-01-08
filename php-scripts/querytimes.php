@@ -98,13 +98,13 @@ if (mysqli_num_rows($result) > 0) {
 //        echo "<br> check times : " . $containsAllValues . "</br>";
 
 //        echo "<br> ARRAY OF DAYS " . $arrayofdays . "</br>";
-        echo "<br> DAY OF WEEK " . $dayMap . "</br>";
+//        echo "<br> DAY OF WEEK " . $dayMap . "</br>";
 //        echo "<br> LAST UPDATE  " . $last_update . "</br>";
 //        echo "<br> TIME OF DAY " . $timeofdy . "</br>";
         
-//        if (($last_update == $timeofdy) && ($dayofwk == $dayMap)) {
+        if (($last_update == $timeofdy) && ($arrayofdays == $dayMap)) {
 //echo "<br> ARRAY OF DAYS " . $arrayofdays . "</br>";
-//        echo "<br> DAY OF WEEK " . $dayMap . "</br>";
+        echo "<br> DAY OF WEEK " . $dayMap . "</br>";
 
 
 //            echo "<br> dayofwk: " . $dayofwk . " - arrayofdays: " . $arrayofdays . "</br>";
