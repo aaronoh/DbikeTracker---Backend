@@ -27,6 +27,15 @@ $api_url = "https://api.jcdecaux.com/vls/v1/stations?contract=Dublin&apiKey=ec44
 $contents = file_get_contents($api_url);
 //convert the json to a php assoc array for query
 $dbikeinfo = json_decode($contents, true);
+$dayMap = array(
+'Sunday',
+'Monday',
+'Tuesday',
+'Wednesday', 
+'Thursday', 
+'Friday', 
+'Saturday'
+);
 
 //        //insert into availability table
 //        $st = mysqli_prepare($conn, 'INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status) VALUES (?, ?, ?, ?, ?)');
@@ -81,7 +90,7 @@ if (mysqli_num_rows($result) > 0) {
         $timesid = $row['TIMES_ID'];
         $last_update = $row['LAST_UPDATE'];
         $timeofdy = $row['TIMEOFDY'];
-        $dayofwk = $row['DAYOFWKAV'];
+        $dayofwk = $dayMap['DAYOFWKAV'];
         $arrayofdays = $row['DAYOFWK'];
 
         
@@ -93,7 +102,7 @@ if (mysqli_num_rows($result) > 0) {
 //        echo "<br> LAST UPDATE  " . $last_update . "</br>";
 //        echo "<br> TIME OF DAY " . $timeofdy . "</br>";
         $i = 0;
-        if (($last_update[$i] == $timeofdy[$i]) && ($dayofwk[$i] == $arrayofdays[$i])) {
+        if (($last_update[$i] == $timeofdy[$i]) && ($dayofwk[$i] == $dayMap[$i])) {
 
 
 
