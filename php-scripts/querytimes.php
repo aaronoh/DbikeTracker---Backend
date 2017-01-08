@@ -1,30 +1,8 @@
 <?php
-
 //connect to ClearDB
 //cleardb url mysql://b4c04b4b0847ac:bdfbd3f7@us-cdbr-iron-east-04.cleardb.net/heroku_1aebd2cf6f33fe1?reconnect=true
 //gets the variables from the url and parses them to the variables
-//$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-//
-//$server = $url["host"];
-//$username = $url["user"];
-//$password = $url["pass"];
-//$db = substr($url["path"], 1);
-////create the conneciton
-////        $conn = new mysqli($server, $username, $password, $db);
-//$conn = mysqli_connect($server, $username, $password, $db) or die('Error in Connecting: ' . mysqli_error($conn));
-//
-//// Check connection
-//if ($conn->connect_error) {
-//    die("Connection failed: " . $conn->connect_error);
-//}
-//echo "Connected successfully \n";
-
-$server = "us-cdbr-iron-east-04.cleardb.net";
-$username = "b4c04b4b0847ac";
-$password = "bdfbd3f7";
-$db = "heroku_1aebd2cf6f33fe1";
-$dsn = "mysql:host=" . $server . ";dbname=" . $db;
-
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 $dayMap = array(
     'Sunday',
     'Monday',
@@ -34,7 +12,15 @@ $dayMap = array(
     'Friday',
     'Saturday'
 );
-
+//$server = "us-cdbr-iron-east-04.cleardb.net";
+//$username = "b4c04b4b0847ac";
+//$password = "bdfbd3f7";
+$server = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$db = substr($url["path"], 1);
+//$db = "heroku_1aebd2cf6f33fe1";
+$dsn = "mysql:host=" . $server . ";dbname=" . $db;
 //create the conneciton
 //        $conn = new mysqli($server, $username, $password, $db);
 //$conn = mysqli_connect($server, $username, $password, $db) or die('Error in Connecting: ' . mysqli_error($conn));
@@ -108,29 +94,13 @@ if ($result) {
             $timeofdy = $row['TIMEOFDY'];
             $dayofwk = $dayMap[$row['DAYOFWKAV']];
             $arrayofdays = $row['DAYOFWK'];
-//            echo "<br> ARRAY OF DAYS " . $arrayofdays . "</br>";
-//            echo "<br> DAY OF WEEK " . $dayofwk . "</br>";
-//            echo "<br> LAST UPDATE  " . $last_update . "</br>";
-//            echo "<br> TIME OF DAY " . $timeofdy . "</br>";
+            echo "<br> ARRAY OF DAYS " . $arrayofdays . "</br>";
+            echo "<br> DAY OF WEEK " . $dayofwk . "</br>";
+            echo "<br> DAY OF WEEK INTEGER " . $row['DAYOFWKAV'] . "</br>";
+            echo "<br> LAST UPDATE  " . $last_update . "</br>";
+            echo "<br> TIME OF DAY " . $timeofdy . "</br>";
             if (($last_update == $timeofdy) && ($row['DAYOFWKAV'] == $arrayofdays)) {
-
-echo "nigga we made it ";
-//                $params = array('TIMESLOT_VAL' => $timesid, 'DAYOFWEEK' => $arrayofdays);
-                $timeslot_query = "UPDATE availability SET TIMESLOT = ? WHERE DAYOFWK = ?";
-                $conn->prepare($timeslot_query);
-                $statement = $conn->prepare($timeslot_query);
-                $statement->bindParam(1, $timesid, PDO::PARAM_INT);
-                $statement->bindParam(2, $arrayofdays, PDO::PARAM_INT);
-                $result = $statement->execute($params);
-
-                $checkquery = $conn->prepare($timeslot_query);
-                print_r($checkquery->errorInfo());
-                
-                                echo "Error---";
-                print_r($statement->errorInfo());
-                //print_r($result->errorInfo());
-                echo "Column count";
-
+                echo "Updating! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
 //            echo "<br> dayofwk: " . $dayofwk . " - arrayofdays: " . $arrayofdays . "</br>";
 //            echo "<br> lastupdate: " . $last_update . " - timeofdy: " . $timeofdy . "</br>";
 ////            echo "<br> timesid: ". $row["TIMES_ID"]. " - dayofwk1: ". $row['DAYOFWKAV'] . " - dayofwk2: ". $row["DAYOFWK"] .  " - lastupdate: ". $row["LAST_UPDATE"] ." - timeofdy: ". $row["TIMEOFDY"] . "<br>";
@@ -140,11 +110,24 @@ echo "nigga we made it ";
                 // mysqli_stmt_bind_param($timeslot_query, 'i', $row['TIMES_ID']);
                 //         execute insert query
                 //  mysqli_stmt_execute($timeslot_query);
+                $timeslot_query = "UPDATE availability SET TIMESLOT = :timeslotVal WHERE DAYOFWK = :dayOfWeek";
+                $statement = $conn->prepare($timeslot_query);
+                $params = array('timeslotVal' => $timesid, 'dayOfWeek' => $arrayofdays);
+                $res = $statement->execute($params);
+                if (!$res) {
+                    echo "</br>Error---";
+                    print_r($statement->errorInfo());
+                    echo "</br>Error code: " . $statement->errorCode();
+                    //print_r($result->errorInfo());
+                    echo "</br>Column count: " . $statement->columnCount();
+                } else {
+                    echo "<br/>>> Update succesful!";
+                }
             }
         }
     }
 //close the while loop
 }
-mysqli_close($conn);
+//mysqli_close($conn);
 echo json_encode($data);
 ?>
