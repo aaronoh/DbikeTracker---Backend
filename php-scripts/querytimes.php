@@ -119,7 +119,7 @@ echo "nigga we made it ";
                 $timeslot_query = "UPDATE availability SET TIMESLOT = :TIMESLOT_VAL WHERE DAYOFWK = :DAYOFWEEK";
                 $conn->prepare($timeslot_query);
 
-                $conn->execute($params);
+                $timeslot_query->execute($params);
 
                 $checkquery = $conn->prepare($timeslot_query);
                 print_r($checkquery->errorInfo());
