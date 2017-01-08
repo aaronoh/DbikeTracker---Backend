@@ -90,7 +90,8 @@ if (mysqli_num_rows($result) > 0) {
         $timesid = $row['TIMES_ID'];
         $last_update = $row['LAST_UPDATE'];
         $timeofdy = $row['TIMEOFDY'];
-        $dayofwk = $dayMap['DAYOFWKAV'];
+        $dayofwk = $row['DAYOFWKAV'];
+        $dayofwk = $dayMap;
         $arrayofdays = $row['DAYOFWK'];
 
         
