@@ -100,31 +100,38 @@ ON   times.TIMEOFDY = availability.LAST_UPDATE";
 $result = $conn->query($timesquery);
 if ($result) {
 // if the number of rows in the result is greater than 0
-if ($result->rowCount() > 0) {
-    // for each item in result as $row
-    foreach ($result as $row) {
-        $timesid = $row['TIMES_ID'];
-        $last_update = $row['LAST_UPDATE'];
-        $timeofdy = $row['TIMEOFDY'];
-        $dayofwk = $dayMap[$row['DAYOFWKAV']];
-        $arrayofdays = $row['DAYOFWK'];
-        echo "<br> ARRAY OF DAYS " . $arrayofdays . "</br>";
-        echo "<br> DAY OF WEEK " . $dayofwk . "</br>";
-        echo "<br> LAST UPDATE  " . $last_update . "</br>";
-        echo "<br> TIME OF DAY " . $timeofdy . "</br>";
-        if (($last_update == $timeofdy) && ($dayofwk == $arrayofdays)) {
+    if ($result->rowCount() > 0) {
+        // for each item in result as $row
+        foreach ($result as $row) {
+            $timesid = $row['TIMES_ID'];
+            $last_update = $row['LAST_UPDATE'];
+            $timeofdy = $row['TIMEOFDY'];
+            $dayofwk = $dayMap[$row['DAYOFWKAV']];
+            $arrayofdays = $row['DAYOFWK'];
+            echo "<br> ARRAY OF DAYS " . $arrayofdays . "</br>";
+            echo "<br> DAY OF WEEK " . $dayofwk . "</br>";
+            echo "<br> LAST UPDATE  " . $last_update . "</br>";
+            echo "<br> TIME OF DAY " . $timeofdy . "</br>";
+            if (($last_update == $timeofdy) && ($dayofwk == $arrayofdays)) {
+
+
+                $params = array('TIMESLOT' => $timesid, 'DAYOFWK' => $arrayofdays);
+                $timesquery = "UPDATE availability SET TIMESLOT = ? WHERE DAYOFWK = ?";
+                $pdo->prepare($timesquery);
+
+                $pdo->execute($params);
 //            echo "<br> dayofwk: " . $dayofwk . " - arrayofdays: " . $arrayofdays . "</br>";
 //            echo "<br> lastupdate: " . $last_update . " - timeofdy: " . $timeofdy . "</br>";
 ////            echo "<br> timesid: ". $row["TIMES_ID"]. " - dayofwk1: ". $row['DAYOFWKAV'] . " - dayofwk2: ". $row["DAYOFWK"] .  " - lastupdate: ". $row["LAST_UPDATE"] ." - timeofdy: ". $row["TIMEOFDY"] . "<br>";
-            //$timeslot_query = mysqli_prepare($conn, "UPDATE availability SET TIMESLOT = ? WHERE DAYOFWK = $arrayofdays");
+                //$timeslot_query = mysqli_prepare($conn, "UPDATE availability SET TIMESLOT = ? WHERE DAYOFWK = $arrayofdays");
 //         mysqli_prepare($conn, 'INSERT INTO timeslotjunc(TIMES_ID) VALUES(?)');
 ///        bind the varibales
-            // mysqli_stmt_bind_param($timeslot_query, 'i', $row['TIMES_ID']);
-            //         execute insert query
-          //  mysqli_stmt_execute($timeslot_query);
+                // mysqli_stmt_bind_param($timeslot_query, 'i', $row['TIMES_ID']);
+                //         execute insert query
+                //  mysqli_stmt_execute($timeslot_query);
+            }
         }
     }
-}
 //close the while loop
 }
 mysqli_close($conn);
