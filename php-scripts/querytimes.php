@@ -115,7 +115,7 @@ if ($result) {
             if (($last_update == $timeofdy) && ($dayofwk == $arrayofdays)) {
 
 
-                $params = array('TIMESLOT_VAL' => $timesid, 'DAYOFWEEK' => $arrayofdays);
+                $params = array('TIMESLOT_VAL' => $timesid, 'DAYOFWEEK' => $dayofwk);
                 $timeslot_query = "UPDATE availability SET TIMESLOT = :TIMESLOT_VAL WHERE DAYOFWK = :DAYOFWEEK";
                 $conn->prepare($timeslot_query);
 
