@@ -121,7 +121,7 @@ if ($result) {
 
                 $conn->execute($params);
                 
-                $checkquery = $conn-execute($params);
+                $checkquery = $conn->prepare($timeslot_query);
                 echo "erro is " . $checkquery->errorInfo();
                 
 //            echo "<br> dayofwk: " . $dayofwk . " - arrayofdays: " . $arrayofdays . "</br>";
