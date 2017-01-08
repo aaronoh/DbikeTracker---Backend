@@ -119,7 +119,7 @@ if (mysqli_num_rows($result) > 0) {
 
         }
     }
-//}
+}
 //close the while loop
 mysqli_close($conn);
 echo json_encode($data);
