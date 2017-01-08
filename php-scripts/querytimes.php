@@ -106,7 +106,7 @@ if ($result) {
             $timesid = $row['TIMES_ID'];
             $last_update = $row['LAST_UPDATE'];
             $timeofdy = $row['TIMEOFDY'];
-            $dayofwk = $dayMap[$row['DAYOFWKAV']];
+            $dayofwk = $row['DAYOFWKAV'];
             $arrayofdays = $row['DAYOFWK'];
 //            echo "<br> ARRAY OF DAYS " . $arrayofdays . "</br>";
 //            echo "<br> DAY OF WEEK " . $dayofwk . "</br>";
@@ -115,15 +115,15 @@ if ($result) {
             if (($last_update == $timeofdy) && ($dayofwk == $arrayofdays)) {
 
 
-                $params = array('TIMESLOT_VAL' => $timesid, 'DAYOFWEEK' => $dayofwk);
+                $params = array('TIMESLOT_VAL' => $timesid, 'DAYOFWEEK' => $arrayofdays);
                 $timeslot_query = "UPDATE availability SET TIMESLOT = :TIMESLOT_VAL WHERE DAYOFWK = :DAYOFWEEK";
                 $conn->prepare($timeslot_query);
 
                 $conn->execute($params);
-                
+
                 $checkquery = $conn->prepare($timeslot_query);
                 print_r($checkquery->errorInfo());
-                
+
 //            echo "<br> dayofwk: " . $dayofwk . " - arrayofdays: " . $arrayofdays . "</br>";
 //            echo "<br> lastupdate: " . $last_update . " - timeofdy: " . $timeofdy . "</br>";
 ////            echo "<br> timesid: ". $row["TIMES_ID"]. " - dayofwk1: ". $row['DAYOFWKAV'] . " - dayofwk2: ". $row["DAYOFWK"] .  " - lastupdate: ". $row["LAST_UPDATE"] ." - timeofdy: ". $row["TIMEOFDY"] . "<br>";
