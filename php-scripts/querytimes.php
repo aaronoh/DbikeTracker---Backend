@@ -116,11 +116,11 @@ if ($result) {
 
 echo "nigga we made it ";
 //                $params = array('TIMESLOT_VAL' => $timesid, 'DAYOFWEEK' => $arrayofdays);
-                $timeslot_query = "UPDATE availability SET TIMESLOT = :TIMESLOT_VAL WHERE DAYOFWK = :DAYOFWEEK";
+                $timeslot_query = "UPDATE availability SET TIMESLOT = ? WHERE DAYOFWK = ?";
                 $conn->prepare($timeslot_query);
                 $statement = $conn->prepare($timeslot_query);
-                $statement->bindParam(':TIMESLOT_VAL', $timesid, PDO::PARAM_INT);
-                $statement->bindParam(':DAYOFWEEK', $arrayofdays, PDO::PARAM_INT);
+                $statement->bindParam(1, $timesid, PDO::PARAM_INT);
+                $statement->bindParam(2, $arrayofdays, PDO::PARAM_INT);
                 $result = $statement->execute($params);
 
                 $checkquery = $conn->prepare($timeslot_query);
