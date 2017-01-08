@@ -113,7 +113,7 @@ if ($result) {
 //            echo "<br> LAST UPDATE  " . $last_update . "</br>";
 //            echo "<br> TIME OF DAY " . $timeofdy . "</br>";
             if (($last_update == $timeofdy) && ($dayofwk == $arrayofdays)) {
-
+echo "<br> DAY OF WEEK " . $dayofwk . "</br>";
 
                 $params = array('TIMESLOT_VAL' => $timesid, 'DAYOFWEEK' => $arrayofdays);
                 $timeslot_query = "UPDATE availability SET TIMESLOT = :TIMESLOT_VAL WHERE DAYOFWK = :DAYOFWEEK";
