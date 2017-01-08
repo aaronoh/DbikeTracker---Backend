@@ -117,9 +117,9 @@ if ($result) {
 
                 $params = array('TIMESLOT_VAL' => $timesid, 'DAYOFWEEK' => $arrayofdays);
                 $timeslot_query = "UPDATE availability SET TIMESLOT = :TIMESLOT_VAL WHERE DAYOFWK = :DAYOFWEEK";
-                $pdo->prepare($timeslot_query);
+                $conn->prepare($timeslot_query);
 
-                $pdo->execute($params);
+                $conn->execute($params);
 //            echo "<br> dayofwk: " . $dayofwk . " - arrayofdays: " . $arrayofdays . "</br>";
 //            echo "<br> lastupdate: " . $last_update . " - timeofdy: " . $timeofdy . "</br>";
 ////            echo "<br> timesid: ". $row["TIMES_ID"]. " - dayofwk1: ". $row['DAYOFWKAV'] . " - dayofwk2: ". $row["DAYOFWK"] .  " - lastupdate: ". $row["LAST_UPDATE"] ." - timeofdy: ". $row["TIMEOFDY"] . "<br>";
