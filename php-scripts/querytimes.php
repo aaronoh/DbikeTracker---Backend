@@ -95,10 +95,10 @@ if (mysqli_num_rows($result) > 0) {
 
         
         $containsAllValues = array_diff($arrayofdays, $dayofwk); 
-        echo "<br> check times : " . $containsAllValues . "</br>";
+//        echo "<br> check times : " . $containsAllValues . "</br>";
 
 //        echo "<br> ARRAY OF DAYS " . $arrayofdays . "</br>";
-//        echo "<br> DAY OF WEEK " . $dayofwk . "</br>";
+        echo "<br> DAY OF WEEK " . $dayofwk . "</br>";
 //        echo "<br> LAST UPDATE  " . $last_update . "</br>";
 //        echo "<br> TIME OF DAY " . $timeofdy . "</br>";
         
