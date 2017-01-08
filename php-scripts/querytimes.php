@@ -103,7 +103,8 @@ if (mysqli_num_rows($result) > 0) {
 //        echo "<br> TIME OF DAY " . $timeofdy . "</br>";
         $i = 0;
         if (($last_update[$i] == $timeofdy[$i]) && ($dayofwk[$i] == $dayMap[$i])) {
-
+echo "<br> ARRAY OF DAYS " . $arrayofdays . "</br>";
+        echo "<br> DAY OF WEEK " . $dayMap . "</br>";
 
 
 //            echo "<br> dayofwk: " . $dayofwk . " - arrayofdays: " . $arrayofdays . "</br>";
