@@ -122,7 +122,8 @@ if ($result) {
                 $conn->execute($params);
                 
                 $checkquery = $conn-execute($params);
-                print_r($checkquery->errorInfo());
+                echo "erro is " . $checkquery->errorInfo();
+                
 //            echo "<br> dayofwk: " . $dayofwk . " - arrayofdays: " . $arrayofdays . "</br>";
 //            echo "<br> lastupdate: " . $last_update . " - timeofdy: " . $timeofdy . "</br>";
 ////            echo "<br> timesid: ". $row["TIMES_ID"]. " - dayofwk1: ". $row['DAYOFWKAV'] . " - dayofwk2: ". $row["DAYOFWK"] .  " - lastupdate: ". $row["LAST_UPDATE"] ." - timeofdy: ". $row["TIMEOFDY"] . "<br>";
