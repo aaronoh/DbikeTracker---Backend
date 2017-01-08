@@ -106,7 +106,7 @@ if ($result) {
             $timesid = $row['TIMES_ID'];
             $last_update = $row['LAST_UPDATE'];
             $timeofdy = $row['TIMEOFDY'];
-            $dayofwk = $row['DAYOFWKAV'];
+            $dayofwk = $dayMap[$row['DAYOFWKAV']];
             $arrayofdays = $row['DAYOFWK'];
 //            echo "<br> ARRAY OF DAYS " . $arrayofdays . "</br>";
 //            echo "<br> DAY OF WEEK " . $dayofwk . "</br>";
