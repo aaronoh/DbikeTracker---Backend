@@ -116,8 +116,8 @@ if ($result) {
 
 
                 $params = array('TIMESLOT' => $timesid, 'DAYOFWK' => $arrayofdays);
-                $timesquery = "UPDATE availability SET TIMESLOT = ? WHERE DAYOFWK = ?";
-                $pdo->prepare($timesquery);
+                $timeslot_query = "UPDATE availability SET TIMESLOT = ? WHERE DAYOFWK = ?";
+                $pdo->prepare($timeslot_query);
 
                 $pdo->execute($params);
 //            echo "<br> dayofwk: " . $dayofwk . " - arrayofdays: " . $arrayofdays . "</br>";
