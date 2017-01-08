@@ -115,8 +115,8 @@ if ($result) {
             if (($last_update == $timeofdy) && ($dayofwk == $arrayofdays)) {
 
 
-                $params = array('TIMESLOT' => $timesid, 'DAYOFWK' => $arrayofdays);
-                $timeslot_query = "UPDATE availability SET TIMESLOT = ? WHERE DAYOFWK = ?";
+                $params = array('TIMESLOT_VAL' => $timesid, 'DAYOFWEEK' => $arrayofdays);
+                $timeslot_query = "UPDATE availability SET TIMESLOT = :TIMESLOT_VAL WHERE DAYOFWK = :DAYOFWEEK";
                 $pdo->prepare($timeslot_query);
 
                 $pdo->execute($params);
