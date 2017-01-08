@@ -108,10 +108,10 @@ if ($result) {
             $timeofdy = $row['TIMEOFDY'];
             $dayofwk = $dayMap[$row['DAYOFWKAV']];
             $arrayofdays = $row['DAYOFWK'];
-            echo "<br> ARRAY OF DAYS " . $arrayofdays . "</br>";
-            echo "<br> DAY OF WEEK " . $dayofwk . "</br>";
-            echo "<br> LAST UPDATE  " . $last_update . "</br>";
-            echo "<br> TIME OF DAY " . $timeofdy . "</br>";
+//            echo "<br> ARRAY OF DAYS " . $arrayofdays . "</br>";
+//            echo "<br> DAY OF WEEK " . $dayofwk . "</br>";
+//            echo "<br> LAST UPDATE  " . $last_update . "</br>";
+//            echo "<br> TIME OF DAY " . $timeofdy . "</br>";
             if (($last_update == $timeofdy) && ($dayofwk == $arrayofdays)) {
 
 
