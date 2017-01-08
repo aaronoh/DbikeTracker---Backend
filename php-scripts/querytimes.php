@@ -101,8 +101,8 @@ if (mysqli_num_rows($result) > 0) {
 //        echo "<br> DAY OF WEEK " . $dayofwk . "</br>";
 //        echo "<br> LAST UPDATE  " . $last_update . "</br>";
 //        echo "<br> TIME OF DAY " . $timeofdy . "</br>";
-        $i = 0;
-        if (($last_update[$i] == $timeofdy[$i]) && ($dayofwk[$i] == $dayMap[$i])) {
+        
+        if (($last_update == $timeofdy) && ($dayofwk == $dayMap)) {
 echo "<br> ARRAY OF DAYS " . $arrayofdays . "</br>";
         echo "<br> DAY OF WEEK " . $dayMap . "</br>";
 
@@ -116,7 +116,7 @@ echo "<br> ARRAY OF DAYS " . $arrayofdays . "</br>";
             mysqli_stmt_bind_param($timeslot_query, 'i', $row['TIMES_ID']);
             //         execute insert query
             mysqli_stmt_execute($timeslot_query);
-            $i++;
+
         }
     }
 }
