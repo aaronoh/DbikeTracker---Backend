@@ -27,16 +27,6 @@ $api_url = "https://api.jcdecaux.com/vls/v1/stations?contract=Dublin&apiKey=ec44
 $contents = file_get_contents($api_url);
 //convert the json to a php assoc array for query
 $dbikeinfo = json_decode($contents, true);
-$dayMap = array(
-'Sunday',
-'Monday',
-'Tuesday',
-'Wednesday', 
-'Thursday', 
-'Friday', 
-'Saturday'
-);
-
 //        //insert into availability table
 //        $st = mysqli_prepare($conn, 'INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status) VALUES (?, ?, ?, ?, ?)');
 //        //bind the varibales
@@ -76,37 +66,27 @@ $day = date('w');
 //
 //
 //echo " day as int is " . $day . " ";
-
 $data = array();
 //$q = mysqli_query($conn, "SELECT * FROM TIMES");
 $timesquery = "SELECT times.* , availability.`LAST_UPDATE`, availability.`DAYOFWK` as DAYOFWKAV 
 FROM TIMES JOIN availability
 ON   times.TIMEOFDY = availability.LAST_UPDATE";
-
-
 $result = $conn->query($timesquery);
 if (mysqli_num_rows($result) > 0) {
     foreach ($result as $row) {
         $timesid = $row['TIMES_ID'];
         $last_update = $row['LAST_UPDATE'];
         $timeofdy = $row['TIMEOFDY'];
-        $dayMap = $row['DAYOFWKAV'];
+        $dayofwk = $dayMap[$row['DAYOFWKAV']];
         $arrayofdays = $row['DAYOFWK'];
-
         
-        $containsAllValues = array_diff($arrayofdays, $dayofwk); 
-//        echo "<br> check times : " . $containsAllValues . "</br>";
-
-//        echo "<br> ARRAY OF DAYS " . $arrayofdays . "</br>";
-//        echo "<br> DAY OF WEEK " . $dayMap . "</br>";
-//        echo "<br> LAST UPDATE  " . $last_update . "</br>";
-//        echo "<br> TIME OF DAY " . $timeofdy . "</br>";
-        
-        if (($last_update == $timeofdy) && ($arrayofdays == $dayMap)) {
-//echo "<br> ARRAY OF DAYS " . $arrayofdays . "</br>";
-        echo "<br> DAY OF WEEK " . $dayMap . "</br>";
-
-
+      
+        echo "<br> ARRAY OF DAYS " . $arrayofdays . "</br>";
+        echo "<br> DAY OF WEEK " . $dayofwk . "</br>";
+        echo "<br> LAST UPDATE  " . $last_update . "</br>";
+        echo "<br> TIME OF DAY " . $timeofdy . "</br>";
+        $i = 0;
+        if (($last_update[$i] == $timeofdy[$i]) && ($dayofwk[$i] == $arrayofdays[$i])) {
 //            echo "<br> dayofwk: " . $dayofwk . " - arrayofdays: " . $arrayofdays . "</br>";
 //            echo "<br> lastupdate: " . $last_update . " - timeofdy: " . $timeofdy . "</br>";
 ////            echo "<br> timesid: ". $row["TIMES_ID"]. " - dayofwk1: ". $row['DAYOFWKAV'] . " - dayofwk2: ". $row["DAYOFWK"] .  " - lastupdate: ". $row["LAST_UPDATE"] ." - timeofdy: ". $row["TIMEOFDY"] . "<br>";
@@ -116,7 +96,7 @@ if (mysqli_num_rows($result) > 0) {
             mysqli_stmt_bind_param($timeslot_query, 'i', $row['TIMES_ID']);
             //         execute insert query
             mysqli_stmt_execute($timeslot_query);
-
+            $i++;
         }
     }
 }
