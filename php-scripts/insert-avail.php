@@ -30,12 +30,6 @@ $contents = file_get_contents($api_url);
 //convert the json to a php assoc array for query
 $dbikeinfo = json_decode($contents, true);
 
-//query for rounding times down
-$round_query = "UPDATE AVAILABILITY SET LAST_UPDATE = SEC_TO_TIME((TIME_TO_SEC(LAST_UPDATE) DIV 600) * 600)";
-
-
-
-
 
 $epoch = strtotime('now');
 $dt = new DateTime("@$epoch");  // convert UNIX timestamp to PHP DateTime
@@ -89,18 +83,22 @@ $params = array(
     'dayofwk' => $dayofwk
 );
 $res = $statement->execute($params);
-    echo "<br/> INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status, last_update, dayofwk) VALUES ($number,$timeslot,$avail_bikes,$avail_slot,$status,$time,$dayofwk)";
-if (!$res) {
-    echo "</br>Error---";
-    print_r($statement->errorInfo());
-    echo "</br>Error code: " . $statement->errorCode();
-    //print_r($result->errorInfo());
-    echo "</br>Column count: " . $statement->columnCount();
-} else {
-    echo "<br/>>> Update succesful!";
+//    echo "<br/> INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status, last_update, dayofwk) VALUES ($number,$timeslot,$avail_bikes,$avail_slot,$status,$time,$dayofwk)";
+//if (!$res) {
+//    echo "</br>Error---";
+//    print_r($statement->errorInfo());
+//    echo "</br>Error code: " . $statement->errorCode();
+//    //print_r($result->errorInfo());
+//    echo "</br>Column count: " . $statement->columnCount();
+//} else {
+//    echo "<br/>>> Update succesful!";
+//}
 }
-}
-
+//query for rounding times down
+$round_query = "UPDATE AVAILABILITY SET LAST_UPDATE = SEC_TO_TIME((TIME_TO_SEC(LAST_UPDATE) DIV 600) * 600)";
+$rnd_res = $conn->query($round_query);
+$rnd_stmt = $conn->prepare($round_query);
+$rnd_stmt->execute($round_query);
 
 
 //        mysqli_stmt_execute($gettime);
