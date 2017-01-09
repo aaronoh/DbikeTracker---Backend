@@ -60,7 +60,7 @@ $params = array(
     'dayofwk' => $dayofwk
     );
 $res = $statement->execute($params);
-echo "<br/> INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status, last_update, dayofwk) VALUES (:number,:timeslot,:availb,:avails,:status,:time,:dayofwk)";
+echo "<br/> INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status, last_update, dayofwk) VALUES (:number, :timeslot, :availb, :avails,:status, :time, :dayofwk)";
                 if (!$res) {
                     echo "</br>Error---";
                     print_r($statement->errorInfo());
@@ -96,7 +96,7 @@ foreach ($dbikeinfo as $row) {
 //    print_r($day);
 //    echo '</pre>';
     //execute insert query
-    mysqli_stmt_execute($st);
+//    mysqli_stmt_execute($st);
 }
 
 
