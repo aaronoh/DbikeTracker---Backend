@@ -125,7 +125,7 @@ if ($result) {
             $arrayofdays = $row['DAYOFWK'];
 
             if (($last_update == $timeofdy) && ($row['DAYOFWKAV'] == $arrayofdays)) {
-                echo "Updating! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
+//                echo "Updating! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
 
                 $timeslot_query = "UPDATE availability SET TIMESLOT = :timeslotVal WHERE DAYOFWK = :dayOfWeek AND LAST_UPDATE = :lastUpdate";
                 $statement = $conn->prepare($timeslot_query);
