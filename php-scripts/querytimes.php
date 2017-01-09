@@ -115,7 +115,7 @@ if ($result) {
                 $params = array('timeslotVal' => $timesid, 'dayOfWeek' => $arrayofdays);
                 $res = $statement->execute($params);
                 
-                echo "<br/> UPDATE availability SET TIMESLOT = " . $timesid . " WHERE DAYOFWK = " . $arrayofdays . " AND LAST_UPDATE = " . $timeofdy;
+                echo "<br/> UPDATE availability SET TIMESLOT = " . $timesid . " WHERE LAST_UPDATE = " . $timeofdy . " AND DAYOFWK = " . $arrayofdays ;
                 if (!$res) {
                     echo "</br>Error---";
                     print_r($statement->errorInfo());
