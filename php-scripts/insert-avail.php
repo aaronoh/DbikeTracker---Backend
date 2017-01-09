@@ -46,7 +46,7 @@ echo $tt->format('Y-m-d'); // output = 2017-01-01
 $day = date('w');
 
 
-echo "<br/> INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status, last_update, dayofwk) VALUES (:$number,:$timeslot,:$avail_bikes,:$avail_slot,:$status,:$time,:$dayofwk)";
+echo "<br/> INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status, last_update, dayofwk) VALUES ($number,$timeslot,$avail_bikes,$avail_slot,$status,$time,$dayofwk)";
 if (!$res) {
     echo "</br>Error---";
     print_r($statement->errorInfo());
