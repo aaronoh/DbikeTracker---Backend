@@ -31,6 +31,7 @@ $contents = file_get_contents($api_url);
 $dbikeinfo = json_decode($contents, true);
 
 //query for rounding times down
+//query for rounding times down
 $round_query = "UPDATE AVAILABILITY SET LAST_UPDATE = SEC_TO_TIME((TIME_TO_SEC(LAST_UPDATE) DIV 600) * 600)";
 $rnd_result = $conn->query($round_query);
 $rnd_stmt = $conn->prepare($round_query);
@@ -38,7 +39,7 @@ $rnd_exe = $conn->execute($rnd_stmt);
 
 
 
-//getting current times for converting the time to time field and date to a day int
+
 $epoch = strtotime('now');
 $dt = new DateTime("@$epoch");  // convert UNIX timestamp to PHP DateTime
 $tt = new DateTime("@$epoch"); //convert the epoch to UNIX time
@@ -47,13 +48,28 @@ $time = date('H:i:s');
 echo $tt->format('Y-m-d'); // output = 2017-01-01
 $day = date('w');
 
+$avail_insert = "INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status, last_update, dayofwk) VALUES (:number,:timeslot,:availb,:avails,:status,:time,:dayofwk)";
+$result = $conn->query($avail_insert);
+//compare the time we just got to a time variable like NOW()/timeofdy;
+//insert into availability table
+$statement = $conn->prepare($avail_insert);
+$params = array(
+    'number' => $number, 
+    'timeslot' => $timeslot, 
+    'availb' => $avail_bikes, 
+    'avails' => $avail_slot, 
+    'status' => $status,
+    'time' => $time,
+    'dayofwk' => $dayofwk
+    );
+$res = $statement->execute($params);
 
 
 
 
 // loop through the array
 foreach ($dbikeinfo as $row) {
-
+    
     $timestamp = $row['last_update'];
     // get the locations details
     $number = $row['number'];
@@ -75,27 +91,10 @@ foreach ($dbikeinfo as $row) {
 //    echo '</pre>';
     //execute insert query
 //    mysqli_stmt_execute($st);
-    $avail_insert = "INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status, last_update, dayofwk) VALUES (:number,:timeslot,:availb,:avails,:status,:time,:dayofwk)";
-    $result = $conn->query($avail_insert);
-//compare the time we just got to a time variable like NOW()/timeofdy;
-//insert into availability table
-    $statement = $conn->prepare($avail_insert);
-    $params = array(
-        'number' => $number,
-        'timeslot' => $timeslot,
-        'availb' => $avail_bikes,
-        'avails' => $avail_slot,
-        'status' => $status,
-        'time' => $time,
-        'dayofwk' => $dayofwk
-    );
-    $res = $statement->execute($params);
-
 }
 
 
-
 //        mysqli_stmt_execute($gettime);
-var_dump($timestamp);
+      var_dump($timestamp);
 //close connection
 mysqli_close($conn);
