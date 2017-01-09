@@ -4,6 +4,15 @@
 //cleardb url mysql://b4c04b4b0847ac:bdfbd3f7@us-cdbr-iron-east-04.cleardb.net/heroku_1aebd2cf6f33fe1?reconnect=true
 //gets the variables from the url and parses them to the variables
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$dayMap = array(
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday'
+);
 
 $server = $url["host"];
 $username = $url["user"];
@@ -69,20 +78,20 @@ foreach ($dbikeinfo as $row) {
     //execute insert query
 //    mysqli_stmt_execute($st);
     $avail_insert = "INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status, last_update, dayofwk) VALUES (:number,:timeslot,:availb,:avails,:status,:time,:dayofwk)";
-$result = $conn->query($avail_insert);
+    $result = $conn->query($avail_insert);
 //compare the time we just got to a time variable like NOW()/timeofdy;
 //insert into availability table
-$statement = $conn->prepare($avail_insert);
-$params = array(
-    'number' => $number,
-    'timeslot' => $timeslot,
-    'availb' => $avail_bikes,
-    'avails' => $avail_slot,
-    'status' => $status,
-    'time' => $time,
-    'dayofwk' => $dayofwk
-);
-$res = $statement->execute($params);
+    $statement = $conn->prepare($avail_insert);
+    $params = array(
+        'number' => $number,
+        'timeslot' => $timeslot,
+        'availb' => $avail_bikes,
+        'avails' => $avail_slot,
+        'status' => $status,
+        'time' => $time,
+        'dayofwk' => $dayofwk
+    );
+    $res = $statement->execute($params);
 //    echo "<br/> INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status, last_update, dayofwk) VALUES ($number,$timeslot,$avail_bikes,$avail_slot,$status,$time,$dayofwk)";
 //if (!$res) {
 //    echo "</br>Error---";
@@ -98,7 +107,46 @@ $res = $statement->execute($params);
 $round_query = "UPDATE AVAILABILITY SET LAST_UPDATE = SEC_TO_TIME((TIME_TO_SEC(LAST_UPDATE) DIV 600) * 600)";
 $rnd_res = $conn->query($round_query);
 $rnd_stmt = $conn->prepare($round_query);
-$rnd_stmt->execute($round_query);
+$rnd_exe = $rnd_stmt->execute($round_query);
+
+$timesquery = "SELECT times.* , availability.`LAST_UPDATE`, availability.`DAYOFWK` as DAYOFWKAV 
+FROM TIMES JOIN availability
+ON   times.TIMEOFDY = availability.LAST_UPDATE";
+$result = $conn->query($timesquery);
+if ($result) {
+// if the number of rows in the result is greater than 0
+    if ($result->rowCount() > 0) {
+        // for each item in result as $row
+        foreach ($result as $row) {
+            $timesid = $row['TIMES_ID'];
+            $last_update = $row['LAST_UPDATE'];
+            $timeofdy = $row['TIMEOFDY'];
+            $dayofwk = $dayMap[$row['DAYOFWKAV']];
+            $arrayofdays = $row['DAYOFWK'];
+
+            if (($last_update == $timeofdy) && ($row['DAYOFWKAV'] == $arrayofdays)) {
+                echo "Updating! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
+
+                $timeslot_query = "UPDATE availability SET TIMESLOT = :timeslotVal WHERE DAYOFWK = :dayOfWeek AND LAST_UPDATE = :lastUpdate";
+                $statement = $conn->prepare($timeslot_query);
+                $params = array('timeslotVal' => $timesid, 'dayOfWeek' => $arrayofdays, 'lastUpdate' => $timeofdy);
+                $res = $statement->execute($params);
+//                
+//                echo "<br/> UPDATE availability SET TIMESLOT = " . $timesid . " WHERE LAST_UPDATE = " . $timeofdy . " AND DAYOFWK = " . $arrayofdays ;
+//                if (!$res) {
+//                    echo "</br>Error---";
+//                    print_r($statement->errorInfo());
+//                    echo "</br>Error code: " . $statement->errorCode();
+//                    //print_r($result->errorInfo());
+//                    echo "</br>Column count: " . $statement->columnCount();
+//                } else {
+//                    echo "<br/>>> Update succesful!";
+//                }
+            }
+        }
+    }
+//close the while loop
+}
 
 
 //        mysqli_stmt_execute($gettime);
