@@ -1,5 +1,4 @@
 <?php
-
 //connect to ClearDB
 //cleardb url mysql://b4c04b4b0847ac:bdfbd3f7@us-cdbr-iron-east-04.cleardb.net/heroku_1aebd2cf6f33fe1?reconnect=true
 //gets the variables from the url and parses them to the variables
@@ -115,8 +114,8 @@ if ($result) {
                 $statement = $conn->prepare($timeslot_query);
                 $params = array('timeslotVal' => $timesid, 'dayOfWeek' => $arrayofdays);
                 $res = $statement->execute($params);
-
-                echo "<br/> UPDATE availability SET TIMESLOT = " . $timesid . " WHERE LAST_UPDATE = " . $timeofdy . " AND DAYOFWK = " . $arrayofdays;
+                
+                echo "<br/> UPDATE availability SET TIMESLOT = " . $timesid . " WHERE LAST_UPDATE = " . $timeofdy . " AND DAYOFWK = " . $arrayofdays ;
                 if (!$res) {
                     echo "</br>Error---";
                     print_r($statement->errorInfo());
@@ -126,9 +125,8 @@ if ($result) {
                 } else {
                     echo "<br/>>> Update succesful!";
                 }
+               
             }
-            $count = $res->rowCount();
-            print("Updated $count rows.\n");
         }
     }
 //close the while loop
