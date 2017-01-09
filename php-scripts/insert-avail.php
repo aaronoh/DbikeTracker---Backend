@@ -83,8 +83,7 @@ foreach ($dbikeinfo as $row) {
 //    echo '</pre>';
     //execute insert query
 //    mysqli_stmt_execute($st);
-}
-$avail_insert = "INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status, last_update, dayofwk) VALUES (:number,:timeslot,:availb,:avails,:status,:time,:dayofwk)";
+    $avail_insert = "INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status, last_update, dayofwk) VALUES (:number,:timeslot,:availb,:avails,:status,:time,:dayofwk)";
 $result = $conn->query($avail_insert);
 //compare the time we just got to a time variable like NOW()/timeofdy;
 //insert into availability table
@@ -99,9 +98,11 @@ $params = array(
     'dayofwk' => $dayofwk
     );
 $res = $statement->execute($params);
+}
+
 
 
 //        mysqli_stmt_execute($gettime);
       var_dump($timestamp);
 //close connection
-mysqli_close($conn);
+//mysqli_close($conn);
