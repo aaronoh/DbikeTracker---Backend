@@ -46,16 +46,7 @@ echo $tt->format('Y-m-d'); // output = 2017-01-01
 $day = date('w');
 
 
-echo "<br/> INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status, last_update, dayofwk) VALUES ($number,$timeslot,$avail_bikes,$avail_slot,$status,$time,$dayofwk)";
-if (!$res) {
-    echo "</br>Error---";
-    print_r($statement->errorInfo());
-    echo "</br>Error code: " . $statement->errorCode();
-    //print_r($result->errorInfo());
-    echo "</br>Column count: " . $statement->columnCount();
-} else {
-    echo "<br/>>> Update succesful!";
-}
+
 
 
 
@@ -83,6 +74,16 @@ foreach ($dbikeinfo as $row) {
 //    echo '</pre>';
     //execute insert query
 //    mysqli_stmt_execute($st);
+    echo "<br/> INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status, last_update, dayofwk) VALUES ($number,$timeslot,$avail_bikes,$avail_slot,$status,$time,$dayofwk)";
+if (!$res) {
+    echo "</br>Error---";
+    print_r($statement->errorInfo());
+    echo "</br>Error code: " . $statement->errorCode();
+    //print_r($result->errorInfo());
+    echo "</br>Column count: " . $statement->columnCount();
+} else {
+    echo "<br/>>> Update succesful!";
+}
 }
 $avail_insert = "INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status, last_update, dayofwk) VALUES (:number,:timeslot,:availb,:avails,:status,:time,:dayofwk)";
 $result = $conn->query($avail_insert);
