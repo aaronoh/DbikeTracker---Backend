@@ -126,10 +126,9 @@ if ($result) {
                 } else {
                     echo "<br/>>> Update succesful!";
                 }
-
-                $count = $res->rowCount();
-                print("Updated $count rows.\n");
             }
+            $count = $res->rowCount();
+            print("Updated $count rows.\n");
         }
     }
 //close the while loop
