@@ -9,16 +9,18 @@ $server = $url["host"];
 $username = $url["user"];
 $password = $url["pass"];
 $db = substr($url["path"], 1);
+//$db = "heroku_1aebd2cf6f33fe1";
+$dsn = "mysql:host=" . $server . ";dbname=" . $db;
 //create the conneciton
 //        $conn = new mysqli($server, $username, $password, $db);
-$conn = mysqli_connect($server, $username, $password, $db) or die('Error in Connecting: ' . mysqli_error($conn));
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+//$conn = mysqli_connect($server, $username, $password, $db) or die('Error in Connecting: ' . mysqli_error($conn));
+// Connecting to mysql database
+$conn = new PDO($dsn, $username, $password);
+// Check for database connection error
+if (!$conn) {
+    die("Could not connect to DB");
 }
 echo "Connected successfully \n";
-
 //information for the bikes api
 $api_key = "ec447add626cfb0869dd4747a7e50e21d39d1850";
 $contract_name = "Dublin";
@@ -28,28 +30,8 @@ $contents = file_get_contents($api_url);
 //convert the json to a php assoc array for query
 $dbikeinfo = json_decode($contents, true);
 
-//get the times_id from the times table
-//array to store the times in 
-//$timearray[] = $time_row;
-//$gettime = "SELECT * FROM TIMES";
-////execute the query
-//if ($result=mysqli_query($conn,$gettime))
-//  {
-//  // Fetch one and one row
-//  while ($row=mysqli_fetch_row($result))
-//    {
-//    $timearray[] = $row;
-////    print_r($timearray);
-//    }
-//  }
-//  // Free result set
-//  mysqli_free_result($result);
-//  //print out the array of the times table
-//  print_r($timearray);
-//  
-//  
-////now to start checking the current time and our time slots
-//$sqlday = $timearray[2][i]; //access the date part of the array
+//query for rounding times down
+$round_query = "UPDATE AVAILABILITY SET LAST_UPDATE = SEC_TO_TIME((TIME_TO_SEC(LAST_UPDATE) DIV 600) * 600)";
 
 
 
@@ -63,23 +45,31 @@ $time = date('H:i:s');
 echo $tt->format('Y-m-d'); // output = 2017-01-01
 $day = date('w');
 
-
-
+$avail_insert = "INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status, last_update, dayofwk) VALUES (:number,:timeslot,:availb,:avails,:status,:time,:dayofwk)";
+$result = $conn->query($avail_insert);
 //compare the time we just got to a time variable like NOW()/timeofdy;
 //insert into availability table
-$st = mysqli_prepare($conn, 'INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status, last_update, dayofwk) VALUES (?, ?, ?, ?, ?, ?,?)');
-//bind the varibales
-mysqli_stmt_bind_param($st, 'isiissi', $number, $timeslot, $avail_bikes, $avail_slot, $status, $time, $dayofwk);
-
-
-//check times
-//        
-
-
-//$update_time = new DateTime($timestamp);
-//$update_time->format('H:i:s');
-////check to see if date is valid
-//var_dump(checkdate());
+$statement = $conn->prepare($avail_insert);
+$params = array(
+    'number' => $number, 
+    'timeslot' => $timeslot, 
+    'availb' => $avail_bikes, 
+    'avails' => $avail_slot, 
+    'status' => $status,
+    'time' => $time,
+    'dayofwk' => $dayofwk
+    );
+$res = $statement->execute($params);
+echo "<br/> INSERT INTO availability(number, timeslot, avail_bikes, avail_slots, status, last_update, dayofwk) VALUES ($number,$timeslot,$avail_bikes,$avail_slot,$status,$timeslot,$dayofwk";
+                if (!$res) {
+                    echo "</br>Error---";
+                    print_r($statement->errorInfo());
+                    echo "</br>Error code: " . $statement->errorCode();
+                    //print_r($result->errorInfo());
+                    echo "</br>Column count: " . $statement->columnCount();
+                } else {
+                    echo "<br/>>> Update succesful!";
+                }
 
 
 
@@ -95,19 +85,21 @@ foreach ($dbikeinfo as $row) {
     $status = $row['status'];
     $last_update = $time;
     $dayofwk = $day;
-
-    echo '<pre>';
-    print_r($number);
-    print_r($timeslot);
-    print_r($avail_bikes);
-    print_r($avail_slot);
-    print_r($status);
-    print_r($last_update);
-    print_r($day);
-    echo '</pre>';
+//
+//    echo '<pre>';
+//    print_r($number);
+//    print_r($timeslot);
+//    print_r($avail_bikes);
+//    print_r($avail_slot);
+//    print_r($status);
+//    print_r($last_update);
+//    print_r($day);
+//    echo '</pre>';
     //execute insert query
     mysqli_stmt_execute($st);
 }
+
+
 //        mysqli_stmt_execute($gettime);
       var_dump($timestamp);
 //close connection
