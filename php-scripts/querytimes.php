@@ -110,9 +110,9 @@ if ($result) {
                 // mysqli_stmt_bind_param($timeslot_query, 'i', $row['TIMES_ID']);
                 //         execute insert query
                 //  mysqli_stmt_execute($timeslot_query);
-                $timeslot_query = "UPDATE availability SET TIMESLOT = :timeslotVal WHERE DAYOFWK = :dayOfWeek";
+                $timeslot_query = "UPDATE availability SET TIMESLOT = :timeslotVal WHERE DAYOFWK = :dayOfWeek AND LAST_UPDATE = :lastUpdate";
                 $statement = $conn->prepare($timeslot_query);
-                $params = array('timeslotVal' => $timesid, 'dayOfWeek' => $arrayofdays);
+                $params = array('timeslotVal' => $timesid, 'dayOfWeek' => $arrayofdays, 'lastUpdate' => $timeofdy);
                 $res = $statement->execute($params);
                 
                 echo "<br/> UPDATE availability SET TIMESLOT = " . $timesid . " WHERE LAST_UPDATE = " . $timeofdy . " AND DAYOFWK = " . $arrayofdays ;
