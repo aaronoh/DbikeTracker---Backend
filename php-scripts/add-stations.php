@@ -8,7 +8,7 @@
 
 $st = mysqli_prepare($conn, 'INSERT INTO stations_copy(name, address, number, lat, lng) VALUES (?, ?, ?, ?, ?)');
 //bind the varibales
-mysqli_stmt_bind_param($st, 'ssi', $name, $address, $number);
+mysqli_stmt_bind_param($st, 'ssiss', $name, $address, $number, $lat, $lng);
 
 // loop through the array
 foreach ($dbikeinfo as $row) {
