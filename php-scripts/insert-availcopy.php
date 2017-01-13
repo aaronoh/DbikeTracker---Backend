@@ -77,7 +77,7 @@ foreach ($dbikeinfo as $row) {
 //    echo '</pre>';
     //execute insert query
 //    mysqli_stmt_execute($st);
-    $avail_insert = "INSERT INTO availability_copy(number, timeslot, avail_bikes, avail_slots, status, last_update, dayofwk) VALUES (:number,:timeslot,:availb,:avails,:status,:time,:dayofwk)";
+    $avail_insert = "INSERT INTO availability_copy(number, avail_bikes, avail_slots, status, last_update, dayofwk) VALUES (:number,:timeslot,:availb,:avails,:status,:time,:dayofwk)";
     $result = $conn->query($avail_insert);
 //compare the time we just got to a time variable like NOW()/timeofdy;
 //insert into availability table
@@ -109,41 +109,41 @@ $rnd_res = $conn->query($round_query);
 $rnd_stmt = $conn->prepare($round_query);
 $rnd_exe = $rnd_stmt->execute($round_query);
 
-$timesquery = "SELECT times.* , availability_copy.`LAST_UPDATE`, availability_copy.`DAYOFWK` as DAYOFWKAV 
-FROM TIMES JOIN availability_copy
-ON   times.TIMEOFDY = availability_copy.LAST_UPDATE";
-$result = $conn->query($timesquery);
-if ($result) {
-// if the number of rows in the result is greater than 0
-    if ($result->rowCount() > 0) {
-        // for each item in result as $row
-        foreach ($result as $row) {
-            $timesid = $row['TIMES_ID'];
-            $last_update = $row['LAST_UPDATE'];
-            $timeofdy = $row['TIMEOFDY'];
-            $dayofwk = $dayMap[$row['DAYOFWKAV']];
-            $arrayofdays = $row['DAYOFWK'];
-
-            if (($last_update == $timeofdy) && ($row['DAYOFWKAV'] == $arrayofdays)) {
-//                echo "Updating! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
-
-                $timeslot_query = "UPDATE availability_copy SET TIMESLOT = :timeslotVal WHERE DAYOFWK = :dayOfWeek AND LAST_UPDATE = :lastUpdate";
-                $statement = $conn->prepare($timeslot_query);
-                $params = array('timeslotVal' => $timesid, 'dayOfWeek' => $arrayofdays, 'lastUpdate' => $timeofdy);
-                $res = $statement->execute($params);
-//                
-//                echo "<br/> UPDATE availability SET TIMESLOT = " . $timesid . " WHERE LAST_UPDATE = " . $timeofdy . " AND DAYOFWK = " . $arrayofdays ;
-//                if (!$res) {
-//                    echo "</br>Error---";
-//                    print_r($statement->errorInfo());
-//                    echo "</br>Error code: " . $statement->errorCode();
-//                    //print_r($result->errorInfo());
-//                    echo "</br>Column count: " . $statement->columnCount();
-//                } else {
-//                    echo "<br/>>> Update succesful!";
-//                }
-            }
-        }
+//$timesquery = "SELECT times.* , availability_copy.`LAST_UPDATE`, availability_copy.`DAYOFWK` as DAYOFWKAV 
+//FROM TIMES JOIN availability_copy
+//ON   times.TIMEOFDY = availability_copy.LAST_UPDATE";
+//$result = $conn->query($timesquery);
+//if ($result) {
+//// if the number of rows in the result is greater than 0
+//    if ($result->rowCount() > 0) {
+//        // for each item in result as $row
+//        foreach ($result as $row) {
+//            $timesid = $row['TIMES_ID'];
+//            $last_update = $row['LAST_UPDATE'];
+//            $timeofdy = $row['TIMEOFDY'];
+//            $dayofwk = $dayMap[$row['DAYOFWKAV']];
+//            $arrayofdays = $row['DAYOFWK'];
+//
+//            if (($last_update == $timeofdy) && ($row['DAYOFWKAV'] == $arrayofdays)) {
+////                echo "Updating! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
+//
+//                $timeslot_query = "UPDATE availability_copy SET TIMESLOT = :timeslotVal WHERE DAYOFWK = :dayOfWeek AND LAST_UPDATE = :lastUpdate";
+//                $statement = $conn->prepare($timeslot_query);
+//                $params = array('timeslotVal' => $timesid, 'dayOfWeek' => $arrayofdays, 'lastUpdate' => $timeofdy);
+//                $res = $statement->execute($params);
+////                
+////                echo "<br/> UPDATE availability SET TIMESLOT = " . $timesid . " WHERE LAST_UPDATE = " . $timeofdy . " AND DAYOFWK = " . $arrayofdays ;
+////                if (!$res) {
+////                    echo "</br>Error---";
+////                    print_r($statement->errorInfo());
+////                    echo "</br>Error code: " . $statement->errorCode();
+////                    //print_r($result->errorInfo());
+////                    echo "</br>Column count: " . $statement->columnCount();
+////                } else {
+////                    echo "<br/>>> Update succesful!";
+////                }
+//            }
+//        }
     }
 //close the while loop
 }
