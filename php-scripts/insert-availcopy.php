@@ -146,7 +146,7 @@ $rnd_exe = $rnd_stmt->execute($round_query);
 //        }
 //    }
 //close the while loop
-}
+//}
 
 
 //        mysqli_stmt_execute($gettime);
