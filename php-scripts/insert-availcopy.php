@@ -84,7 +84,6 @@ foreach ($dbikeinfo as $row) {
     $statement = $conn->prepare($avail_insert);
     $params = array(
         'number' => $number,
-        'timeslot' => $timeslot,
         'availb' => $avail_bikes,
         'avails' => $avail_slot,
         'status' => $status,
