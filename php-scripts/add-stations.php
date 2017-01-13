@@ -5,23 +5,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-$server = $url["host"];
-$username = $url["user"];
-$password = $url["pass"];
-$db = substr($url["path"], 1);
-//$db = "heroku_1aebd2cf6f33fe1";
-$dsn = "mysql:host=" . $server . ";dbname=" . $db;
-//create the conneciton
+        $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+        $server = $url["host"];
+        $username = $url["user"];
+        $password = $url["pass"];
+        $db = substr($url["path"], 1);
+        //create the conneciton
 //        $conn = new mysqli($server, $username, $password, $db);
-//$conn = mysqli_connect($server, $username, $password, $db) or die('Error in Connecting: ' . mysqli_error($conn));
-// Connecting to mysql database
-$conn = new PDO($dsn, $username, $password);
-// Check for database connection error
-if (!$conn) {
-    die("Could not connect to DB");
-}
-echo "Connected successfully \n";
+        $conn = mysqli_connect($server, $username, $password, $db) or die('Error in Connecting: ' . mysqli_error($conn));
+
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        echo "Connected successfully";
+
+
 //information for the bikes api
 $api_key = "ec447add626cfb0869dd4747a7e50e21d39d1850";
 $contract_name = "Dublin";
