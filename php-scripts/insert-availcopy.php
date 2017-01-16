@@ -103,7 +103,7 @@ foreach ($dbikeinfo as $row) {
 //}
 }
 //query for rounding times down
-$round_query = "UPDATE AVAILABILITY_COPY SET LAST_UPDATE = SEC_TO_TIME((TIME_TO_SEC(LAST_UPDATE) DIV 600) * 600)";
+$round_query = "UPDATE AVAILABILITY_NEW SET LAST_UPDATE = SEC_TO_TIME((TIME_TO_SEC(LAST_UPDATE) DIV 600) * 600)";
 $rnd_res = $conn->query($round_query);
 $rnd_stmt = $conn->prepare($round_query);
 $rnd_exe = $rnd_stmt->execute($round_query);
