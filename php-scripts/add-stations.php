@@ -31,7 +31,7 @@ $contents = file_get_contents($api_url);
 //convert the json to a php assoc array for query
 $dbikeinfo = json_decode($contents, true);
 
-$st = mysqli_prepare($conn, 'INSERT INTO stations_copy(name, address, number, lat, lng) VALUES (?, ?, ?, ?, ?)');
+$st = mysqli_prepare($conn, 'INSERT INTO stations_new(name, address, number, lat, lng) VALUES (?, ?, ?, ?, ?)');
 //bind the varibales
 mysqli_stmt_bind_param($st, 'ssidd', $name, $address, $number, $lat, $lng);
 
