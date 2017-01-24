@@ -56,6 +56,7 @@ $data = array();
 //$q = mysqli_query($conn, "SELECT * FROM TIMES");
 $sql = $conn->prepare("SELECT * FROM availability_new WHERE DAYOFWK = 0");
 $result = $sql->execute();
+echo "<br/> " . $result . " </br>";
 if ($result > 0) {
     foreach ($result as $row) {
         $last_update = $row['LAST_UPDATE'];
