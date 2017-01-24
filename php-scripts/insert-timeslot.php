@@ -69,7 +69,7 @@ if ($result) {
             $dayofwk = $dayMap[$row['DAYOFWKAV']];
             $arrayofdays = $row['DAYOFWK'];
 
-            if (($last_update == $timeofdy) && ($row['DAYOFWKAV'] == $arrayofdays)) {
+            while($dayofwk = 0) {
             echo "Updating! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
 
             $timeslot_query = "UPDATE availability_new_copy SET TIMESLOT = TIMESLOT + 1 WHERE DAYOFWK = :dayOfWeek AND LAST_UPDATE = :lastUpdate";
