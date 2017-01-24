@@ -72,7 +72,7 @@ if ($result) {
                 echo "Updating! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
                 
                 $timeslot_query = "UPDATE availability SET TIMESLOT = :timeslotVal + 1 WHERE DAYOFWK = :dayOfWeek AND LAST_UPDATE = :lastUpdate";
-                echo "<br/> UPDATE availability SET TIMESLOT = TIMESLOT + 1 " . " WHERE DAYOFWK = " . $dayofwk . " AND LAST_UPDATE = ". $last_update . "  </br>;
+                echo "<br/> UPDATE availability SET TIMESLOT = TIMESLOT + 1 " . " WHERE DAYOFWK = " . $dayofwk . " AND LAST_UPDATE = ". $last_update . "  </br>";
 //                $statement = $conn->prepare($timeslot_query);
 //                $params = array('timeslotVal' => $timesid, 'dayOfWeek' => $arrayofdays, 'lastUpdate' => $timeofdy);
 //                $res = $statement->execute($params);
