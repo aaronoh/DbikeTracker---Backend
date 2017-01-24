@@ -53,9 +53,9 @@ $day = date('w');
 //echo " day as int is " . $day . " ";
 $data = array();
 //$q = mysqli_query($conn, "SELECT * FROM TIMES");
-$timesquery = "SELECT times.* , availability_new_copy.`LAST_UPDATE`, availability_new_copy.`DAYOFWK` as DAYOFWKAV 
-FROM TIMES JOIN availability_new_copy
-ON   times.TIMEOFDY = availability_new_copy.LAST_UPDATE";
+$timesquery = "SELECT times.* , availability_new.`LAST_UPDATE`, availability_new.`DAYOFWK` as DAYOFWKAV 
+FROM TIMES JOIN availability_new
+ON   times.TIMEOFDY = availability_new.LAST_UPDATE";
 $result = $conn->query($timesquery);
 if ($result) {
 // if the number of rows in the result is greater than 0
@@ -73,8 +73,8 @@ if ($result) {
             if (($dayofwk = 0) && ($last_update >= "00:00:00") ){
                 echo "Updating! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
                 
-                $timeslot_query = "UPDATE availability SET TIMESLOT = :timeslotVal + 1 WHERE DAYOFWK = :dayOfWeek AND LAST_UPDATE = :lastUpdate";
-                echo "<br/> UPDATE availability SET TIMESLOT = TIMESLOT + 1 " . " WHERE DAYOFWK = " . $dayofwk . " AND LAST_UPDATE = ". $last_update . "  </br>";
+                $timeslot_query = "UPDATE availability_new SET TIMESLOT = :timeslotVal + 1 WHERE DAYOFWK = :dayOfWeek AND LAST_UPDATE = :lastUpdate";
+                echo "<br/> UPDATE availability_new SET TIMESLOT = TIMESLOT + 1 " . " WHERE DAYOFWK = " . $dayofwk . " AND LAST_UPDATE = ". $last_update . "  </br>";
 //                $statement = $conn->prepare($timeslot_query);
 //                $params = array('timeslotVal' => $timesid, 'dayOfWeek' => $arrayofdays, 'lastUpdate' => $timeofdy);
 //                $res = $statement->execute($params);
