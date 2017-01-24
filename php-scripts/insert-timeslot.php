@@ -67,6 +67,8 @@ if ($result) {
             $timeofdy = $row['TIMEOFDY'];
             $dayofwk = $dayMap[$row['DAYOFWKAV']];
             $arrayofdays = $row['DAYOFWK'];
+            echo $dayofwk;
+            echo $last_update;
 
             if (($dayofwk = 0) && ($last_update >= "00:00:00") ){
                 echo "Updating! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
