@@ -55,7 +55,7 @@ $data = array();
 //$q = mysqli_query($conn, "SELECT * FROM TIMES");
 $timesquery = "SELECT times.* , availability_new_copy.`LAST_UPDATE`, availability_new_copy.`DAYOFWK` as DAYOFWKAV 
 FROM TIMES JOIN availability_new_copy
-ON   times_new.TIMEOFDY = availability_new_copy.LAST_UPDATE";
+ON   times.TIMEOFDY = availability_new_copy.LAST_UPDATE";
 $result = $conn->query($timesquery);
 if ($result) {
 // if the number of rows in the result is greater than 0
