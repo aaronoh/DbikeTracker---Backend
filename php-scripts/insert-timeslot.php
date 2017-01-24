@@ -54,7 +54,7 @@ $day = date('w');
 //echo " day as int is " . $day . " ";
 $data = array();
 //$q = mysqli_query($conn, "SELECT * FROM TIMES");
-$sql = $conn->prepare("SELECT * FROM availability_new");
+$sql = $conn->prepare("SELECT * FROM availability_new WHERE DAYOFWK = 0");
 $result = $sql->execute();
 if ($result > 0) {
     foreach ($result as $row) {
