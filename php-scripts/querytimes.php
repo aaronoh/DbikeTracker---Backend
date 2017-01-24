@@ -62,7 +62,7 @@ if ($result) {
     if ($result->rowCount() > 0) {
         // for each item in result as $row
         foreach ($result as $row) {
-            $timesid = $row['TIMES_ID'];
+            $timesid = $row['TIMESLOT'];
             $last_update = $row['LAST_UPDATE'];
             $timeofdy = $row['TIMEOFDY'];
             $dayofwk = $dayMap[$row['DAYOFWKAV']];
