@@ -54,9 +54,9 @@ $day = date('w');
 //echo " day as int is " . $day . " ";
 $data = array();
 //$q = mysqli_query($conn, "SELECT * FROM TIMES");
-$sql = "SELECT * FROM `availability_new`";
-$result = mysqli_query($sql) or die('MySQL query error');
-if ($result = $conn->query($sql)) {
+$sql = $conn->prepare("SELECT * FROM availability_new");
+$result = $sql->execute();
+if ($result > 0) {
     foreach ($result as $row) {
         $last_update = $row['LAST_UPDATE'];
         $timeofdy = $row['TIMEOFDY'];
