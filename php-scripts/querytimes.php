@@ -73,7 +73,7 @@ if ($result) {
 
                 $timeslot_query = "UPDATE availability_new_copy SET TIMESLOT = :timeslotVal WHERE DAYOFWK = :dayOfWeek AND LAST_UPDATE = :lastUpdate";
                 $statement = $conn->prepare($timeslot_query);
-                $params = array('timeslotVal' => $timesid, 'dayOfWeek' => $arrayofdays, 'lastUpdate' => $last_update);
+                $params = array('timeslotVal' => $timesid, 'dayOfWeek' => $arrayofdays, 'lastUpdate' => $timeofdy);
                 $res = $statement->execute($params);
 //                
 //                echo "<br/> UPDATE availability SET TIMESLOT = " . $timesid . " WHERE LAST_UPDATE = " . $timeofdy . " AND DAYOFWK = " . $arrayofdays ;
