@@ -1,4 +1,5 @@
 <?php
+
 //connect to ClearDB
 //cleardb url mysql://b4c04b4b0847ac:bdfbd3f7@us-cdbr-iron-east-04.cleardb.net/heroku_1aebd2cf6f33fe1?reconnect=true
 //gets the variables from the url and parses them to the variables
@@ -53,38 +54,51 @@ $day = date('w');
 //echo " day as int is " . $day . " ";
 $data = array();
 //$q = mysqli_query($conn, "SELECT * FROM TIMES");
-$timesquery = "SELECT times.* , availability_new.`LAST_UPDATE`, availability_new.`DAYOFWK` as DAYOFWKAV 
-FROM TIMES JOIN availability_new
-ON   times.TIMEOFDY = availability_new.LAST_UPDATE";
-$result = $conn->query($timesquery);
-if ($result) {
-// if the number of rows in the result is greater than 0
-    if ($result->rowCount() > 0) {
-        // for each item in result as $row
-        foreach ($result as $row) {
-            $timesid = $row['TIMES_ID'];
-            $last_update = $row['LAST_UPDATE'];
-            $timeofdy = $row['TIMEOFDY'];
-            $dayofwk = $dayMap[$row['DAYOFWKAV']];
-            $arrayofdays = $row['DAYOFWK'];
-            echo $dayofwk;
-            echo $last_update;
+$sql = "SELECT * FROM `availability_new`";
+$result = mysqli_query($sql) or die('MySQL query error');
+if ($result = $conn->query($sql)) {
+    foreach ($result as $row) {
+        $last_update = $row['LAST_UPDATE'];
+        $timeofdy = $row['TIMEOFDY'];
+        $dayofwk = $dayMap[$row['DAYOFWKAV']];
+        $arrayofdays = $row['DAYOFWK'];
+        echo $dayofwk;
+        echo $last_update;
 
-            if (($dayofwk = 0) && ($last_update >= "00:00:00") ){
-                echo "Updating! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
-                
-                $timeslot_query = "UPDATE availability_new SET TIMESLOT = :timeslotVal + 1 WHERE DAYOFWK = :dayOfWeek AND LAST_UPDATE = :lastUpdate";
-                echo "<br/> UPDATE availability_new SET TIMESLOT = TIMESLOT + 1 " . " WHERE DAYOFWK = " . $dayofwk . " AND LAST_UPDATE = ". $last_update . "  </br>";
-//                $statement = $conn->prepare($timeslot_query);
-//                $params = array('timeslotVal' => $timesid, 'dayOfWeek' => $arrayofdays, 'lastUpdate' => $timeofdy);
-//                $res = $statement->execute($params);
-//                
-               
-            }
+        if (($dayofwk = 0) && ($last_update >= "00:00:00")) {
+            echo "Updating! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
+
+            $timeslot_query = "UPDATE availability_new SET TIMESLOT = :timeslotVal + 1 WHERE DAYOFWK = :dayOfWeek AND LAST_UPDATE = :lastUpdate";
+            echo "<br/> UPDATE availability_new SET TIMESLOT = TIMESLOT + 1 " . " WHERE DAYOFWK = " . $dayofwk . " AND LAST_UPDATE = " . $last_update . "  </br>";
         }
+        else {
+        throw new Exception($conn->error);
+    }
+    } 
+//        // for each item in result as $row
+//        foreach ($result as $row) {
+//            $timesid = $row['TIMES_ID'];
+//            $last_update = $row['LAST_UPDATE'];
+//            $timeofdy = $row['TIMEOFDY'];
+//            $dayofwk = $dayMap[$row['DAYOFWKAV']];
+//            $arrayofdays = $row['DAYOFWK'];
+//            echo $dayofwk;
+//            echo $last_update;
+//
+//            if (($dayofwk = 0) && ($last_update >= "00:00:00") ){
+//                echo "Updating! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
+//                
+//                $timeslot_query = "UPDATE availability_new SET TIMESLOT = :timeslotVal + 1 WHERE DAYOFWK = :dayOfWeek AND LAST_UPDATE = :lastUpdate";
+//                echo "<br/> UPDATE availability_new SET TIMESLOT = TIMESLOT + 1 " . " WHERE DAYOFWK = " . $dayofwk . " AND LAST_UPDATE = ". $last_update . "  </br>";
+////                $statement = $conn->prepare($timeslot_query);
+////                $params = array('timeslotVal' => $timesid, 'dayOfWeek' => $arrayofdays, 'lastUpdate' => $timeofdy);
+////                $res = $statement->execute($params);
+////                
+//               
+//            }
+//        }
     }
 //close the while loop
-}
 //mysqli_close($conn);
-echo json_encode($data);
+    echo json_encode($data);
 ?>
