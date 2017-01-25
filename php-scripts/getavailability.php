@@ -60,12 +60,20 @@ $dbikeinfo = json_decode($contents, true);
                 <option name="day2">2017-02-14</option>
                 <option name="day3">2017-02-28</option>
                 <option name="day4">2017-03-01</option>
-        </form>
+
+                Select a station number:
+                <select name="date"></input>
+                    <option name="num1">85</option>
+                    <option name="num2">100</option>
+                    <option name="num3">12</option>
+                    <option name="num4">42</option> 
+                    <input type="button" value="search"/>
+                    </form>
 
 
 
-    </body>
+                    </body>
 
 
-</html>
+                    </html>
 
