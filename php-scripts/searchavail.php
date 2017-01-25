@@ -48,16 +48,20 @@ echo $dayofwk;
 $stat_id = $_POST['stat_id'];
 echo $stat_id;
 //sql query that will use the variables entered above and return the avail of bikes and slots of the selected statino
-$searchData = $conn->prepare('SELECT NUMBER, AVAIL_BIKES, AVAIL_SLOTS FROM availability_new WHERE LAST_UPDATE = :time  AND DAYOFWK = :dayint AND NUMBER = :statnum');
-$params = array('time' => $time, 'dayint' => $dayofwk, 'statnum' => $stat_id);
-$result = $searchData->execute($params);
-if ($result > 0) {
-    foreach ($result as $row) {
-        echo "<br/> " . $row . " </br>";
+$sql = 'SELECT NUMBER, AVAIL_BIKES, AVAIL_SLOTS FROM availability_new WHERE LAST_UPDATE = ?  AND DAYOFWK = ? AND NUMBER = ?';
+$sql->bind_param('sis', $time, $dayofwk, $stat_id);
+$res = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "number: " . $row["number"]. " - avail_bikes: " . $row["avail_bikes"]. " " . $row["avail_slots"]. "<br>";
     }
 } else {
-        throw new Exception($conn->error);
-    }
+    echo "0 results";
+}
+$conn->close();
+
 ?>
 
 
