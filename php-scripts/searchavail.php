@@ -50,8 +50,8 @@ echo $stat_id;
 //sql query that will use the variables entered above and return the avail of bikes and slots of the selected statino
 $sql = 'SELECT NUMBER, AVAIL_BIKES, AVAIL_SLOTS FROM availability_new WHERE LAST_UPDATE = ?  AND DAYOFWK = ? AND NUMBER = ?';
 echo "<br/> SELECT NUMBER, AVAIL_BIKES, AVAIL_SLOTS FROM availability_new WHERE LAST_UPDATE = " . $time ." AND DAYOFWK = " . $dayofwk . " AND NUMBER = " . $stat_id . "  </br>";
-$sql->bind_param('sii', $time, $dayofwk, $stat_id);
-$res = $conn->query($sql);
+//$sql->bind_param('sii', $time, $dayofwk, $stat_id);
+//$res = $conn->query($sql);
 gettype($time);
 gettype($dayofwk);
 gettype($stat_id);
