@@ -26,15 +26,16 @@ $contents = file_get_contents($api_url);
 //convert the json to a php assoc array for query
 $dbikeinfo = json_decode($contents, true);
 
-echo $_POST['time'];
+$time = $_POST['time'];
+echo $time;
 //$_POST['date']->format('Y-m-d'); // output = 2017-01-01
 $dayofwk = $_POST['date'] = date('w');
 echo $dayofwk;
-echo $_POST['stat_id'];
-
+$stat_id = $_POST['stat_id'];
+echo $stat_id;
 //sql query that will use the variables entered above and return the avail of bikes and slots of the selected statino
 $searchData = mysqli_prepare($conn, 'SELECT NUMBER, AVAIL_BIKES, AVAIL_SLOTS FROM availability_new WHERE LAST_UPDATE = ?  AND DAYOFWK = ? AND NUMBER = ?');
-$searchData->bind_param("sis", $_POST['time'], $dayofwk, $_POST['stat_id']);
+$searchData->bind_param("sis", $time, $dayofwk, $stat_id);
 $result = mysqli_stmt_execute($searchData);
 if ($result > 0) {
     foreach ($result as $row) {
