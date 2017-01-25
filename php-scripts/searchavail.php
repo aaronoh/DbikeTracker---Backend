@@ -52,9 +52,10 @@ $sql = 'SELECT NUMBER, AVAIL_BIKES, AVAIL_SLOTS FROM availability_new WHERE LAST
 $sql->bind_param('sis', $time, $dayofwk, $stat_id);
 $res = $conn->query($sql);
 
-if ($result->num_rows > 0) {
+
+if ($res->num_rows > 0) {
     // output data of each row
-    while($row = $result->fetch_assoc()) {
+    while($row = $res->fetch_assoc()) {
         echo "number: " . $row["number"]. " - avail_bikes: " . $row["avail_bikes"]. " " . $row["avail_slots"]. "<br>";
     }
 } else {
