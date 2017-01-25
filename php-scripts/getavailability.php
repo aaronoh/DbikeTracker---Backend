@@ -69,7 +69,7 @@ $dbikeinfo = json_decode($contents, true);
                 <option name="num3">12</option>
                 <option name="num4">42</option> 
             </select>
-            <input type="button" value="search"/>
+            <input type="submit" value="search"/>
         </form>
 
 
