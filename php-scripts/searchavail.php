@@ -52,9 +52,9 @@ $sql = 'SELECT NUMBER, AVAIL_BIKES, AVAIL_SLOTS FROM availability_new WHERE LAST
 echo "<br/> SELECT NUMBER, AVAIL_BIKES, AVAIL_SLOTS FROM availability_new WHERE LAST_UPDATE = " . $time ." AND DAYOFWK = " . $dayofwk . " AND NUMBER = " . $stat_id . "  </br>";
 //$sql->bind_param('sii', $time, $dayofwk, $stat_id);
 //$res = $conn->query($sql);
-gettype($time);
-gettype($dayofwk);
-gettype($stat_id);
+echo gettype($time);
+echo gettype($dayofwk);
+echo gettype($stat_id);
 
 
 if ($res->num_rows > 0) {
