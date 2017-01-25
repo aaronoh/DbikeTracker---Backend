@@ -1,22 +1,23 @@
 <?php
-  //connect to ClearDB
-        //cleardb url mysql://b4c04b4b0847ac:bdfbd3f7@us-cdbr-iron-east-04.cleardb.net/heroku_1aebd2cf6f33fe1?reconnect=true
-        //gets the variables from the url and parses them to the variables
-        $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
-        $server = $url["host"];
-        $username = $url["user"];
-        $password = $url["pass"];
-        $db = substr($url["path"], 1);
-        //create the conneciton
+//connect to ClearDB
+//cleardb url mysql://b4c04b4b0847ac:bdfbd3f7@us-cdbr-iron-east-04.cleardb.net/heroku_1aebd2cf6f33fe1?reconnect=true
+//gets the variables from the url and parses them to the variables
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+$server = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$db = substr($url["path"], 1);
+//create the conneciton
 //        $conn = new mysqli($server, $username, $password, $db);
-        $conn = mysqli_connect($server, $username, $password, $db) or die('Error in Connecting: ' . mysqli_error($conn));
+$conn = mysqli_connect($server, $username, $password, $db) or die('Error in Connecting: ' . mysqli_error($conn));
 
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-        echo "Connected successfully";
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+echo "Connected successfully";
 //information for the bikes api
 $api_key = "ec447add626cfb0869dd4747a7e50e21d39d1850";
 $contract_name = "Dublin";
@@ -34,14 +35,15 @@ echo $dayofwk;
 $stat_id = $_POST['stat_id'];
 echo $stat_id;
 //sql query that will use the variables entered above and return the avail of bikes and slots of the selected statino
-$searchData = mysqli_prepare($conn, 'SELECT NUMBER, AVAIL_BIKES, AVAIL_SLOTS FROM availability_new WHERE LAST_UPDATE = ?  AND DAYOFWK = ? AND NUMBER = ?');
+$searchData = $conn->prepare($conn, 'SELECT NUMBER, AVAIL_BIKES, AVAIL_SLOTS FROM availability_new WHERE LAST_UPDATE = ?  AND DAYOFWK = ? AND NUMBER = ?');
 $searchData->bind_param("sis", $time, $dayofwk, $stat_id);
-$result = mysqli_stmt_execute($searchData);
+$result = $searchData->execute();
 if ($result > 0) {
     foreach ($result as $row) {
         echo "<br/> " . $row . " </br>";
     }
-
+} else {
+    echo 'no joy gringo';
 }
 ?>
 
