@@ -38,7 +38,8 @@ $contents = file_get_contents($api_url);
 $dbikeinfo = json_decode($contents, true);
 
 echo $_POST['time'];
-echo $_POST['date'];
+$_POST['date']->format('Y-m-d'); // output = 2017-01-01
+echo $day = date('w');
 echo $_POST['stat_id'];
 ?>
 
