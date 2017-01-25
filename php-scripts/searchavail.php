@@ -37,7 +37,7 @@ $contents = file_get_contents($api_url);
 //convert the json to a php assoc array for query
 $dbikeinfo = json_decode($contents, true);
 
-echo $_POST['time'];
+echo $_GET['time'];
 ?>
 
 
