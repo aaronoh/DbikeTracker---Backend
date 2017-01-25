@@ -35,7 +35,13 @@ echo $_POST['stat_id'];
 //sql query that will use the variables entered above and return the avail of bikes and slots of the selected statino
 $searchData = mysqli_prepare($conn, 'SELECT NUMBER, AVAIL_BIKES, AVAIL_SLOTS FROM availability_new WHERE LAST_UPDATE = ?  AND DAYOFWK = ? AND NUMBER = ?');
 $searchData->bind_param("sis", $_POST['time'], $dayofwk, $_POST['stat_id']);
-$result = mysqli_stmt_execute($st);
+$result = mysqli_stmt_execute($searchData);
+if ($result > 0) {
+    foreach ($result as $row) {
+        echo "<br/> " . $row . " </br>";
+    }
+
+}
 ?>
 
 
