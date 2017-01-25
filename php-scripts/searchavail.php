@@ -36,46 +36,8 @@ $api_url = "https://api.jcdecaux.com/vls/v1/stations?contract=Dublin&apiKey=ec44
 $contents = file_get_contents($api_url);
 //convert the json to a php assoc array for query
 $dbikeinfo = json_decode($contents, true);
+
+echo $_POST['time'];
 ?>
-<html>
-    <head>
-        <title>Get Availability</title>
 
-    </head>
-    <body>
-
-        <form method="post" action="searchavail.php">
-            Select a time:
-            <select name="time"></input>
-                <option name=""now><?php strtotime('now') ?></option>
-                <option name="1">07:00:00</option>
-                <option name="2">10:00:00</option>
-                <option name="3">13:00:00</option>
-                <option name="4">17:00:00</option>
-            </select>
-            <br>
-            Select a date:
-            <select name="date"></input>
-                <option name="day1">2017-02-01</option>
-                <option name="day2">2017-02-14</option>
-                <option name="day3">2017-02-28</option>
-                <option name="day4">2017-03-01</option>
-            </select>
-            <br>
-            Select a station number:
-            <select name="stat_id"></input>
-                <option name="num1">85</option>
-                <option name="num2">100</option>
-                <option name="num3">12</option>
-                <option name="num4">42</option> 
-            </select>
-            <input type="button" value="search"/>
-        </form>
-
-
-
-    </body>
-
-
-</html>
 
