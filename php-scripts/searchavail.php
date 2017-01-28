@@ -79,7 +79,7 @@ if ($result > 0) {
     } 
 
 
-mysqli_close($conn);
+//mysqli_close($conn);
 ?>
 
 
