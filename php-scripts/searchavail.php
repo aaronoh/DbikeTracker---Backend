@@ -62,7 +62,7 @@ echo $stat_id;
 
 $sql = "SELECT avail_bikes, avail_slots, number
 //    FROM availability_new
-//    WHERE DAYOFWK = 2 AND last_update = '14:00:00' AND number = 22";
+//    WHERE DAYOFWK = 2 AND number = 22";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
