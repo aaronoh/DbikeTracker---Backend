@@ -63,8 +63,7 @@ echo $stat_id;
 //$stmt->close();
 
 $sql = $conn->prepare("SELECT avail_bikes, avail_slots, number
-//    FROM availability_new
-//    WHERE DAYOFWK = 2 AND number = 22");
+//    FROM availability_new");
 $result = $sql->execute();
 echo "<br/> " . $result . " </br>";
 if ($result > 0) {
