@@ -57,13 +57,13 @@ $dbikeinfo = json_decode($contents, true);
             Select a date:
             <select name="date"></input>
                 <option name="day1"><?php $date0=date_create("2017-02-01");
-echo date_format($date,"w"); ?></option>
+echo date_format($date,"w"); ?>2017-02-01</option>
                 <option name="day2"><?php $date1=date_create("2017-02-14");
-echo date_format($date,"w"); ?></option>
+echo date_format($date,"w"); ?>2017-02-14</option>
                 <option name="day3"><?php $date2=date_create("2017-02-28");
-echo date_format($date,"w"); ?></option>
+echo date_format($date,"w"); ?>2017-02-28</option>
                 <option name="day4"><?php $date3=date_create("2017-03-01");
-echo date_format($date,"w"); ?></option>
+echo date_format($date,"w"); ?>2017-03-01</option>
             </select>
             <br>
             Select a station number:
