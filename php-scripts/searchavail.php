@@ -63,20 +63,18 @@ echo $stat_id;
 $sql = "SELECT avail_bikes, avail_slots, number
 //    FROM availability_new
 //    WHERE DAYOFWK = 2 AND number = 22";
-$result = $conn->query($sql);
+$result = mysqli_query($conn, $sql);
 
-
-    while($row = $result->fetch_assoc()) {
-        echo "num: " . $row["number"]. " - bikes: " . $row["avail_bikes"]. " " . $row["avail_slots"]. "<br>";
+if (mysqli_num_rows($result) > 0) {
+    // output data of each row
+    while($row = mysqli_fetch_assoc($result)) {
+        echo "number: " . $row["number"]. " - bikes: " . $row["avail_bikes"]. " - slots: " . $row["avail_slots"]. "<br>";
     }
+} else {
+    echo "0 results";
+}
 
-//$conn->close();
-
-echo gettype($time);
-echo gettype($dayofwk);
-echo gettype($stat_id);
-
-$conn->close();
+mysqli_close($conn);
 ?>
 
 
