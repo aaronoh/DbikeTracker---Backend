@@ -16,20 +16,22 @@ $dayMap = array(
 //$server = "us-cdbr-iron-east-04.cleardb.net";
 //$username = "b4c04b4b0847ac";
 //$password = "bdfbd3f7";
-
 $server = $url["host"];
 $username = $url["user"];
 $password = $url["pass"];
 $db = substr($url["path"], 1);
+//$db = "heroku_1aebd2cf6f33fe1";
+$dsn = "mysql:host=" . $server . ";dbname=" . $db;
 //create the conneciton
 //        $conn = new mysqli($server, $username, $password, $db);
-$conn = mysqli_connect($server, $username, $password, $db) or die('Error in Connecting: ' . mysqli_error($conn));
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+//$conn = mysqli_connect($server, $username, $password, $db) or die('Error in Connecting: ' . mysqli_error($conn));
+// Connecting to mysql database
+$conn = new PDO($dsn, $username, $password);
+// Check for database connection error
+if (!$conn) {
+    die("Could not connect to DB");
 }
-echo "Connected successfully";
+echo "Connected successfully \n";
 //information for the bikes api
 $api_key = "ec447add626cfb0869dd4747a7e50e21d39d1850";
 $contract_name = "Dublin";
@@ -60,19 +62,23 @@ echo $stat_id;
 ///* close statement and connection */
 //$stmt->close();
 
-$sql = "SELECT avail_bikes, avail_slots, number
+$sql = $conn->prepare("SELECT avail_bikes, avail_slots, number
 //    FROM availability_new
-//    WHERE DAYOFWK = 2 AND number = 22";
-$result = mysqli_query($conn, $sql);
-
-if (mysqli_num_rows($result) > 0) {
-    // output data of each row
-    while($row = mysqli_fetch_assoc($result)) {
-        echo "number: " . $row["number"]. " - bikes: " . $row["avail_bikes"]. " - slots: " . $row["avail_slots"]. "<br>";
+//    WHERE DAYOFWK = 2 AND number = 22");
+$result = $sql->execute();
+echo "<br/> " . $result . " </br>";
+if ($result > 0) {
+    foreach ($result as $row) {
+        $last = $row['avail_bikes'];
+        $slots = $row['avail_slots'];
+        $num = $dayMap[$row['number']];
+        echo "<br/> " . $row . " </br>";
+        
+        
     }
-} else {
-    echo "0 results";
-}
+        
+    } 
+
 
 mysqli_close($conn);
 ?>
