@@ -24,19 +24,18 @@ if ($conn->connect_error) {
 }
 echo "Connected successfully";
 
+$sql = "SELECT number, avail_bikes, avail_slots FROM availability_new";
+$result = $conn->query($sql);
 
-
-// use prepare statement for insert query
-$st = mysqli_prepare($conn, 'SELECT AVAIL_BIKES, AVAIL_SLOTS, NUMBER From availability_new');
-$result = mysqli_stmt_execute($st);
-
-$loactions = array();
-echo $locations;
-echo "test";
-
-while ($row = mysqli_fetch_assoc($result)) {
-    $row["NUMBER"] = $number;
-    echo $number;
+if ($result->num_rows > 0) {
+    echo "<table><tr><th>ID</th><th>Availability</th></tr>";
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "<tr><td>".$row["number"]."</td><td>".$row["avail_bikes"]." ".$row["avail_slots"]."</td></tr>";
+    }
+    echo "</table>";
+} else {
+    echo "0 results";
 }
-mysqli_close($conn);
+$conn->close();
 ?>
