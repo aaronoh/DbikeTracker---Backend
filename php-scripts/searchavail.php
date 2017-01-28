@@ -50,7 +50,7 @@ echo $stat_id;
 //sql query that will use the variables entered above and return the avail of bikes and slots of the selected statino
 $sql = 'SELECT avail_bikes, avail_slots, number
     FROM availability_new
-    WHERE DAYOFWK = :dayofwk AND last_update = :lastup AND number = :statnum';
+    WHERE DAYOFWK = :dayofwk AND last_update = ":lastup" AND number = :statnum';
     $result = $conn->query($sql);
 //compare the time we just got to a time variable like NOW()/timeofdy;
 //insert into availability table
