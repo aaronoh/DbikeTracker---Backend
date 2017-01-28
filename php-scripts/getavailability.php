@@ -47,7 +47,7 @@ $dbikeinfo = json_decode($contents, true);
         <form method="post" action="searchavail.php">
             Select a time:
             <select name="time"></input>
-                <option name="now"><?php strtotime('now') ?></option>
+                <option name="now"></option>
                 <option name="1">07:00:00</option>
                 <option name="2">10:00:00</option>
                 <option name="3">13:00:00</option>
