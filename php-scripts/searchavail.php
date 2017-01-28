@@ -24,7 +24,7 @@ if ($conn->connect_error) {
 }
 echo "Connected successfully";
 
-$sql = "SELECT number, avail_bikes, avail_slots FROM availability_new";
+$sql = "SELECT number, avail_bikes, avail_slots FROM availability_new WHERE DAYOFWK = 3";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
