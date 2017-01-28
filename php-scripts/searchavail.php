@@ -65,14 +65,11 @@ $sql = "SELECT avail_bikes, avail_slots, number
 //    WHERE DAYOFWK = 2 AND number = 22";
 $result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-    // output data of each row
+
     while($row = $result->fetch_assoc()) {
         echo "num: " . $row["number"]. " - bikes: " . $row["avail_bikes"]. " " . $row["avail_slots"]. "<br>";
     }
-} else {
-    echo "0 results";
-}
+
 //$conn->close();
 
 echo gettype($time);
