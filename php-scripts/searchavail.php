@@ -30,6 +30,9 @@ echo "Connected successfully";
 $st = mysqli_prepare($conn, 'SELECT AVAIL_BIKES, AVAIL_SLOTS, NUMBER From availability_new');
 $result = mysqli_stmt_execute($st);
 
+$loactions = array();
+echo $locations;
+echo "test";
 
 while ($row = mysqli_fetch_assoc($result)) {
     $loactions[] = $row;
