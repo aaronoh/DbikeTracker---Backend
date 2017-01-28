@@ -46,20 +46,34 @@ $dayofwk = $_POST['date'] = date('w');
 echo $dayofwk;
 $stat_id = $_POST['stat_id'];
 echo $stat_id;
-//sql query that will use the variables entered above and return the avail of bikes and slots of the selected statino
-$sql = mysqli_prepare($conn, 'SELECT avail_bikes, avail_slots, number
-    FROM availability_new
-    WHERE DAYOFWK = :dayofwk AND last_update = ":lastup" AND number = :statnum');
-$sql->bind_param('sss', $dayofwk, $startid, $last_up);
-$dayofw = $dayofwk;
-$startid = $startid;
-$lastup = $last_up;
-$sql->execute();
-printf("%d Row selected.\n", $stmt->affected_rows);
+////sql query that will use the variables entered above and return the avail of bikes and slots of the selected statino
+//$sql = mysqli_prepare($conn, 'SELECT avail_bikes, avail_slots, number
+//    FROM availability_new
+//    WHERE DAYOFWK = :dayofwk AND last_update = ":lastup" AND number = :statnum');
+//$sql->bind_param('sss', $dayofwk, $startid, $last_up);
+//$dayofw = $dayofwk;
+//$startid = $startid;
+//$lastup = $last_up;
+//$sql->execute();
+//printf("%d Row selected.\n", $stmt->affected_rows);
+//
+///* close statement and connection */
+//$stmt->close();
 
-/* close statement and connection */
-$stmt->close();
+$sql = "SELECT avail_bikes, avail_slots, number
+//    FROM availability_new
+//    WHERE DAYOFWK = 2 AND last_update = '14:00:00' AND number = 22";
+$result = $conn->query($sql);
 
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "num: " . $row["number"]. " - bikes: " . $row["avail_bikes"]. " " . $row["avail_slots"]. "<br>";
+    }
+} else {
+    echo "0 results";
+}
+//$conn->close();
 
 echo gettype($time);
 echo gettype($dayofwk);
