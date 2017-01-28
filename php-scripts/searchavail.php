@@ -48,23 +48,28 @@ echo $dayofwk;
 $stat_id = $_POST['stat_id'];
 echo $stat_id;
 //sql query that will use the variables entered above and return the avail of bikes and slots of the selected statino
-$sql = 'SELECT NUMBER, AVAIL_BIKES, AVAIL_SLOTS FROM availability_new WHERE LAST_UPDATE = ?  AND DAYOFWK = ? AND NUMBER = ?';
-echo "<br/> SELECT NUMBER, AVAIL_BIKES, AVAIL_SLOTS FROM availability_new WHERE LAST_UPDATE = " . $time ." AND DAYOFWK = " . $dayofwk . " AND NUMBER = " . $stat_id . "  </br>";
-$sql->bind_param('sss', $time, $dayofwk, $stat_id);
-$res = $conn->query($sql);
-echo gettype($time);
-echo gettype($dayofwk);
-echo gettype($stat_id);
-
-
-if ($res->num_rows > 0) {
-    // output data of each row
-    while($row = $res->fetch_assoc()) {
-        echo "number: " . $row["number"]. " - avail_bikes: " . $row["avail_bikes"]. " " . $row["avail_slots"]. "<br>";
+$sql = 'SELECT avail_bikes, avail_slots, number
+    FROM availability_new
+    WHERE DAYOFWK = :dayofwk AND last_update = :lastup AND number = :statnum';
+    $result = $conn->query($sql);
+//compare the time we just got to a time variable like NOW()/timeofdy;
+//insert into availability table
+    $statement = $conn->prepare($avail_insert);
+    $params = array(
+        'dayofwk' => $dayofwk,
+        'lastup' => $last_update,
+        'statnum' => $stat_id
+    );
+    $res = $statement->execute($params);
+    if ($res > 0) {
+    foreach ($result as $row) {
+        $dayofwk = $row['DAYOFWKAV'];
+        $last_update = $row['LAST_UPDATE'];
+        $stat_id = $row['NUMBER'];
     }
-} else {
-    echo "0 results";
-}
+    }
+        
+
 $conn->close();
 
 ?>
