@@ -54,7 +54,7 @@ $sql = 'SELECT avail_bikes, avail_slots, number
     $result = $conn->query($sql);
 //compare the time we just got to a time variable like NOW()/timeofdy;
 //insert into availability table
-    $statement = $conn->prepare($avail_insert);
+    $statement = $conn->prepare($sql);
     $params = array(
         'dayofwk' => $dayofwk,
         'lastup' => $last_update,
