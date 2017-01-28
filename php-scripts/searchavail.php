@@ -35,8 +35,8 @@ echo $locations;
 echo "test";
 
 while ($row = mysqli_fetch_assoc($result)) {
-    $loactions[] = $row;
-    echo $row;
+    $row["NUMBER"] = $number;
+    echo $number;
 }
 mysqli_close($conn);
 ?>
