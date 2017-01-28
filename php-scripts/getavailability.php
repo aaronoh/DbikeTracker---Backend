@@ -47,7 +47,7 @@ $dbikeinfo = json_decode($contents, true);
         <form method="post" action="searchavail.php">
             Select a time:
             <select name="time"></input>
-                <option name=""now><?php strtotime('now') ?></option>
+                <option name="now"><?php strtotime('now') ?></option>
                 <option name="1">07:00:00</option>
                 <option name="2">10:00:00</option>
                 <option name="3">13:00:00</option>
@@ -56,10 +56,14 @@ $dbikeinfo = json_decode($contents, true);
             <br>
             Select a date:
             <select name="date"></input>
-                <option name="day1">2017-02-01</option>
-                <option name="day2">2017-02-14</option>
-                <option name="day3">2017-02-28</option>
-                <option name="day4">2017-03-01</option>
+                <option name="day1"><?php $date0=date_create("2017-02-01");
+echo date_format($date,"w"); ?></option>
+                <option name="day2"><?php $date1=date_create("2017-02-14");
+echo date_format($date,"w"); ?></option>
+                <option name="day3"><?php $date2=date_create("2017-02-28");
+echo date_format($date,"w"); ?></option>
+                <option name="day4"><?php $date3=date_create("2017-03-01");
+echo date_format($date,"w"); ?></option>
             </select>
             <br>
             Select a station number:
