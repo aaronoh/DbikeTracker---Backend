@@ -47,7 +47,7 @@ if ($result->num_rows > 0) {
 } else {
     echo "0 results";
 }
-echo json_decode($result);
+echo json_decode($row);
 //$data = array();
 //$sql = "SELECT number, avail_bikes, avail_slots FROM availability_new WHERE DAYOFWK = '$intofwk' AND LAST_UPDATE = '$time' AND NUMBER = '$stat_id'";
 //$query = mysqli_query($conn, $sql);
