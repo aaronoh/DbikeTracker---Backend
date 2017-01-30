@@ -30,7 +30,7 @@ $dayofwk = $_POST['date'];
 //echo $dayofwk;
 $intofwk = date_format($dayofwk, 'w');
 echo $dayofwk . " ";
-$stat_id = $_POST['stat_num'];
+$stat_id = $_POST['statnum'];
 echo $stat_id . " ";
 
 
