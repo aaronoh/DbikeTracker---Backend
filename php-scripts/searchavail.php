@@ -34,19 +34,19 @@ $stat_id = $_POST['stat_id'];
 echo $stat_id . "\n";
 
 
-////$sql = "SELECT number, avail_bikes, avail_slots FROM availability_new WHERE DAYOFWK = '$intofwk' AND LAST_UPDATE = '$time' AND NUMBER = '$stat_id'";
-////$result = $conn->query($sql);
-//
-////if ($result->num_rows > 0) {
-////    echo "<table><tr><th>num</th><th>avail_bikes</th><th>avail_slots</th></tr>";
-////    // output data of each row
-////    while($row = $result->fetch_assoc()) {
-////        echo "<tr><td>".$row["number"]."</td><td>".$row["avail_bikes"]."</td><td>".$row["avail_slots"]."</td></tr>";
-////    }
-////    echo "</table>";
-////} else {
-////    echo "0 results";
-//}
+$sql = "SELECT number, avail_bikes, avail_slots FROM availability_new WHERE DAYOFWK = '$intofwk' AND LAST_UPDATE = '$time' AND NUMBER = '$stat_id'";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    echo "<table><tr><th>num</th><th>avail_bikes</th><th>avail_slots</th></tr>";
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "<tr><td>".$row["number"]."</td><td>".$row["avail_bikes"]."</td><td>".$row["avail_slots"]."</td></tr>";
+    }
+    echo "</table>";
+} else {
+    echo "0 results";
+}
 //$data = array();
 //$sql = "SELECT number, avail_bikes, avail_slots FROM availability_new WHERE DAYOFWK = '$intofwk' AND LAST_UPDATE = '$time' AND NUMBER = '$stat_id'";
 //$query = mysqli_query($conn, $sql);
