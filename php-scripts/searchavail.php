@@ -24,19 +24,20 @@ if ($conn->connect_error) {
 }
 echo "Connected successfully" . "<br>";
 $time = $_POST['time'];
-echo $time . "\n";
+echo $time . " ";
 //$_POST['date']->format('Y-m-d'); // output = 2017-01-01
 $dayofwk = $_POST['date'];
 //echo $dayofwk;
 $intofwk = date_format($dayofwk, 'w');
-echo $intofwk . "\n";
+echo $dayofwk . " ";
 $stat_id = $_POST['stat_id'];
-echo $stat_id . "\n";
+echo $stat_id . " ";
 
 
 $sql = "SELECT number, avail_bikes, avail_slots FROM availability_new WHERE DAYOFWK = '$intofwk' AND LAST_UPDATE = '$time' AND NUMBER = '$stat_id'";
 $result = $conn->query($sql);
 
+echo $sql;
 if ($result->num_rows > 0) {
     echo "<table><tr><th>num</th><th>avail_bikes</th><th>avail_slots</th></tr>";
     // output data of each row
