@@ -33,7 +33,7 @@ $stat_id = $_POST['statnum'];
 echo $stat_id . " ";
 
 
-$sql = "SELECT number, avail_bikes, avail_slots FROM availability_new WHERE DAYOFWK = '$intofwk' AND LAST_UPDATE = '$time' AND NUMBER = '$stat_id'";
+$sql = "SELECT number, avail_bikes, avail_slots FROM availability_new WHERE DAYOFWK = '$dayofwk' AND LAST_UPDATE = '$time' AND NUMBER = '$stat_id'";
 $result = $conn->query($sql);
 
 echo $sql;
