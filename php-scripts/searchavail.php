@@ -28,12 +28,12 @@ echo $time;
 //$_POST['date']->format('Y-m-d'); // output = 2017-01-01
 $dayofwk = $_POST['date'];
 echo $dayofwk;
-$dayofwk = date('w');
+$intofwk = date('w');
 $stat_id = $_POST['stat_id'];
 echo $stat_id;
 
 
-$sql = "SELECT number, avail_bikes, avail_slots FROM availability_new WHERE DAYOFWK = '$dayofwk' AND LAST_UPDATE = '$time' AND NUMBER = '$stat_id'";
+$sql = "SELECT number, avail_bikes, avail_slots FROM availability_new WHERE DAYOFWK = '$intofwk' AND LAST_UPDATE = '$time' AND NUMBER = '$stat_id'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
