@@ -62,7 +62,7 @@ echo date_format($date0,"w"); ?></option>
 echo date_format($date1,"w"); ?></option>
                 <option name="day3"><?php $date2=date_create("2017-03-01");
 echo date_format($date2,"w"); ?></option>
-                <option name="day4"><?php $date3=date_create("2017-03-02");
+                <option name="day4"><?php $date3=date_create("2017-03-03");
 echo date_format($date3,"w"); ?></option>
             </select>
             <br>

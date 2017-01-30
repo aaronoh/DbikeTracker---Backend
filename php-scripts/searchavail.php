@@ -24,12 +24,12 @@ if ($conn->connect_error) {
 }
 echo "Connected successfully" . "<br>";
 $time = $_POST['time'];
-echo $time . "<br>";
+echo $time;
 //$_POST['date']->format('Y-m-d'); // output = 2017-01-01
 $dayofwk = $_POST['date'];
-echo $dayofwk . "<br>";
+echo $dayofwk;
 $stat_id = $_POST['stat_id'];
-echo $stat_id . "<br>";
+echo $stat_id;
 
 
 $sql = "SELECT number, avail_bikes, avail_slots FROM availability_new WHERE DAYOFWK = '$dayofwk' AND LAST_UPDATE = '$time' AND NUMBER = '$stat_id'";
