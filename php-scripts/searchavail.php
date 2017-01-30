@@ -24,13 +24,14 @@ if ($conn->connect_error) {
 }
 echo "Connected successfully" . "<br>";
 $time = $_POST['time'];
-echo $time;
+echo $time . "\n";
 //$_POST['date']->format('Y-m-d'); // output = 2017-01-01
 $dayofwk = $_POST['date'];
 //echo $dayofwk;
 $intofwk = date_format($dayofwk, 'w');
+echo $intofwk . "\n";
 $stat_id = $_POST['stat_id'];
-echo $stat_id;
+echo $stat_id . "\n";
 
 
 ////$sql = "SELECT number, avail_bikes, avail_slots FROM availability_new WHERE DAYOFWK = '$intofwk' AND LAST_UPDATE = '$time' AND NUMBER = '$stat_id'";
@@ -46,12 +47,12 @@ echo $stat_id;
 ////} else {
 ////    echo "0 results";
 //}
-$data = array();
-$sql = "SELECT number, avail_bikes, avail_slots FROM availability_new WHERE DAYOFWK = '$intofwk' AND LAST_UPDATE = '$time' AND NUMBER = '$stat_id'";
-$query = mysqli_query($conn, $sql);
-while($row= mysqli_fetch_object($query)){
-    $data[]=$row;
-}
-echo json_encode($data);
-//$conn->close();
+//$data = array();
+//$sql = "SELECT number, avail_bikes, avail_slots FROM availability_new WHERE DAYOFWK = '$intofwk' AND LAST_UPDATE = '$time' AND NUMBER = '$stat_id'";
+//$query = mysqli_query($conn, $sql);
+//while($row= mysqli_fetch_object($query)){
+//    $data[]=$row;
+//}
+//echo json_encode($data);
+$conn->close();
 ?>
