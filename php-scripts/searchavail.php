@@ -53,5 +53,5 @@ while($row= mysqli_fetch_object($query)){
     $data[]=$row;
 }
 echo json_encode($data);
-$conn->close();
+//$conn->close();
 ?>
