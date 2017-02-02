@@ -39,13 +39,14 @@ $result = $conn->query($sql);
 
 echo $sql . "\n";
 if ($result->num_rows > 0) {
+    $bikes = array();
     // output data of each row
     while ($row = $result->fetch_assoc()) {
 //        echo $row["avail_bikes"] . "\n";
 //        echo $row['avail_slots'] . "\n";
 
-        $bikes = array();
-        array_push($bikes, $row['avail_bikes']);
+        
+        //array_push($bikes, $row['avail_bikes']);
         print_r($bikes);
 
 
