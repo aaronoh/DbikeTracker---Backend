@@ -43,21 +43,21 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
 //        echo $row["avail_bikes"] . "\n";
 //        echo $row['avail_slots'] . "\n";
-        $row["avail_bikes"];
-        print_r(count($row["avail_bikes"]));
+//        $row["avail_bikes"];
+//        print_r(count($row["avail_bikes"]));
 
         
 //            $array = join($row['avail_bikes']);
 //            echo "joined array " . $array;
 
-//            print("Unsorted array:<br/>");
-//            print_r($bikes);
-//            arsort($bikes);
-//            print("<br/>");
-//            print("Sorted array:<br/>");
-//            print_r($bikes);
-//            print("<br/>");
-//            
+            print("Unsorted array:<br/>");
+            print_r($row['avail_slots']);
+            arsort($row['avail_slots']);
+            print("<br/>");
+            print("Sorted array:<br/>");
+            print_r($row['avail_slots']);
+            print("<br/>");
+            
 //            $i = 0;
             echo count($row["avail_bikes"]);
             
