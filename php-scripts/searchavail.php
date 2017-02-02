@@ -74,6 +74,6 @@ function mypercentile($data, $percentile) {
     }
     return $percentile_res;
 }
-mypercentile($data, $percentile);
+//mypercentile($data, $percentile);
 $conn->close();
 ?>
