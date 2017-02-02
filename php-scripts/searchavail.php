@@ -48,7 +48,7 @@ if ($result->num_rows > 0) {
         
         array_push($bikes, $row['avail_bikes']);
         
-
+print_r($bikes);
 
 
 //        $array = join($row['avail_bikes']);
