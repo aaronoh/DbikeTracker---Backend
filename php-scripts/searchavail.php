@@ -57,8 +57,7 @@ if ($result->num_rows > 0) {
             print("<br/>");
             
             $i = 0;
-            $total = count($bikes);
-            echo $total;
+            echo count($bikes);
             
         }
 
