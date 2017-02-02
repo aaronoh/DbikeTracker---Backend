@@ -45,15 +45,8 @@ if ($result->num_rows > 0) {
 //        echo $row['avail_slots'] . "\n";
         
         $bikes = array();
-        $row["avail_bikes"];
-        
-        $merged = array_merge($bikes, $row['avail_bikes']);
-        echo $merged;
-
-        
-//            
-//            $i = 0;
-            echo count($row["avail_bikes"]);
+        array_push($bikes, $row['avail_bikes']);
+        echo $bikes;
             
         
 //        $array = join($row['avail_bikes']);
