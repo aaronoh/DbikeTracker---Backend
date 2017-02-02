@@ -38,12 +38,14 @@ $result = $conn->query($sql);
 
 echo $sql;
 if ($result->num_rows > 0) {
-    echo "<table><tr><th>num</th><th>avail_bikes</th><th>avail_slots</th></tr>";
+//    echo "<table><tr><th>num</th><th>avail_bikes</th><th>avail_slots</th></tr>";
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo "<tr><td>".$row["number"]."</td><td>".$row["avail_bikes"]."</td><td>".$row["avail_slots"]."</td></tr>";
+//        echo "<tr><td>".$row["number"]."</td><td>".$row["avail_bikes"]."</td><td>".$row["avail_slots"]."</td></tr>";
+        echo $row["avail_bikes"];
+        echo $row['avail_slots'];
     }
-    echo "</table>";
+//    echo "</table>";
 } else {
     echo "0 results";
 }
