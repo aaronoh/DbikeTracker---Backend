@@ -35,48 +35,16 @@ echo $stat_id . " ";
 
 $sql = "SELECT number, avail_bikes, avail_slots FROM availability_new WHERE DAYOFWK = '$dayofwk' AND LAST_UPDATE = '$time' AND NUMBER = '$stat_id'";
 $result = $conn->query($sql);
-$row = $result->fetch_array(MYSQLI_ASSOC);
 
 
 echo $sql . "\n";
 if ($result->num_rows > 0) {
-    printf("%i\n", $row['avail_bikes']);
     // output data of each row
-//    while ($row = $result->fetch_assoc()) {
-//        echo $row["avail_bikes"] . "\n";
-//        echo $row['avail_slots'] . "\n";
+    while ($row = $result->fetch_assoc()) {
+        echo $row["avail_bikes"] . "\n";
+        echo $row['avail_slots'] . "\n";
         
-//        $array = $row;
-//        print("Unsorted array:<br/>");
-//        print_r($array);
-//        arsort($array);
-//        print("<br/>");
-//        print("Sorted array:<br/>");
-//        print_r($array);
-//        print("<br/>");
-//
-//        $i = 0;
-//        $total = count($array);
-//        $percentiles = array();
-//        $previousValue = -1;
-//        $previousPercentile = -1;
-//        foreach ($array as $key => $value) {
-//            echo "\$array[$key] => $value";
-//            if ($previousValue == $value) {
-//                $percentile = $previousPercentile;
-//            } else {
-//                $percentile = 99 - $i * 100 / $total;
-//                $previousPercentile = $percentile;
-//            }
-//            $percentiles[$key] = $percentile;
-//            $previousValue = $value;
-//            $i++;
-//        }
-//
-//        print("Percentiles:<br/>");
-//        print_r($percentiles);
-//        print("<br/>");
-//    }
+    }
 } else {
     echo "0 results";
 }
