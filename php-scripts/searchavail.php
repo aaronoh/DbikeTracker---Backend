@@ -44,7 +44,7 @@ if ($result->num_rows > 0) {
 //        echo $row["avail_bikes"] . "\n";
 //        echo $row['avail_slots'] . "\n";
         $bikes = $row["avail_bikes"];
-        echo $bikes;
+        print_r(count($bike));
 
         
 //            $array = join($row['avail_bikes']);
