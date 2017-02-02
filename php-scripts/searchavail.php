@@ -47,7 +47,7 @@ if ($result->num_rows > 0) {
     echo "0 results";
 }
 
-$data = $row['avail_bikes'];
+$data = $result['avail_bikes'];
 
 function mypercentile($data, $percentile) {
     if (0 < $percentile && $percentile < 1) {
@@ -65,16 +65,15 @@ function mypercentile($data, $percentile) {
     if (!is_float($floatval)) {
         $percentile_res = $data[$intvalindex];
     } else {
-        if ($count > $intvalindex + 1) {
+        if ($count > $intvalindex + 1){ 
             $percentile_res = $floatval * ($data[$intvalindex + 1] - $data[$intvalindex]) + $data[$intvalindex];
-        } else {
+        }
+        else {
             $percentile_res = $data[$intvalindex];
         }
     }
-    echo "Percentile result " . $percentile_res;
     return $percentile_res;
-    
 }
-        mypercentile($data, $percentile);
+mypercentile($data, $percentile);
 $conn->close();
 ?>
