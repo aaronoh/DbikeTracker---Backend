@@ -42,8 +42,8 @@ if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
 //        echo "<tr><td>".$row["number"]."</td><td>".$row["avail_bikes"]."</td><td>".$row["avail_slots"]."</td></tr>";
-        echo $row["avail_bikes"];
-        echo $row['avail_slots'];
+        echo $row["avail_bikes"] . "\n";
+        echo $row['avail_slots'] . "\n";
     }
 //    echo "</table>";
 } else {
