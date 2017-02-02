@@ -43,7 +43,35 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo $row["avail_bikes"] . "\n";
         echo $row['avail_slots'] . "\n";
-        
+        print("Unsorted array:<br/>");
+        print_r($row);
+        arsort($row);
+        print("<br/>");
+        print("Sorted array:<br/>");
+        print_r($row);
+        print("<br/>");
+
+        $i = 0;
+        $total = count($row);
+        $percentiles = array();
+        $previousValue = -1;
+        $previousPercentile = -1;
+        foreach ($array as $key => $value) {
+            echo "\$array[$key] => $value";
+            if ($previousValue == $value) {
+                $percentile = $previousPercentile;
+            } else {
+                $percentile = 99 - $i * 100 / $total;
+                $previousPercentile = $percentile;
+            }
+            $percentiles[$key] = $percentile;
+            $previousValue = $value;
+            $i++;
+        }
+
+        print("Percentiles:<br/>");
+        print_r($percentiles);
+        print("<br/>");
     }
 } else {
     echo "0 results";
