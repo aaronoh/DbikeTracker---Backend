@@ -55,6 +55,11 @@ if ($result->num_rows > 0) {
             print("Sorted array:<br/>");
             print_r($bikes);
             print("<br/>");
+            
+            $i = 0;
+            $total = count($bikes);
+            echo $total;
+            
         }
 
 //        $array = join($row['avail_bikes']);
