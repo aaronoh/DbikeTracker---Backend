@@ -56,8 +56,8 @@ if ($result->num_rows > 0) {
         $percentiles = array();
         $previousValue = -1;
         $previousPercentile = -1;
-        foreach ($array as $key => $value) {
-            echo "\$array[$key] => $value";
+        foreach ($row as $key => $value) {
+            echo "\$row[$key] => $value";
             if ($previousValue == $value) {
                 $percentile = $previousPercentile;
             } else {
