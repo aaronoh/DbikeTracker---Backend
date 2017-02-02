@@ -35,6 +35,9 @@ echo $stat_id . " ";
 
 $sql = "SELECT number, avail_bikes, avail_slots FROM availability_new WHERE DAYOFWK = '$dayofwk' AND LAST_UPDATE = '$time' AND NUMBER = '$stat_id'";
 $result = $conn->query($sql);
+$data = $result['avail_bikes'];
+
+echo $data;
 
 echo $sql . "\n";
 if ($result->num_rows > 0) {
@@ -47,7 +50,7 @@ if ($result->num_rows > 0) {
     echo "0 results";
 }
 
-//$data = $result['avail_bikes'];
+
 
 //function mypercentile($data, $percentile) {
 //    if (0 < $percentile && $percentile < 1) {
