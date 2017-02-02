@@ -48,8 +48,8 @@ if ($result->num_rows > 0) {
 //        array_push($bikes, $row['avail_bikes']);
 
 
-        for ($x = 1; $x <= $row['avail_bikes']; $x++) {
-            $bikes[] = $x;
+        while($bikes > $row['avail_bikes']) {
+            $bikes[] = $row['avail_bikes'];
         }
         print_r($bikes);
 
