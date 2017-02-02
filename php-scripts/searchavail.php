@@ -44,38 +44,40 @@ if ($result->num_rows > 0) {
         echo $row["avail_bikes"] . "\n";
 //        echo $row['avail_slots'] . "\n";
         
-        $array = join($row['avail_bikes']);
-        echo "joined array " . $array;
+        echo gettype($row);
         
-        print("Unsorted array:<br/>");
-        print_r($array);
-        arsort($array);
-        print("<br/>");
-        print("Sorted array:<br/>");
-        print_r($array);
-        print("<br/>");
-
-        $i = 0;
-        $total = count($array);
-        $percentiles = array();
-        $previousValue = -1;
-        $previousPercentile = -1;
-        foreach ($array as $key => $value) {
-            echo "\$array[$key] => $value";
-            if ($previousValue == $value) {
-                $percentile = $previousPercentile;
-            } else {
-                $percentile = 99 - $i * 100 / $total;
-                $previousPercentile = $percentile;
-            }
-            $percentiles[$key] = $percentile;
-            $previousValue = $value;
-            $i++;
-        }
-
-        print("Percentiles:<br/>");
-        print_r($percentiles);
-        print("<br/>");
+//        $array = join($row['avail_bikes']);
+//        echo "joined array " . $array;
+        
+//        print("Unsorted array:<br/>");
+//        print_r($array);
+//        arsort($array);
+//        print("<br/>");
+//        print("Sorted array:<br/>");
+//        print_r($array);
+//        print("<br/>");
+//
+//        $i = 0;
+//        $total = count($array);
+//        $percentiles = array();
+//        $previousValue = -1;
+//        $previousPercentile = -1;
+//        foreach ($array as $key => $value) {
+//            echo "\$array[$key] => $value";
+//            if ($previousValue == $value) {
+//                $percentile = $previousPercentile;
+//            } else {
+//                $percentile = 99 - $i * 100 / $total;
+//                $previousPercentile = $percentile;
+//            }
+//            $percentiles[$key] = $percentile;
+//            $previousValue = $value;
+//            $i++;
+//        }
+//
+//        print("Percentiles:<br/>");
+//        print_r($percentiles);
+//        print("<br/>");
     }
 } else {
     echo "0 results";
