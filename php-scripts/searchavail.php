@@ -47,35 +47,35 @@ if ($result->num_rows > 0) {
         $array = join($row['avail_bikes']);
         echo "joined array " . $array;
         
-//        print("Unsorted array:<br/>");
-//        print_r($row["avail_bikes"]);
-//        arsort($row["avail_bikes"]);
-//        print("<br/>");
-//        print("Sorted array:<br/>");
-//        print_r($row["avail_bikes"]);
-//        print("<br/>");
-//
-//        $i = 0;
-//        $total = count($row["avail_bikes"]);
-//        $percentiles = array();
-//        $previousValue = -1;
-//        $previousPercentile = -1;
-//        foreach ($row["avail_bikes"] as $key => $value) {
-//            echo "\$row[$key] => $value";
-//            if ($previousValue == $value) {
-//                $percentile = $previousPercentile;
-//            } else {
-//                $percentile = 99 - $i * 100 / $total;
-//                $previousPercentile = $percentile;
-//            }
-//            $percentiles[$key] = $percentile;
-//            $previousValue = $value;
-//            $i++;
-//        }
-//
-//        print("Percentiles:<br/>");
-//        print_r($percentiles);
-//        print("<br/>");
+        print("Unsorted array:<br/>");
+        print_r($array);
+        arsort($array);
+        print("<br/>");
+        print("Sorted array:<br/>");
+        print_r($array);
+        print("<br/>");
+
+        $i = 0;
+        $total = count($array);
+        $percentiles = array();
+        $previousValue = -1;
+        $previousPercentile = -1;
+        foreach ($array as $key => $value) {
+            echo "\$array[$key] => $value";
+            if ($previousValue == $value) {
+                $percentile = $previousPercentile;
+            } else {
+                $percentile = 99 - $i * 100 / $total;
+                $previousPercentile = $percentile;
+            }
+            $percentiles[$key] = $percentile;
+            $previousValue = $value;
+            $i++;
+        }
+
+        print("Percentiles:<br/>");
+        print_r($percentiles);
+        print("<br/>");
     }
 } else {
     echo "0 results";
