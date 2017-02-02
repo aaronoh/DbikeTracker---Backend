@@ -43,6 +43,9 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo $row["avail_bikes"] . "\n";
         echo $row['avail_slots'] . "\n";
+        
+        echo join('<br>', $row['avail_bikes']);
+        
         print("Unsorted array:<br/>");
         print_r($row["avail_bikes"]);
         arsort($row["avail_bikes"]);
