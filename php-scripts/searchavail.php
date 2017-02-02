@@ -43,17 +43,17 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo $row["avail_bikes"] . "\n";
         echo $row['avail_slots'] . "\n";
-
+        $array = $row['avail_bikes'];
         print("Unsorted array:<br/>");
-        print_r($row["avail_bikes"]);
-        arsort($row["avail_bikes"]);
+        print_r($array);
+        arsort($array);
         print("<br/>");
         print("Sorted array:<br/>");
-        print_r($row["avail_bikes"]);
+        print_r($array);
         print("<br/>");
 
         $i = 0;
-        $total = count($row["avail_bikes"]);
+        $total = count($array);
         $percentiles = array();
         $previousValue = -1;
         $previousPercentile = -1;
