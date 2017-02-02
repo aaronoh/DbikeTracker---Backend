@@ -36,7 +36,7 @@ echo $stat_id . " ";
 $sql = "SELECT number, avail_bikes, avail_slots FROM availability_new WHERE DAYOFWK = '$dayofwk' AND LAST_UPDATE = '$time' AND NUMBER = '$stat_id'";
 $result = $conn->query($sql);
 
-echo $sql;
+echo $sql . "\n";
 if ($result->num_rows > 0) {
 //    echo "<table><tr><th>num</th><th>avail_bikes</th><th>avail_slots</th></tr>";
     // output data of each row
