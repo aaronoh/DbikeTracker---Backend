@@ -43,7 +43,7 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo $row["avail_bikes"] . "\n";
         echo $row['avail_slots'] . "\n";
-
+    }
 } else {
     echo "0 results";
 }
