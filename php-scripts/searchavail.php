@@ -35,9 +35,7 @@ echo $stat_id . " ";
 
 $sql = "SELECT number, avail_bikes, avail_slots FROM availability_new WHERE DAYOFWK = '$dayofwk' AND LAST_UPDATE = '$time' AND NUMBER = '$stat_id'";
 $result = $conn->query($sql);
-$data = $result['avail_bikes'];
 
-echo $data;
 
 echo $sql . "\n";
 if ($result->num_rows > 0) {
@@ -45,6 +43,29 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo $row["avail_bikes"] . "\n";
         echo $row['avail_slots'] . "\n";
+
+        if (0 < $percentile && $percentile < 1) {
+            $p = $percentile;
+        } else if (1 < $percentile && $percentile <= 100) {
+            $p = $percentile * .01;
+        } else {
+            return "";
+        }
+        $count = count($data);
+        $allindex = ($count - 1) * $p;
+        $intvalindex = intval($allindex);
+        $floatval = $allindex - $intvalindex;
+        sort($data);
+        if (!is_float($floatval)) {
+            $percentile_res = $data[$intvalindex];
+        } else {
+            if ($count > $intvalindex + 1) {
+                $percentile_res = $floatval * ($data[$intvalindex + 1] - $data[$intvalindex]) + $data[$intvalindex];
+            } else {
+                $percentile_res = $data[$intvalindex];
+            }
+        }
+        return $percentile_res;
     }
 } else {
     echo "0 results";
