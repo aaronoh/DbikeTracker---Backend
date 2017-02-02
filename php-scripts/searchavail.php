@@ -43,8 +43,8 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
 //        echo $row["avail_bikes"] . "\n";
 //        echo $row['avail_slots'] . "\n";
-        $bikes = $row["avail_bikes"];
-        print_r(count($bike));
+        $row["avail_bikes"];
+        print_r(count($row["avail_bikes"]));
 
         
 //            $array = join($row['avail_bikes']);
