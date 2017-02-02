@@ -44,7 +44,7 @@ if ($result->num_rows > 0) {
         echo $row["avail_bikes"] . "\n";
 //        echo $row['avail_slots'] . "\n";
         
-        $array = join('<br>', $row['avail_bikes']);
+        $array = join($row['avail_bikes']);
         echo "joined array " . $array;
         
 //        print("Unsorted array:<br/>");
