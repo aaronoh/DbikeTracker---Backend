@@ -41,11 +41,11 @@ echo $sql . "\n";
 if ($result->num_rows > 0) {
     // output data of each row
     while ($row = $result->fetch_assoc()) {
-//        echo $row["avail_bikes"] . "\n";
+        echo $row["avail_bikes"] . "\n";
 //        echo $row['avail_slots'] . "\n";
         
         $array = join('<br>', $row['avail_bikes']);
-        echo "joined array " .$array;
+        echo "joined array " . $array;
         
 //        print("Unsorted array:<br/>");
 //        print_r($row["avail_bikes"]);
