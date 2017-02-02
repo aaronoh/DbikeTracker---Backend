@@ -44,19 +44,19 @@ if ($result->num_rows > 0) {
         echo $row["avail_bikes"] . "\n";
         echo $row['avail_slots'] . "\n";
         print("Unsorted array:<br/>");
-        print_r($row);
-        arsort($row);
+        print_r($row["avail_bikes"]);
+        arsort($row["avail_bikes"]);
         print("<br/>");
         print("Sorted array:<br/>");
         print_r($row);
         print("<br/>");
 
         $i = 0;
-        $total = count($row);
+        $total = count($row["avail_bikes"]);
         $percentiles = array();
         $previousValue = -1;
         $previousPercentile = -1;
-        foreach ($row as $key => $value) {
+        foreach ($row["avail_bikes"] as $key => $value) {
             echo "\$row[$key] => $value";
             if ($previousValue == $value) {
                 $percentile = $previousPercentile;
