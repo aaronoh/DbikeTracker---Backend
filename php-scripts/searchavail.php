@@ -45,13 +45,10 @@ if ($result->num_rows > 0) {
 //        echo $row['avail_slots'] . "\n";
 
         $bikes = array();
-//        array_push($bikes, $row['avail_bikes']);
-
-
-        while($bikes > $row['avail_bikes']) {
-            $bikes[] = $row['avail_bikes'];
-        }
+        array_push($bikes, $row['avail_bikes']);
         print_r($bikes);
+
+
 
 //        $array = join($row['avail_bikes']);
 //        echo "joined array " . $array;
