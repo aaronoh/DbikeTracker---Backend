@@ -88,32 +88,31 @@ if ($result->num_rows > 0) {
 }
 print_r($bikes);
 
-
-//function mypercentile($data, $percentile) {
-//    if (0 < $percentile && $percentile < 1) {
-//        $p = $percentile;
-//    } else if (1 < $percentile && $percentile <= 100) {
-//        $p = $percentile * .01;
-//    } else {
-//        return "";
-//    }
-//    $count = count($data);
-//    $allindex = ($count - 1) * $p;
-//    $intvalindex = intval($allindex);
-//    $floatval = $allindex - $intvalindex;
-//    sort($data);
-//    if (!is_float($floatval)) {
-//        $percentile_res = $data[$intvalindex];
-//    } else {
-//        if ($count > $intvalindex + 1){ 
-//            $percentile_res = $floatval * ($data[$intvalindex + 1] - $data[$intvalindex]) + $data[$intvalindex];
-//        }
-//        else {
-//            $percentile_res = $data[$intvalindex];
-//        }
-//    }
-//    return $percentile_res;
-//}
-//mypercentile($data, $percentile);
+function mypercentile($bikes, $percentile) {
+    if (0 < $percentile && $percentile < 1) {
+        $p = $percentile;
+    } else if (1 < $percentile && $percentile <= 100) {
+        $p = $percentile * .01;
+    } else {
+        return "";
+    }
+    $count = count($bikes);
+    $allindex = ($count - 1) * $p;
+    $intvalindex = intval($allindex);
+    $floatval = $allindex - $intvalindex;
+    sort($bikes);
+    if (!is_float($floatval)) {
+        $percentile_res = $bikes[$intvalindex];
+    } else {
+        if ($count > $intvalindex + 1){ 
+            $percentile_res = $floatval * ($bikes[$intvalindex + 1] - $bikes[$intvalindex]) + $bikes[$intvalindex];
+        }
+        else {
+            $percentile_res = $bikes[$intvalindex];
+        }
+    }
+    return $percentile_res;
+}
+mypercentile($bikes, $percentile);
 $conn->close();
 ?>
