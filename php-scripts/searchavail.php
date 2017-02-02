@@ -41,10 +41,12 @@ echo $sql . "\n";
 if ($result->num_rows > 0) {
     // output data of each row
     while ($row = $result->fetch_assoc()) {
-        echo $row["avail_bikes"] . "\n";
+//        echo $row["avail_bikes"] . "\n";
 //        echo $row['avail_slots'] . "\n";
+        $bikes = $row["avail_bikes"];
+        echo $bikes;
 
-        foreach ($row['avail_bikes'] as $bikes) {
+        
 //            $array = join($row['avail_bikes']);
 //            echo "joined array " . $array;
 
@@ -59,8 +61,7 @@ if ($result->num_rows > 0) {
             $i = 0;
             echo count($bikes);
             
-        }
-
+        
 //        $array = join($row['avail_bikes']);
 //        echo "joined array " . $array;
 //        print("Unsorted array:<br/>");
