@@ -113,6 +113,6 @@ function mypercentile($bikes, $percentile) {
     }
     return $percentile_res;
 }
-mypercentile($bikes, $percentile);
+echo mypercentile($bikes, $percentile);
 $conn->close();
 ?>
