@@ -50,16 +50,16 @@ if ($result->num_rows > 0) {
 //            $array = join($row['avail_bikes']);
 //            echo "joined array " . $array;
 
-            print("Unsorted array:<br/>");
-            print_r($bikes);
-            arsort($bikes);
-            print("<br/>");
-            print("Sorted array:<br/>");
-            print_r($bikes);
-            print("<br/>");
-            
-            $i = 0;
-            echo count($bikes);
+//            print("Unsorted array:<br/>");
+//            print_r($bikes);
+//            arsort($bikes);
+//            print("<br/>");
+//            print("Sorted array:<br/>");
+//            print_r($bikes);
+//            print("<br/>");
+//            
+//            $i = 0;
+            echo count($row["avail_bikes"]);
             
         
 //        $array = join($row['avail_bikes']);
