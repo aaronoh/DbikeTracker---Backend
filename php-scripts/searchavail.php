@@ -51,7 +51,7 @@ if ($result->num_rows > 0) {
         arsort($row["avail_bikes"]);
         print("<br/>");
         print("Sorted array:<br/>");
-        print_r($row);
+        print_r($row["avail_bikes"]);
         print("<br/>");
 
         $i = 0;
