@@ -48,7 +48,7 @@ if ($result->num_rows > 0) {
         $row["avail_bikes"];
         
         $merged = array_merge($bikes, $row['avail_bikes']);
-        print_r(count($merged));
+        echo $merged;
 
         
 //            
