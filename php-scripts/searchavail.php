@@ -47,7 +47,7 @@ if ($result->num_rows > 0) {
 
         
         array_push($bikes, $row['avail_bikes']);
-        print_r($bikes);
+        
 
 
 
@@ -86,7 +86,7 @@ if ($result->num_rows > 0) {
 } else {
     echo "0 results";
 }
-
+print_r($bikes);
 
 
 //function mypercentile($data, $percentile) {
