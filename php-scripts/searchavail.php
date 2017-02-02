@@ -46,7 +46,7 @@ if ($result->num_rows > 0) {
 //        echo $row['avail_slots'] . "\n";
 
         
-        //array_push($bikes, $row['avail_bikes']);
+        array_push($bikes, $row['avail_bikes']);
         print_r($bikes);
 
 
