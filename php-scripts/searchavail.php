@@ -44,7 +44,7 @@ if ($result->num_rows > 0) {
         echo $row["avail_bikes"] . "\n";
 //        echo $row['avail_slots'] . "\n";
         
-        echo gettype($row);
+        echo gettype($row["avail_bikes"]);
         
 //        $array = join($row['avail_bikes']);
 //        echo "joined array " . $array;
