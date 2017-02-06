@@ -45,74 +45,31 @@ if ($result->num_rows > 0) {
 //        echo $row["avail_bikes"] . "\n";
 //        echo $row['avail_slots'] . "\n";
 
-        
+
         array_push($bikes, $row['avail_bikes']);
-     
-//print_r($bikes);
-
-
-//        $array = join($row['avail_bikes']);
-//        echo "joined array " . $array;
-//        print("Unsorted array:<br/>");
-//        print_r($array);
-//        arsort($array);
-//        print("<br/>");
-//        print("Sorted array:<br/>");
-//        print_r($array);
-//        print("<br/>");
-//
-//        $i = 0;
-//        $total = count($array);
-//        $percentiles = array();
-//        $previousValue = -1;
-//        $previousPercentile = -1;
-//        foreach ($array as $key => $value) {
-//            echo "\$array[$key] => $value";
-//            if ($previousValue == $value) {
-//                $percentile = $previousPercentile;
-//            } else {
-//                $percentile = 99 - $i * 100 / $total;
-//                $previousPercentile = $percentile;
-//            }
-//            $percentiles[$key] = $percentile;
-//            $previousValue = $value;
-//            $i++;
-//        }
-//
-//        print("Percentiles:<br/>");
-//        print_r($percentiles);
-//        print("<br/>");
     }
 } else {
     echo "0 results";
 }
 print_r($bikes);
-//
-////function mypercentile($bikes, $percentile) {
-////    if (0 < $percentile && $percentile < 1) {
-////        $p = $percentile;
-////    } else if (1 < $percentile && $percentile <= 100) {
-////        $p = $percentile * .01;
-////    } else {
-////        return "";
-////    }
-////    $count = count($bikes);
-////    $allindex = ($count - 1) * $p;
-////    $intvalindex = intval($allindex);
-////    $floatval = $allindex - $intvalindex;
-////    sort($bikes);
-////    if (!is_float($floatval)) {
-////        $percentile_res = $bikes[$intvalindex];
-////    } else {
-////        if ($count > $intvalindex + 1){ 
-////            $percentile_res = $floatval * ($bikes[$intvalindex + 1] - $bikes[$intvalindex]) + $bikes[$intvalindex];
-////        }
-////        else {
-////            $percentile_res = $bikes[$intvalindex];
-////        }
-////    }
-////    return $percentile_res;
-////}
-////echo mypercentile($bikes, $percentile);
+//function for working out the percentile
+function get_percentile($percentile, $array) {
+    sort($array);
+    $index = ($percentile/100) * count($array);
+    if (floor($index) == $index) {
+         $result = ($array[$index-1] + $array[$index])/2;
+    }
+    else {
+        $result = $array[floor($index)];
+    }
+    return $result;
+}
+
+
+
+echo get_percentile(75, $bikes);
+echo get_percentile(90, $bikes);
+
+
 $conn->close();
 ?>
