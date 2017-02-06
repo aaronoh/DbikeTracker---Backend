@@ -29,7 +29,7 @@ echo $time . " ";
 $date = $_POST['date'];
 $dateNew = new DateTime($date);
 $dayint = $dateNew->format("w");
-echo $dayint . " ";
+echo $date . " ";
 $stat_id = $_POST['statnum'];
 echo $stat_id . " ";
 
