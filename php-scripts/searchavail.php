@@ -28,8 +28,7 @@ echo $time . " ";
 //$_POST['date']->format('Y-m-d'); // output = 2017-01-01
 $dayofwk = date_create($_POST['date']);
 //$dayofwk = date('w');
-$intday = date_format($dayofwk, "w");
-echo $intday . " ";
+echo $dayofwk . " ";
 $stat_id = $_POST['statnum'];
 echo $stat_id . " ";
 
