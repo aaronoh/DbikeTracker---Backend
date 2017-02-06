@@ -67,8 +67,8 @@ function get_percentile($percentile, $bikes) {
 
 
 
-echo get_percentile(75, $bikes);
-echo get_percentile(90, $bikes);
+echo "75th %tile" . get_percentile(75, $bikes) . " ";
+echo "95th %tile" . get_percentile(95, $bikes) . " ";
 
 
 $conn->close();
