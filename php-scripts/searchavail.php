@@ -27,8 +27,9 @@ $time = $_POST['time'];
 echo $time . " ";
 //$_POST['date']->format('Y-m-d'); // output = 2017-01-01
 $date = $_POST['date'];
-$date->format("w");
-echo $date . " ";
+$dateNew = new DateTime($date);
+$dayint = $dateNew->format("w");
+echo $dayint . " ";
 $stat_id = $_POST['statnum'];
 echo $stat_id . " ";
 
