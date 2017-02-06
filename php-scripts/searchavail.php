@@ -26,8 +26,8 @@ echo "Connected successfully" . "<br>";
 $time = $_POST['time'];
 echo $time . " ";
 //$_POST['date']->format('Y-m-d'); // output = 2017-01-01
-$dayofwk = $_POST['date'];
-$dayofwk = date('w');
+$dayofwk = date_create($_POST['date']);
+//$dayofwk = date('w');
 echo $dayofwk . " ";
 $stat_id = $_POST['statnum'];
 echo $stat_id . " ";
@@ -88,31 +88,31 @@ if ($result->num_rows > 0) {
 }
 print_r($bikes);
 
-function mypercentile($bikes, $percentile) {
-    if (0 < $percentile && $percentile < 1) {
-        $p = $percentile;
-    } else if (1 < $percentile && $percentile <= 100) {
-        $p = $percentile * .01;
-    } else {
-        return "";
-    }
-    $count = count($bikes);
-    $allindex = ($count - 1) * $p;
-    $intvalindex = intval($allindex);
-    $floatval = $allindex - $intvalindex;
-    sort($bikes);
-    if (!is_float($floatval)) {
-        $percentile_res = $bikes[$intvalindex];
-    } else {
-        if ($count > $intvalindex + 1){ 
-            $percentile_res = $floatval * ($bikes[$intvalindex + 1] - $bikes[$intvalindex]) + $bikes[$intvalindex];
-        }
-        else {
-            $percentile_res = $bikes[$intvalindex];
-        }
-    }
-    return $percentile_res;
-}
-echo mypercentile($bikes, $percentile);
+//function mypercentile($bikes, $percentile) {
+//    if (0 < $percentile && $percentile < 1) {
+//        $p = $percentile;
+//    } else if (1 < $percentile && $percentile <= 100) {
+//        $p = $percentile * .01;
+//    } else {
+//        return "";
+//    }
+//    $count = count($bikes);
+//    $allindex = ($count - 1) * $p;
+//    $intvalindex = intval($allindex);
+//    $floatval = $allindex - $intvalindex;
+//    sort($bikes);
+//    if (!is_float($floatval)) {
+//        $percentile_res = $bikes[$intvalindex];
+//    } else {
+//        if ($count > $intvalindex + 1){ 
+//            $percentile_res = $floatval * ($bikes[$intvalindex + 1] - $bikes[$intvalindex]) + $bikes[$intvalindex];
+//        }
+//        else {
+//            $percentile_res = $bikes[$intvalindex];
+//        }
+//    }
+//    return $percentile_res;
+//}
+//echo mypercentile($bikes, $percentile);
 $conn->close();
 ?>
