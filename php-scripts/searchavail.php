@@ -27,7 +27,7 @@ $time = $_POST['time'];
 echo $time . " ";
 //$_POST['date']->format('Y-m-d'); // output = 2017-01-01
 $date = date_create($_POST['date']);
-echo date_format($date, 'Y-m-d H:i:s');
+echo date_format($date, "w");
 $stat_id = $_POST['statnum'];
 echo $stat_id . " ";
 
