@@ -33,7 +33,7 @@ $stat_id = $_POST['statnum'];
 echo $stat_id . " ";
 
 
-$sql = "SELECT number, avail_bikes, avail_slots FROM availability_new WHERE DAYOFWK = '$dayofwk' AND LAST_UPDATE = '$time' AND NUMBER = '$stat_id'";
+$sql = "SELECT number, avail_bikes, avail_slots FROM availability_new WHERE DAYOFWK = '$intofwk' AND LAST_UPDATE = '$time' AND NUMBER = '$stat_id'";
 $result = $conn->query($sql);
 
 
@@ -47,45 +47,45 @@ if ($result->num_rows > 0) {
 
         
         array_push($bikes, $row['avail_bikes']);
-        
+     
 print_r($bikes);
+
+
+//        $array = join($row['avail_bikes']);
+//        echo "joined array " . $array;
+//        print("Unsorted array:<br/>");
+//        print_r($array);
+//        arsort($array);
+//        print("<br/>");
+//        print("Sorted array:<br/>");
+//        print_r($array);
+//        print("<br/>");
 //
+//        $i = 0;
+//        $total = count($array);
+//        $percentiles = array();
+//        $previousValue = -1;
+//        $previousPercentile = -1;
+//        foreach ($array as $key => $value) {
+//            echo "\$array[$key] => $value";
+//            if ($previousValue == $value) {
+//                $percentile = $previousPercentile;
+//            } else {
+//                $percentile = 99 - $i * 100 / $total;
+//                $previousPercentile = $percentile;
+//            }
+//            $percentiles[$key] = $percentile;
+//            $previousValue = $value;
+//            $i++;
+//        }
 //
-////        $array = join($row['avail_bikes']);
-////        echo "joined array " . $array;
-////        print("Unsorted array:<br/>");
-////        print_r($array);
-////        arsort($array);
-////        print("<br/>");
-////        print("Sorted array:<br/>");
-////        print_r($array);
-////        print("<br/>");
-////
-////        $i = 0;
-////        $total = count($array);
-////        $percentiles = array();
-////        $previousValue = -1;
-////        $previousPercentile = -1;
-////        foreach ($array as $key => $value) {
-////            echo "\$array[$key] => $value";
-////            if ($previousValue == $value) {
-////                $percentile = $previousPercentile;
-////            } else {
-////                $percentile = 99 - $i * 100 / $total;
-////                $previousPercentile = $percentile;
-////            }
-////            $percentiles[$key] = $percentile;
-////            $previousValue = $value;
-////            $i++;
-////        }
-////
-////        print("Percentiles:<br/>");
-////        print_r($percentiles);
-////        print("<br/>");
-//    }
-//} else {
-//    echo "0 results";
-//}
+//        print("Percentiles:<br/>");
+//        print_r($percentiles);
+//        print("<br/>");
+    }
+} else {
+    echo "0 results";
+}
 //print_r($bikes);
 //
 ////function mypercentile($bikes, $percentile) {
