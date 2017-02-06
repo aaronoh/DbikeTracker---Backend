@@ -26,8 +26,7 @@ echo "Connected successfully" . "<br>";
 $time = $_POST['time'];
 echo $time . " ";
 //$_POST['date']->format('Y-m-d'); // output = 2017-01-01
-$date = date_create($_POST['date']);
-echo $date . " ";
+$date = $_POST['date'];
 $dayofwk = date_format($date, "w");
 echo $dayofwk . " ";
 $stat_id = $_POST['statnum'];
