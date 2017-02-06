@@ -53,14 +53,14 @@ if ($result->num_rows > 0) {
 }
 print_r($bikes);
 //function for working out the percentile
-function get_percentile($percentile, $array) {
-    sort($array);
-    $index = ($percentile/100) * count($array);
+function get_percentile($percentile, $bikes) {
+    sort($bikes);
+    $index = ($percentile/100) * count($bikes);
     if (floor($index) == $index) {
-         $result = ($array[$index-1] + $array[$index])/2;
+         $result = ($bikes[$index-1] + $bikes[$index])/2;
     }
     else {
-        $result = $array[floor($index)];
+        $result = $bikes[floor($index)];
     }
     return $result;
 }
