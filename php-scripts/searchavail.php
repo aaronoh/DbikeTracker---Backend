@@ -28,92 +28,91 @@ echo $time . " ";
 //$_POST['date']->format('Y-m-d'); // output = 2017-01-01
 $dayofwk = date_create($_POST['date']);
 //$dayofwk = date('w');
-$intday = date_format($dayofwk, "w");
-echo $intday . " ";
+echo date_format($dayofwk, "w");
 $stat_id = $_POST['statnum'];
 echo $stat_id . " ";
 
 
-$sql = "SELECT number, avail_bikes, avail_slots FROM availability_new WHERE DAYOFWK = '$dayofwk' AND LAST_UPDATE = '$time' AND NUMBER = '$stat_id'";
-$result = $conn->query($sql);
-
-
-echo $sql . "\n";
-if ($result->num_rows > 0) {
-    $bikes = array();
-    // output data of each row
-    while ($row = $result->fetch_assoc()) {
-//        echo $row["avail_bikes"] . "\n";
-//        echo $row['avail_slots'] . "\n";
-
-        
-        array_push($bikes, $row['avail_bikes']);
-        
-//print_r($bikes);
-
-
-//        $array = join($row['avail_bikes']);
-//        echo "joined array " . $array;
-//        print("Unsorted array:<br/>");
-//        print_r($array);
-//        arsort($array);
-//        print("<br/>");
-//        print("Sorted array:<br/>");
-//        print_r($array);
-//        print("<br/>");
+//$sql = "SELECT number, avail_bikes, avail_slots FROM availability_new WHERE DAYOFWK = '$dayofwk' AND LAST_UPDATE = '$time' AND NUMBER = '$stat_id'";
+//$result = $conn->query($sql);
 //
-//        $i = 0;
-//        $total = count($array);
-//        $percentiles = array();
-//        $previousValue = -1;
-//        $previousPercentile = -1;
-//        foreach ($array as $key => $value) {
-//            echo "\$array[$key] => $value";
-//            if ($previousValue == $value) {
-//                $percentile = $previousPercentile;
-//            } else {
-//                $percentile = 99 - $i * 100 / $total;
-//                $previousPercentile = $percentile;
-//            }
-//            $percentiles[$key] = $percentile;
-//            $previousValue = $value;
-//            $i++;
-//        }
 //
-//        print("Percentiles:<br/>");
-//        print_r($percentiles);
-//        print("<br/>");
-    }
-} else {
-    echo "0 results";
-}
-print_r($bikes);
-
-//function mypercentile($bikes, $percentile) {
-//    if (0 < $percentile && $percentile < 1) {
-//        $p = $percentile;
-//    } else if (1 < $percentile && $percentile <= 100) {
-//        $p = $percentile * .01;
-//    } else {
-//        return "";
+//echo $sql . "\n";
+//if ($result->num_rows > 0) {
+//    $bikes = array();
+//    // output data of each row
+//    while ($row = $result->fetch_assoc()) {
+////        echo $row["avail_bikes"] . "\n";
+////        echo $row['avail_slots'] . "\n";
+//
+//        
+//        array_push($bikes, $row['avail_bikes']);
+//        
+////print_r($bikes);
+//
+//
+////        $array = join($row['avail_bikes']);
+////        echo "joined array " . $array;
+////        print("Unsorted array:<br/>");
+////        print_r($array);
+////        arsort($array);
+////        print("<br/>");
+////        print("Sorted array:<br/>");
+////        print_r($array);
+////        print("<br/>");
+////
+////        $i = 0;
+////        $total = count($array);
+////        $percentiles = array();
+////        $previousValue = -1;
+////        $previousPercentile = -1;
+////        foreach ($array as $key => $value) {
+////            echo "\$array[$key] => $value";
+////            if ($previousValue == $value) {
+////                $percentile = $previousPercentile;
+////            } else {
+////                $percentile = 99 - $i * 100 / $total;
+////                $previousPercentile = $percentile;
+////            }
+////            $percentiles[$key] = $percentile;
+////            $previousValue = $value;
+////            $i++;
+////        }
+////
+////        print("Percentiles:<br/>");
+////        print_r($percentiles);
+////        print("<br/>");
 //    }
-//    $count = count($bikes);
-//    $allindex = ($count - 1) * $p;
-//    $intvalindex = intval($allindex);
-//    $floatval = $allindex - $intvalindex;
-//    sort($bikes);
-//    if (!is_float($floatval)) {
-//        $percentile_res = $bikes[$intvalindex];
-//    } else {
-//        if ($count > $intvalindex + 1){ 
-//            $percentile_res = $floatval * ($bikes[$intvalindex + 1] - $bikes[$intvalindex]) + $bikes[$intvalindex];
-//        }
-//        else {
-//            $percentile_res = $bikes[$intvalindex];
-//        }
-//    }
-//    return $percentile_res;
+//} else {
+//    echo "0 results";
 //}
-//echo mypercentile($bikes, $percentile);
+//print_r($bikes);
+//
+////function mypercentile($bikes, $percentile) {
+////    if (0 < $percentile && $percentile < 1) {
+////        $p = $percentile;
+////    } else if (1 < $percentile && $percentile <= 100) {
+////        $p = $percentile * .01;
+////    } else {
+////        return "";
+////    }
+////    $count = count($bikes);
+////    $allindex = ($count - 1) * $p;
+////    $intvalindex = intval($allindex);
+////    $floatval = $allindex - $intvalindex;
+////    sort($bikes);
+////    if (!is_float($floatval)) {
+////        $percentile_res = $bikes[$intvalindex];
+////    } else {
+////        if ($count > $intvalindex + 1){ 
+////            $percentile_res = $floatval * ($bikes[$intvalindex + 1] - $bikes[$intvalindex]) + $bikes[$intvalindex];
+////        }
+////        else {
+////            $percentile_res = $bikes[$intvalindex];
+////        }
+////    }
+////    return $percentile_res;
+////}
+////echo mypercentile($bikes, $percentile);
 $conn->close();
 ?>
