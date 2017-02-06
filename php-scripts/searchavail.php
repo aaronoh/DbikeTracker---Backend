@@ -33,22 +33,22 @@ $stat_id = $_POST['statnum'];
 echo $stat_id . " ";
 
 
-//$sql = "SELECT number, avail_bikes, avail_slots FROM availability_new WHERE DAYOFWK = '$dayofwk' AND LAST_UPDATE = '$time' AND NUMBER = '$stat_id'";
-//$result = $conn->query($sql);
-//
-//
-//echo $sql . "\n";
-//if ($result->num_rows > 0) {
-//    $bikes = array();
-//    // output data of each row
-//    while ($row = $result->fetch_assoc()) {
-////        echo $row["avail_bikes"] . "\n";
-////        echo $row['avail_slots'] . "\n";
-//
-//        
-//        array_push($bikes, $row['avail_bikes']);
-//        
-////print_r($bikes);
+$sql = "SELECT number, avail_bikes, avail_slots FROM availability_new WHERE DAYOFWK = '$dayofwk' AND LAST_UPDATE = '$time' AND NUMBER = '$stat_id'";
+$result = $conn->query($sql);
+
+
+echo $sql . "\n";
+if ($result->num_rows > 0) {
+    $bikes = array();
+    // output data of each row
+    while ($row = $result->fetch_assoc()) {
+//        echo $row["avail_bikes"] . "\n";
+//        echo $row['avail_slots'] . "\n";
+
+        
+        array_push($bikes, $row['avail_bikes']);
+        
+print_r($bikes);
 //
 //
 ////        $array = join($row['avail_bikes']);
