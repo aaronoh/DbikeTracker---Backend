@@ -52,7 +52,7 @@ if ($result->num_rows > 0) {
     echo "0 results";
 }
 print_r($bikes);
-function for working out the percentile
+//function for working out the percentile
 function get_percentile($percentile, $bikes) {
     sort($bikes);
     $index = ($percentile/100) * count($bikes);
