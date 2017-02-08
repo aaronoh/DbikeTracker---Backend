@@ -53,22 +53,47 @@ if ($result->num_rows > 0) {
 }
 print_r($bikes);
 //function for working out the percentile
-function get_percentile($percentile, $bikes) {
-    sort($bikes);
-    $index = ($percentile/100) * count($bikes);
-    if (floor($index) == $index) {
-         $result = ($bikes[$index-1] + $bikes[$index])/2;
-    }
-    else {
-        $result = $bikes[floor($index)];
-    }
-    return $result;
-}
+//function get_percentile($percentile, $bikes) {
+//    sort($bikes);
+//    $index = ($percentile/100) * count($bikes);
+//    if (floor($index) == $index) {
+//         $result = ($bikes[$index-1] + $bikes[$index])/2;
+//    }
+//    else {
+//        $result = $bikes[floor($index)];
+//    }
+//    return $result;
+//}
+//
+//
+//
+//echo "75th %tile" . get_percentile(20, $bikes) . " ";
+//echo "95th %tile" . get_percentile(95, $bikes) . " ";
+function mypercentile($bikes,$percentile){ 
+    if( 0 < $percentile && $percentile < 1 ) { 
+        $p = $percentile; 
+    }else if( 1 < $percentile && $percentile <= 100 ) { 
+        $p = $percentile * .01; 
+    }else { 
+        return ""; 
+    } 
+    $count = count($bikes); 
+    $allindex = ($count-1)*$p; 
+    $intvalindex = intval($allindex); 
+    $floatval = $allindex - $intvalindex; 
+    sort($bikes); 
+    if(!is_float($floatval)){ 
+        $percent_result = $data[$intvalindex]; 
+    }else { 
+        if($count > $intvalindex+1) 
+            $percent_result = $floatval*($bikes[$intvalindex+1] - $bikes[$intvalindex]) + $bikes[$intvalindex]; 
+        else 
+            $percent_result = $bikes[$intvalindex]; 
+    } 
+    return $percent_result; 
+} 
 
-
-
-echo "75th %tile" . get_percentile(20, $bikes) . " ";
-echo "95th %tile" . get_percentile(95, $bikes) . " ";
+echo "95th percentile " . echo mypercentile($bikes, 95);
 
 
 $conn->close();
