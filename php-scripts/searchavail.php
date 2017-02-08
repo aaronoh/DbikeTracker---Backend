@@ -67,7 +67,7 @@ function get_percentile($percentile, $bikes) {
 
 
 
-echo "75th %tile" . get_percentile(20, $bikes) . " ";
+echo "70th %tile" . get_percentile(70, $bikes) . " ";
 echo "95th %tile" . get_percentile(95, $bikes) . " ";
 function mypercentile($bikes,$percentile){ 
     if( 0 < $percentile && $percentile < 1 ) { 
@@ -93,8 +93,8 @@ function mypercentile($bikes,$percentile){
     return $percent_result; 
 } 
 
-echo "95th percentile " . mypercentile($bikes, 95);
-echo "75th percentile " . mypercentile($bikes, 75);
+echo "95th percentile " . mypercentile($bikes, 95) . " ";
+echo "70th percentile " . mypercentile($bikes, 70) . " ";
 
 
 
