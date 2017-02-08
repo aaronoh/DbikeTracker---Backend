@@ -93,7 +93,7 @@ function mypercentile($bikes,$percentile){
     return $percent_result; 
 } 
 
-echo "95th percentile " . echo mypercentile($bikes, 95);
+echo "95th percentile " . mypercentile($bikes, 95);
 
 
 $conn->close();
