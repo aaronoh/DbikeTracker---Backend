@@ -52,23 +52,23 @@ if ($result->num_rows > 0) {
     echo "0 results";
 }
 print_r($bikes);
-//function for working out the percentile
-//function get_percentile($percentile, $bikes) {
-//    sort($bikes);
-//    $index = ($percentile/100) * count($bikes);
-//    if (floor($index) == $index) {
-//         $result = ($bikes[$index-1] + $bikes[$index])/2;
-//    }
-//    else {
-//        $result = $bikes[floor($index)];
-//    }
-//    return $result;
-//}
-//
-//
-//
-//echo "75th %tile" . get_percentile(20, $bikes) . " ";
-//echo "95th %tile" . get_percentile(95, $bikes) . " ";
+function for working out the percentile
+function get_percentile($percentile, $bikes) {
+    sort($bikes);
+    $index = ($percentile/100) * count($bikes);
+    if (floor($index) == $index) {
+         $result = ($bikes[$index-1] + $bikes[$index])/2;
+    }
+    else {
+        $result = $bikes[floor($index)];
+    }
+    return $result;
+}
+
+
+
+echo "75th %tile" . get_percentile(20, $bikes) . " ";
+echo "95th %tile" . get_percentile(95, $bikes) . " ";
 function mypercentile($bikes,$percentile){ 
     if( 0 < $percentile && $percentile < 1 ) { 
         $p = $percentile; 
@@ -94,6 +94,8 @@ function mypercentile($bikes,$percentile){
 } 
 
 echo "95th percentile " . mypercentile($bikes, 95);
+echo "75th percentile " . mypercentile($bikes, 75);
+
 
 
 $conn->close();
