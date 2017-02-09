@@ -85,10 +85,12 @@ function mypercentile($bikes,$percentile){
     if(!is_float($floatval)){ 
         $percent_result = $data[$intvalindex]; 
     }else { 
-        if($count > $intvalindex+1) 
+        if($count > $intvalindex+1) {
             $percent_result = $floatval*($bikes[$intvalindex+1] - $bikes[$intvalindex]) + $bikes[$intvalindex]; 
-        else 
-            $percent_result = $bikes[$intvalindex]; 
+        }
+        else {
+            $percent_result = $bikes[$intvalindex];
+        }
     } 
     return $percent_result; 
 } 
