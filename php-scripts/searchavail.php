@@ -94,7 +94,7 @@ function mypercentile($bikes,$percentile){
     $intvalindex = intval($allindex); 
     //remove the outliers
     $floatval = $allindex - $intvalindex; 
-    //sort the array from smallest to largest
+    //sort the array 
     sort($bikes); 
     //if the value is not a float
     if(!is_float($floatval)){
