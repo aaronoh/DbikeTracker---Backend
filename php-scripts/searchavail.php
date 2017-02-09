@@ -69,32 +69,51 @@ function get_percentile($percentile, $bikes) {
 
 echo "70th %tile" . get_percentile(70, $bikes) . " ";
 echo "95th %tile" . get_percentile(95, $bikes) . " " . "<br>";
+
+//for my percentile take in an array and a int as a percentile
 function mypercentile($bikes,$percentile){ 
-    if( 0 < $percentile && $percentile < 1 ) { 
+    //if the percentile is between 0 & 1 (0.1-0.99)
+    if( 0 < $percentile && $percentile < 1 ) {
+        //the p object is just equal to the percentile
         $p = $percentile; 
-    }else if( 1 < $percentile && $percentile <= 100 ) { 
+    }
+    //else if the percentile is between 1 & 100
+    else if( 1 < $percentile && $percentile <= 100 ) { 
+        //convert the percentile
         $p = $percentile * .01; 
-    }else { 
+    }
+    //else return nothing
+    else { 
         return ""; 
     } 
+    //count the size of the array input
     $count = count($bikes); 
-    $allindex = ($count-1)*$p; 
+    //get all the indexes and multiple by the percentile
+    $allindex = ($count-1)*$p;
+    //get the value of the index
     $intvalindex = intval($allindex); 
+    //remove the outliers
     $floatval = $allindex - $intvalindex; 
+    //sort the array from smallest to largest
     sort($bikes); 
-    if(!is_float($floatval)){ 
-        $percent_result = $data[$intvalindex]; 
+    //if the value is not a float
+    if(!is_float($floatval)){
+        $percent_result = $bikes[$intvalindex]; 
     }else { 
+        //if the size of the array is greater than the value index + 1 
         if($count > $intvalindex+1) {
+            //the result is the float value multipled by the top value of the array, minus the current index and then add the bikes index
             $percent_result = $floatval*($bikes[$intvalindex+1] - $bikes[$intvalindex]) + $bikes[$intvalindex]; 
         }
         else {
+            //the percent result is equal to a value of the bikes array
             $percent_result = $bikes[$intvalindex];
         }
     } 
+    //return the percent result
     return $percent_result; 
 } 
-
+//echo results
 echo "95 percentile " . mypercentile($bikes, 97.5) . " ";
 echo "2.5 percentile " . mypercentile($bikes, 2.5) . " ";
 
