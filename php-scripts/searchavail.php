@@ -131,6 +131,20 @@ function mean_sd($array, $sample = false) {
 echo " " . 
     " Mean is " . mean_sd($bikes);
 
+//function to calculate sd
+// Function to calculate square of value - mean
+function sd_square($x, $mean) { return pow($x - $mean,2); }
+
+// Function to calculate standard deviation (uses sd_square)    
+function sd($bikes) {
+    
+// square root of sum of squares devided by N-1
+return sqrt(array_sum(array_map("sd_square", $bikes, array_fill(0,count($bikes), (array_sum($bikes) / count($bikes)) ) ) ) / (count($bikes)-1) );
+}
+
+//echo the sd to the html
+echo " " . 
+    " Standard deviation is " . sd($bikes);
 
 $conn->close();
 ?>
