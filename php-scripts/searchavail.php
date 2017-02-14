@@ -154,9 +154,11 @@ echo " " .
 //}
 // Function to calculate standard deviation (uses sd_square)    
 function sd($array) {
+    //first count the size of the array
+    $count = count($array);
+    $mean = array_sum($array) / $count;
     
-// square root of sum of squares devided by N-1
-return sqrt(array_sum(array_map("sd_square", $array, array_fill(0,count($array), (array_sum($array) / count($array)) ) ) ) / (count($array)-1) );
+    return $mean;    
 }
 echo " " . 
     " Mean is " . sd($bikes);
