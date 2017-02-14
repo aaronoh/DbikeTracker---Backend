@@ -124,18 +124,7 @@ function mean_sd($array, $sample = false) {
     //first count the size of the array
     $count = count($array);
     $mean = array_sum($array) / $count;
-    //code for sd
-            $carry = 0.0;
-        foreach ($array as $val) {
-            $d = ((double) $val) - $mean;
-            $carry += $d * $d;
-        };
-        if ($sample) {
-           --$n;
-        }
-        return sqrt($carry / $n);
-    }
-    
+
     return $mean;    
 }
 //echo the mean to the html
