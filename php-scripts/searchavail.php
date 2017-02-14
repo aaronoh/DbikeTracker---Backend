@@ -118,7 +118,7 @@ echo "95 percentile " . mypercentile($bikes, 95) . " ";
 echo " " . 
     "5 percentile " . mypercentile($bikes, 5) . " ";
 //variable for 95th percentiel
-$95 = mypercentile($bikes, 95);
+//$95 = mypercentile($bikes, 95);
 // Function to calculate mean    
 function sd($array) {
     //first count the size of the array
@@ -128,14 +128,13 @@ function sd($array) {
     return $mean;    
 }
 
-//function to get the standard deviation
-function sd_square($x, $mean){ return pow($x - $mean,2);}
+////function to get the standard deviation //function sd_square($x, $mean){ return pow($x - $mean,2);}
 //echo the mean to the html
 echo " " . 
     " Mean is " . sd($bikes);
-//echo the standard deviation to the html
-echo " " . 
-    " Standard deviation is " . sd_square($95, $mean);
+////echo the standard deviation to the html
+//echo " " . 
+//    " Standard deviation is " . sd_square($95, $mean);
 
 
 
