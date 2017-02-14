@@ -118,44 +118,28 @@ echo "95 percentile " . mypercentile($bikes, 95) . " ";
 echo " " . 
     "5 percentile " . mypercentile($bikes, 5) . " ";
 
-$meanforgood;
+
 // Function to calculate mean    
-function mean($array) {
+function mean_sd($array, $sample = false) {
     //first count the size of the array
     $count = count($array);
     $mean = array_sum($array) / $count;
-    
-    $meanforgood = $mean;
-    return $mean;    
-}
-//echo the mean to the html
-echo " " . 
-    " Mean is " . mean($bikes);
-//function for standard deviation
-    function stats_standard_deviation(array $a, $sample = false) {
-        $n = count($a);
-        if ($n === 0) {
-            trigger_error("The array has zero elements", E_USER_WARNING);
-            return false;
-        }
-        if ($sample && $n === 1) {
-            trigger_error("The array has only 1 element", E_USER_WARNING);
-            return false;
-        }
-        $mean = $meanforgood;
-        $carry = 0.0;
-        foreach ($a as $val) {
+    //code for sd
+            $carry = 0.0;
+        foreach ($array as $val) {
             $d = ((double) $val) - $mean;
             $carry += $d * $d;
         };
         if ($sample) {
            --$n;
         }
-        return sqrt($carry / $n);
+        return "standard deviation is " . sqrt($carry / $n);
     }
-//echo the standard deviation in the html
-eecho " " . 
-    " Standard deviation is " . stats_standard_deviation($bikes);
+    
+    return "mean is " . $mean;    
+}
+//echo the mean to the html
+echo mean_sd($bikes);
 
 
 $conn->close();
