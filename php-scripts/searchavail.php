@@ -152,19 +152,14 @@ echo " " .
 //        return sqrt($carry / $n);
 //    }
 //}
-function standard_deviation($bikes, $bSample = false)
-{
-    $fMean = array_sum($bikes) / count($bikes);
-    $fVariance = 0.0;
-    foreach ($bikes as $i)
-    {
-        $fVariance += pow($i - $fMean, 2);
-    }
-    $fVariance /= ( $bSample ? count($bikes) - 1 : count($bikes) );
-    return (float) sqrt($fVariance);
+// Function to calculate standard deviation (uses sd_square)    
+function sd($bikes) {
+    
+// square root of sum of squares devided by N-1
+return sqrt(array_sum(array_map("sd_square", $bikes, array_fill(0,count($bikes), (array_sum($bikes) / count($bikes)) ) ) ) / (count($bikes)-1) );
 }
 echo " " . 
-    " Mean is " . standard_deviation($bikes);
+    " Mean is " . sd($bikes);
 
 
 
