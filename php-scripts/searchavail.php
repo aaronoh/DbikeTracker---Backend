@@ -133,13 +133,14 @@ function mean_sd($array, $sample = false) {
         if ($sample) {
            --$n;
         }
-        return "standard deviation is " . sqrt($carry / $n);
+        return sqrt($carry / $n);
     }
     
-    return "mean is " . $mean;    
+    return $mean;    
 }
 //echo the mean to the html
-echo mean_sd($bikes);
+echo " " . 
+    " Mean is " . mean_sd($bikes);
 
 
 $conn->close();
