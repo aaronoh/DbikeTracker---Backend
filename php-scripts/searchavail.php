@@ -24,20 +24,20 @@ if ($conn->connect_error) {
 }
 echo "Connected successfully" . "<br>";
 $time = $_POST['time'];
-echo $time . " ";
+echo "time - " . $time . " ";
 //$_POST['date']->format('Y-m-d'); // output = 2017-01-01
 $date = date_create($_POST['date']);
 $intofwk = date_format($date, "w");
-echo $intofwk . " ";
+echo "dayofwk as int -" . $intofwk . " ";
 $stat_id = $_POST['statnum'];
-echo $stat_id . " ";
+echo "station num " . $stat_id . " ";
 
 
 $sql = "SELECT number, avail_bikes, avail_slots FROM availability_new WHERE DAYOFWK = '$intofwk' AND LAST_UPDATE = '$time' AND NUMBER = '$stat_id'";
 $result = $conn->query($sql);
 
 
-echo $sql . "\n";
+//echo $sql . "\n";
 if ($result->num_rows > 0) {
     $bikes = array();
     // output data of each row
@@ -69,10 +69,10 @@ function get_percentile($percentile, $bikes) {
 
 
 echo "<pre>";
-echo "Not so accurate";
-echo "70th percentile ";
+echo "Not accurate";
+echo " 70th percentile ";
 echo get_percentile(70, $bikes);
-echo "95th percentile ";
+echo " 95th percentile ";
 echo  get_percentile(95, $bikes);
 echo "</pre>";
 
@@ -122,9 +122,9 @@ function mypercentile($bikes,$percentile){
 //echo results of percentile
 echo "<pre>";
 echo "More accurate";
-echo "95 percentile ";
+echo " 95 percentile ";
 echo mypercentile($bikes, 95) . " ";
-echo "5 percentile ";
+echo " 5 percentile ";
 echo mypercentile($bikes, 5) . " ";
 echo "</pre>";
 
