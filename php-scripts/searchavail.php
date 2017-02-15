@@ -70,10 +70,10 @@ function get_percentile($percentile, $bikes) {
 
 echo "<pre>";
 echo "First Percentile Function - Not so accurate";
-echo "70th percentile "
-    . get_percentile(70, $bikes) . " ";
-echo "95th percentile "
-    . get_percentile(95, $bikes) . " ";
+echo "70th percentile ";
+echo get_percentile(70, $bikes);
+echo "95th percentile ";
+echo  get_percentile(95, $bikes);
 echo "</pre>";
 
 //for my percentile take in an array and a int as a percentile
@@ -122,10 +122,10 @@ function mypercentile($bikes,$percentile){
 //echo results of percentile
 echo "<pre>";
 echo "Second Percentile Function - More accurate";
-echo "95 percentile "
-    . mypercentile($bikes, 95) . " ";
-echo "5 percentile "
-    . mypercentile($bikes, 5) . " ";
+echo "95 percentile ";
+echo mypercentile($bikes, 95) . " ";
+echo "5 percentile ";
+echo mypercentile($bikes, 5) . " ";
 echo "</pre>";
 
 
@@ -139,8 +139,8 @@ function mean_sd($array, $sample = false) {
 }
 //echo the mean to the html
 echo "<pre>";
-echo "Mean is "
-    . mean_sd($bikes);
+echo "Mean is ";
+echo mean_sd($bikes);
 echo "</pre>";
 //function to calculate sd
 // Function to calculate square of value - mean
@@ -155,8 +155,8 @@ return sqrt(array_sum(array_map("sd_square", $bikes, array_fill(0,count($bikes),
 
 //echo the sd to the html
 echo "<pre>";
-echo "Standard deviation is "
-    . sd($bikes);
+echo "Standard deviation is ";
+echo sd($bikes);
 echo "</pre>";
 
 $conn->close();
