@@ -52,7 +52,7 @@ if ($result->num_rows > 0) {
     echo "0 results";
 }
 echo "<pre>";
-print_r($shift);
+print_r($bikes);
 echo "</pre>";
 //function for working out the percentile
 function get_percentile($percentile, $bikes) {
@@ -160,6 +160,10 @@ return sqrt(array_sum(array_map("sd_square", $bikes, array_fill(0,count($bikes),
 echo "<pre>";
 echo "Standard deviation is ";
 echo sd($bikes);
+echo "</pre>";
+echo "<pre>";
+echo "shifted array";
+echo print_r($shift);
 echo "</pre>";
 
 $conn->close();
