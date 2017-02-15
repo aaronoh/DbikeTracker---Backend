@@ -96,9 +96,9 @@ function mypercentile($bikes,$percentile){
     $count = count($bikes);
     //remove the 0 index and move the next item to the new 0 index
     $shift = array_shift($count);
-    print_r("shfted array " . $shift);
+//    print_r("shfted array " . $shift);
     //get all the indexes and multiple by the percentile
-    $allindex = ($count-1)*$p;
+    $allindex = ($shift-1)*$p;
     //get the value of the index
     $intvalindex = intval($allindex); 
     //remove the outliers
@@ -161,10 +161,7 @@ echo "<pre>";
 echo "Standard deviation is ";
 echo sd($bikes);
 echo "</pre>";
-echo "<pre>";
-echo "shifted array";
-echo print_r($shift);
-echo "</pre>";
+
 
 $conn->close();
 ?>
