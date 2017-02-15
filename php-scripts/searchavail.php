@@ -69,7 +69,7 @@ function get_percentile($percentile, $bikes) {
 
 
 echo "<pre>";
-echo "First Percentile Function - Not so accurate"
+echo "First Percentile Function - Not so accurate";
 echo "70th percentile " . get_percentile(70, $bikes) . " ";
 echo "95th percentile " . get_percentile(95, $bikes) . " ";
 echo "</pre>";
@@ -119,7 +119,7 @@ function mypercentile($bikes,$percentile){
 } 
 //echo results of percentile
 echo "<pre>";
-echo "Second Percentile Function - More accurate"
+echo "Second Percentile Function - More accurate";
 echo "95 percentile " . mypercentile($bikes, 95) . " ";
 echo "5 percentile " . mypercentile($bikes, 5) . " ";
 echo "</pre>";
