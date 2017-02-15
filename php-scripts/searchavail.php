@@ -96,7 +96,7 @@ function mypercentile($bikes,$percentile){
     $count = count($bikes);
     //remove the 0 index and move the next item to the new 0 index
     array_shift($bikes);
-    print_r("shfted array " . $bikes);
+    print_r($bikes);
     //get all the indexes and multiple by the percentile
     $allindex = ($count-1)*$p;
     //get the value of the index
