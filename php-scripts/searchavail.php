@@ -57,7 +57,9 @@ print_r($bikes);
 echo "</pre>";
 //function for working out the percentile
 function get_percentile($percentile, $bikes) {
+    //sort the array of bike data
     sort($bikes);
+    //get the decimal index of the percentile and multiply by the number of bikes in the arry
     $index = ($percentile/100) * count($bikes);
     if (floor($index) == $index) {
          $result = ($bikes[$index-1] + $bikes[$index])/2;
@@ -96,16 +98,15 @@ function mypercentile($bikes,$percentile){
     //count the size of the array input
     $count = count($bikes);
     //remove the 0 index and move the next item to the new 0 index
-    array_shift($bikes);
+//    array_shift($bikes);
     //get all the indexes and multiple by the percentile
     $allindex = ($count-1)*$p;
-    print_r($allindex);
     //get the value of the index
     $intvalindex = intval($allindex); 
     //remove the outliers
     $floatval = $allindex - $intvalindex; 
     //sort the array 
-    sort($bikes); 
+//    sort($bikes); 
     //if the value is not a float
     if(!is_float($floatval)){
         $percent_result = $bikes[$intvalindex]; 
