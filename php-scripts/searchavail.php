@@ -96,9 +96,11 @@ function mypercentile($bikes,$percentile){
         return ""; 
     } 
     //count the size of the array input
+    //gonna have to write a function if the count is larger remove more indexes
     $count = count($bikes);
     //remove the 0 index and move the next item to the new 0 index
     //get all the indexes and multiple by the percentile
+    //this will be 0.95
     $allindex = ($count-1)*$p;
     //get the value of the index
     $intvalindex = intval($allindex); 
@@ -106,7 +108,7 @@ function mypercentile($bikes,$percentile){
     $floatval = $allindex - $intvalindex; 
     //sort the array 
 //    sort($bikes); 
-    //if the value is not a float
+    //check to see f the value is a float or a string
     if(!is_float($floatval)){
         $percent_result = $bikes[$intvalindex]; 
     }else { 
