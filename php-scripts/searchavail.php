@@ -22,8 +22,7 @@
 //if ($conn->connect_error) {
 //    die("Connection failed: " . $conn->connect_error);
 //}
-//echo "Connected successfully" . "<br>";
-require "connect.php";
+require "./connect.php";
 $time = $_POST['time'];
 echo "time - " . $time . " ";
 //$_POST['date']->format('Y-m-d'); // output = 2017-01-01

@@ -20,8 +20,7 @@
 //            die("Connection failed: " . $conn->connect_error);
 //        }
 //        echo "Connected successfully";
-require "connect.php";
-
+require "./connect.php";
 
 //information for the bikes api
 $api_key = "ec447add626cfb0869dd4747a7e50e21d39d1850";

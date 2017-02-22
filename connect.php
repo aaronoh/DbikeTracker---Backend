@@ -18,14 +18,5 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 echo "Connected successfully";
-
-//information for the bikes api
-$api_key = "ec447add626cfb0869dd4747a7e50e21d39d1850";
-$contract_name = "Dublin";
-//phpinfo();
-$api_url = "https://api.jcdecaux.com/vls/v1/stations?contract=Dublin&apiKey=ec447add626cfb0869dd4747a7e50e21d39d1850";
-$contents = file_get_contents($api_url);
-//convert the json to a php assoc array for query
-$dbikeinfo = json_decode($contents, true);
-
+// ////information for the bikes api //$api_key = "ec447add626cfb0869dd4747a7e50e21d39d1850"; //$contract_name = "Dublin"; ////phpinfo(); //$api_url = "https://api.jcdecaux.com/vls/v1/stations?contract=Dublin&apiKey=ec447add626cfb0869dd4747a7e50e21d39d1850"; //$contents = file_get_contents($api_url); ////convert the json to a php assoc array for query //$dbikeinfo = json_decode($contents, true);
 ?>
