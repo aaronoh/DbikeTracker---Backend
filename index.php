@@ -1,6 +1,10 @@
 <?php
 
 include connect.php;
-echo "we including";
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+echo "Connected successfully";
 
 ?>
