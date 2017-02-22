@@ -44,15 +44,17 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
 //        echo $row["avail_bikes"] . "\n";
 //        echo $row['avail_slots'] . "\n";
-
+        echo "slots " . $row['avail_slots'] . " 
+        ";
+        echo "bikes " . $row['avail_bikes'] . " 
+        ";
         array_push($bikes, $row['avail_bikes']);
     }
 } else {
     echo "0 results";
 }
 
-        echo "slots " . $row['avail_slots'];
-        echo "bikes " . $row['avail_bikes'];
+
 echo "<pre>";
 sort($bikes);
 print_r($bikes);
