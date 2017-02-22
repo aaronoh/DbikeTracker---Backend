@@ -5,21 +5,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-        $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-
-        $server = $url["host"];
-        $username = $url["user"];
-        $password = $url["pass"];
-        $db = substr($url["path"], 1);
-        //create the conneciton
-//        $conn = new mysqli($server, $username, $password, $db);
-        $conn = mysqli_connect($server, $username, $password, $db) or die('Error in Connecting: ' . mysqli_error($conn));
-
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-        echo "Connected successfully";
+//        $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+//
+//        $server = $url["host"];
+//        $username = $url["user"];
+//        $password = $url["pass"];
+//        $db = substr($url["path"], 1);
+//        //create the conneciton
+////        $conn = new mysqli($server, $username, $password, $db);
+//        $conn = mysqli_connect($server, $username, $password, $db) or die('Error in Connecting: ' . mysqli_error($conn));
+//
+//        // Check connection
+//        if ($conn->connect_error) {
+//            die("Connection failed: " . $conn->connect_error);
+//        }
+//        echo "Connected successfully";
+require "connect.php";
 
 
 //information for the bikes api
@@ -58,4 +59,3 @@ foreach ($dbikeinfo as $row) {
 
 //close connection
 mysqli_close($conn);
-

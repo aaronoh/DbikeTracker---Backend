@@ -8,21 +8,22 @@
 //connect to ClearDB
 //cleardb url mysql://b4c04b4b0847ac:bdfbd3f7@us-cdbr-iron-east-04.cleardb.net/heroku_1aebd2cf6f33fe1?reconnect=true
 //gets the variables from the url and parses them to the variables
-$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-
-$server = $url["host"];
-$username = $url["user"];
-$password = $url["pass"];
-$db = substr($url["path"], 1);
-//create the conneciton
-//        $conn = new mysqli($server, $username, $password, $db);
-$conn = mysqli_connect($server, $username, $password, $db) or die('Error in Connecting: ' . mysqli_error($conn));
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-echo "Connected successfully" . "<br>";
+//$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+//
+//$server = $url["host"];
+//$username = $url["user"];
+//$password = $url["pass"];
+//$db = substr($url["path"], 1);
+////create the conneciton
+////        $conn = new mysqli($server, $username, $password, $db);
+//$conn = mysqli_connect($server, $username, $password, $db) or die('Error in Connecting: ' . mysqli_error($conn));
+//
+//// Check connection
+//if ($conn->connect_error) {
+//    die("Connection failed: " . $conn->connect_error);
+//}
+//echo "Connected successfully" . "<br>";
+require "connect.php";
 $time = $_POST['time'];
 echo "time - " . $time . " ";
 //$_POST['date']->format('Y-m-d'); // output = 2017-01-01
