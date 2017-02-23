@@ -23,6 +23,11 @@
 //    die("Connection failed: " . $conn->connect_error);
 //}
 require "../connect.php";
+if($time == null){
+    $time = new DateTime("@$epoch"); //convert the epoch to UNIX time
+echo $time->format('H:i:s'); // output = 21:06:43
+$time = date('H:i:s');
+}
 $time = $_POST['time'];
 echo "time - " . $time . " ";
 //$_POST['date']->format('Y-m-d'); // output = 2017-01-01
